@@ -13,6 +13,6 @@ public class CrewType {
         public static void main(String[] args) {
 
             CrewType engineer = new CrewType();
-            engineer.ty
+
         }
 }
