@@ -28,7 +28,7 @@ public class CrewType {
             pilot.specSkill = "pilot";
             pilot.cost = 3;
 
-            CrewType medic = new CrewType();
+            CrewType medic = new CrewType();       //medic crew type
             medic.typeString = "medic";
             medic.hp = 15;
             medic.hungerChange = 2;
@@ -36,7 +36,7 @@ public class CrewType {
             medic.specSkill = "medic";
             medic.cost = 4;
 
-            CrewType scout = new CrewType();
+            CrewType scout = new CrewType();       //scout crew type
             scout.typeString = "scout";
             scout.hp = 15;
             scout.hungerChange = 2;
@@ -44,7 +44,7 @@ public class CrewType {
             scout.specSkill = "scout";
             scout.cost = 6;
 
-            CrewType grunt = new CrewType();
+            CrewType grunt = new CrewType();       //grunt crew type
             grunt.typeString = "grunt";
             grunt.hp = 15;
             grunt.hungerChange = 1;
@@ -52,7 +52,7 @@ public class CrewType {
             grunt.specSkill = "grunt";
             grunt.cost = 1;
 
-            CrewType gunner = new CrewType();
+            CrewType gunner = new CrewType();     //gunner crew type
             gunner.typeString = "gunner";
             gunner.hp = 15;
             gunner.hungerChange = 2;
