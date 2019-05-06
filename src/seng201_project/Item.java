@@ -6,7 +6,7 @@ public class Item {
     private String itemType;
     private int itemStat;
     private int itemValue;
-    private bool isCure = False;
+    private boolean isCure = false;
 
     public String getItemName() {
         return itemName;
@@ -40,11 +40,11 @@ public class Item {
         this.itemValue = itemValue;
     }
 
-    public bool getIsCure() {
+    public boolean getIsCure() {
         return isCure;
     }
 
-    public void setIsCure(bool isCure) {
+    public void setIsCure(boolean isCure) {
         this.isCure = isCure;
     }
 }

@@ -5,15 +5,18 @@ public class Event {
     public int damage;
     public int threslod = 10;
 
-    public bool spacePirates() {
+    public boolean spacePirates() {
+
+        return true;
+    }
+
+    public boolean spaceAids() {
+        return true;
 
     }
 
-    public bool spaceAids() {
-
-    }
-
-    public bool asteroidBelt() {
+    public boolean asteroidBelt() {
+        return true;
 
     }
 }

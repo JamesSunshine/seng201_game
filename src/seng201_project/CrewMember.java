@@ -1,11 +1,16 @@
 package seng201_project;
 
-public class CrewMember extends CrewType{
+public abstract class CrewMember {
+    protected String name;
+    protected int hunger;
+    protected int tiredness;
 
-    public String type;
-    public int hunger = 10;
-    public int tiredness = 10;
+    CrewMember(String mName) {
+        name = mName;
+    }
 
 
-
+    void hungerDay() {
+        hunger -= 1;
+    }
 }

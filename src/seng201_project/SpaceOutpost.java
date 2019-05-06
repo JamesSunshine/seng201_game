@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class SpaceOutpost extends Item {
 
     public ArrayList viewShop() {
+        return new ArrayList();
 
     }
 

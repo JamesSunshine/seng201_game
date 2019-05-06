@@ -4,13 +4,17 @@ import java.util.Scanner;
 
 public class Ship {
 
-    public String name;
-    public int NumberofCrew = 0;
-    public int ShipCondition;
-    public int CrewPoints = 0;
-    public int Money = 100;
+    private String name;
+    private int numberofCrew = 0;
+    private int shipCondition;
+    private int crewPoints = 0;
+    private int money = 100;
 
-    pubilc void addCrew() {
+
+    Ship(String mName) {
+        name = mName;
+    }
+    public void addCrew() {
 
     }
 
@@ -19,10 +23,12 @@ public class Ship {
     }
 
     public int getNumberofCrew() {
+        return 1;
 
     }
 
     public int getPoints() {
+        return 1;
 
     }
 
@@ -43,18 +49,33 @@ public class Ship {
     }
 
     public int checkCondition() {
+        return 1;
 
     }
 
-    public static void main (string[] args) {
+    public static void main(String[] args) {
         Scanner user_input = new Scanner(System.in);
         String ship_name;
         System.out.print("Enter ship name: ");
-        ship_name = user_input.next()
+        ship_name = user_input.next();
 
-        ship newShip  = new ship();
-        newShip.name = ship_name;
+        Ship newShip  = new Ship(ship_name);
         //newShip.CrewPoints = Main.getCrewPoints()     To be implemented later in main
+
+
+        // TODO: ask for crew type
+        // ["engineer", "medic", ...]
+
+        CrewFactory crewFactory = new CrewFactory();
+        CrewMember liam = crewFactory.recruit("engineer", "Liam");
+
+        System.out.println(liam.toString());
+
+        liam.hungerDay();
+
+        System.out.println(liam.toString());
+
+
     }
 
 }

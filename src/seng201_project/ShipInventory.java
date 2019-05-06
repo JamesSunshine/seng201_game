@@ -15,6 +15,7 @@ public class ShipInventory extends Item {
     }
 
     public ArrayList viewInventory() {
+        return new ArrayList();
 
     }
 
