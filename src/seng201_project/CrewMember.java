@@ -6,8 +6,6 @@ public class CrewMember extends CrewType{
     public int hunger = 10;
     public int tiredness = 10;
 
-    public BuildMember() {
 
-    }
 
 }
