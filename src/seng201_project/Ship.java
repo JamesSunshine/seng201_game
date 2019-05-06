@@ -8,6 +8,7 @@ public class Ship {
     public int NumberofCrew = 0;
     public int ShipCondition;
     public int CrewPoints = 0;
+    public int Money = 100;
 
     pubilc void addCrew() {
 
