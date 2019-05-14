@@ -1,5 +1,7 @@
 package seng201_project;
 
+import seng201_project.Types.CrewMember;
+
 import java.util.Scanner;
 
 public class Ship {
@@ -71,7 +73,7 @@ public class Ship {
 
         System.out.println(liam.toString());
 
-        liam.hungerDay();
+//        liam.hungerDay();
 
         System.out.println(liam.toString());
 

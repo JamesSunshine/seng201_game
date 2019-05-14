@@ -1,6 +1,9 @@
 package seng201_project;
 
-public class CrewFactory {
+import seng201_project.Types.CrewMember;
+import seng201_project.Types.Engineer;
+
+class CrewFactory {
 
     private int nCreated = 0;
 

@@ -1,4 +1,4 @@
-package seng201_project;
+package seng201_project.Types;
 
 public abstract class CrewMember {
     protected String name;
