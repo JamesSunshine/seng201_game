@@ -1,6 +1,6 @@
 package seng201_project.Types;
 
-class Medic extends CrewMember {
+public class Medic extends CrewMember {
 
     private int hunger = 10;
     private int tiredness = 10;

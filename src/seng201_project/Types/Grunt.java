@@ -1,6 +1,6 @@
 package seng201_project.Types;
 
-class Grunt extends CrewMember {
+public class Grunt extends CrewMember {
 
     private int hunger = 10;
     private int tiredness = 10;
