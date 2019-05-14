@@ -7,11 +7,11 @@ import java.util.ArrayList;
 public class SpaceOutpost extends Item {
 
     public ArrayList<String> viewShop() {
-        return new ArrayList();
+        return new ArrayList<String>();
 
     }
 
-    public Item purchase(String itemName) {
+    public Item purchase(String itemName) throws Exception{
         switch (itemName){
             case AidsCure.ITEM_NAME:
                 return new AidsCure();
@@ -31,6 +31,8 @@ public class SpaceOutpost extends Item {
                 return new SpaceWhopper();
             case TunaMelt.ITEM_NAME:
                 return new TunaMelt();
+
+            default: throw new Exception("Not an item");
 
         }
     }

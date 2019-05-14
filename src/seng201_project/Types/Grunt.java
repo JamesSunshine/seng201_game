@@ -10,7 +10,7 @@ public class Grunt extends CrewMember {
     private int TirednessChange = -1;
 
 
-    Grunt(String name) {
+    public Grunt(String name) {
         super(name);
     }
 }

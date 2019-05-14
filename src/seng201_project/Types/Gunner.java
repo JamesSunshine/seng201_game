@@ -9,7 +9,7 @@ public class Gunner extends CrewMember {
     private int HungerChange = -2;
     private int TirednessChange = -1;
 
-    Gunner(String name) {
+    public Gunner(String name) {
         super(name);
     }
 }

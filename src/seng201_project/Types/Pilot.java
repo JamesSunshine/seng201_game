@@ -10,7 +10,7 @@ public class Pilot extends CrewMember {
     private int TirednessChange = -2;
 
 
-    Pilot(String name) {
+    public Pilot(String name) {
         super(name);
     }
 }

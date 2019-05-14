@@ -9,7 +9,7 @@ public class Medic extends CrewMember {
     private int HungerChange = -2;
     private int TirednessChange = -2;
 
-    Medic(String name) {
+    public Medic(String name) {
         super(name);
     }
 }

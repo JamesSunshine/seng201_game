@@ -10,7 +10,7 @@ public class Scout extends CrewMember {
     private int TirednessChange = -2;
 
 
-    Scout(String name) {
+    public Scout(String name) {
         super(name);
     }
 }

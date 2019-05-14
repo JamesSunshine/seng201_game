@@ -1,7 +1,6 @@
 package seng201_project;
 
-import seng201_project.Types.CrewMember;
-import seng201_project.Types.Engineer;
+import seng201_project.Types.*;
 
 class CrewFactory {
 
@@ -13,8 +12,23 @@ class CrewFactory {
 
     CrewMember recruit(String type, String name) {
         switch (type) {
-            case "engineer": {
+            case "engineer":
                 return new Engineer(name);
+
+            case "medic":
+                return new Medic(name);
+
+            case "grunt":
+                return new Grunt(name);
+
+            case "gunner": {
+                return new Gunner(name);
+            }
+            case "pilot": {
+                return new Pilot(name);
+            }
+            case "scout": {
+                return new Scout(name);
             }
         }
 
