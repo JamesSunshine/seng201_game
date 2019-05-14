@@ -1,7 +1,8 @@
 package seng201_project.Items;
 
 public class MiGoreng extends Item{
-    private String itemName = "Mi Goreng";
+
+    public static final String ITEM_NAME = "Mi Goreng";
     private String itemType = "Food";
     private int itemStat = 2;
     private int itemValue = 10;

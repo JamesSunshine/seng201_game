@@ -1,7 +1,8 @@
 package seng201_project.Items;
 
 public class ConcretePill extends Item {
-    private String itemName = "Concrete Pill";
+
+    public static final String ITEM_NAME =  "Concrete Pill";
     private String itemType = "Medicine";
     private int itemStat = 2;
     private int itemValue = 10;

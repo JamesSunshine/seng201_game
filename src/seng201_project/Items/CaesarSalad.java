@@ -1,7 +1,8 @@
 package seng201_project.Items;
 
 public class CaesarSalad extends Item {
-    private String itemName = "Caesar Salad";
+
+    public static final String ITEM_NAME = "Caesar Salad";
     private String itemType = "Food";
     private int itemStat = 5;
     private int itemValue = 10;

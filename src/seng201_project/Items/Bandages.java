@@ -2,7 +2,7 @@ package seng201_project.Items;
 
 public class Bandages extends Item {
 
-    private String itemName = "Bandage";
+    public static final String ITEM_NAME = "Bandage";
     private String itemType = "Medicine";
     private int itemStat = 4;
     private int itemValue = 10;
