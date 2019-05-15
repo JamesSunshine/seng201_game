@@ -24,7 +24,7 @@ public class Ship {
 
     }
 
-    public int getNumberofCrew() {
+    public int getnumberofCrew() {
         return 1;
 
     }

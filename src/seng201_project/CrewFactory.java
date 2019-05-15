@@ -2,33 +2,31 @@ package seng201_project;
 
 import seng201_project.Types.*;
 
-class CrewFactory {
+public class CrewFactory extends CrewMember {
 
-    private int nCreated = 0;
-
-    CrewFactory() {
-        nCreated = 0;
+    CrewFactory(String mName) {
+        super(mName);
     }
 
     CrewMember recruit(String type, String name) {
         switch (type) {
             case "engineer":
-                return new Engineer(name);
+                crewList.add(new Engineer(name));
 
             case "medic":
-                return new Medic(name);
+                crewList.add(new Medic(name));
 
             case "grunt":
-                return new Grunt(name);
+                crewList.add(new Grunt(name));
 
             case "gunner": {
-                return new Gunner(name);
+                crewList.add(new Gunner(name));
             }
             case "pilot": {
-                return new Pilot(name);
+                crewList.add(new Pilot(name));
             }
             case "scout": {
-                return new Scout(name);
+                crewList.add(new Scout(name));
             }
         }
 
