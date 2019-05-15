@@ -2,7 +2,7 @@ package seng201_project.Items;
 
 import java.util.ArrayList;
 
-public class Item {
+public abstract class Item {
 
     private String itemName;
     private String itemType;
@@ -10,6 +10,5 @@ public class Item {
     private int itemValue;
     private boolean isCure = false;
 
-   public ArrayList<Item> Inventory = new ArrayList<Item>();
 
 }

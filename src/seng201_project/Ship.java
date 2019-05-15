@@ -1,8 +1,9 @@
 package seng201_project;
 
+import seng201_project.Items.Item;
 import seng201_project.Types.CrewMember;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Ship {
 
@@ -12,12 +13,18 @@ public class Ship {
     private int crewPoints = 0;
     private int money = 100;
 
+    public static ArrayList<Item> Inventory = new ArrayList<Item>();
+    public static ArrayList<CrewMember> crewList = new ArrayList<CrewMember>();
+
+    public static void createShip(String inputName) {
+        Ship myShip = new Ship(inputName);
+    }
 
     Ship(String mName) {
         name = mName;
     }
-    public void addCrew() {
-
+    public static void addCrew(CrewMember member) {
+        crewList.add(member);
     }
 
     public void subCrew() {
@@ -26,6 +33,11 @@ public class Ship {
 
     public int getnumberofCrew() {
         return 1;
+
+    }
+
+    public static void addInventory(Item item) {
+        Inventory.add(item);
 
     }
 
@@ -52,31 +64,6 @@ public class Ship {
 
     public int checkCondition() {
         return 1;
-
-    }
-
-    public static void main(String[] args) {
-        Scanner user_input = new Scanner(System.in);
-        String ship_name;
-        System.out.print("Enter ship name: ");
-        ship_name = user_input.next();
-
-        Ship newShip  = new Ship(ship_name);
-        //newShip.CrewPoints = Main.getCrewPoints()     To be implemented later in main
-
-
-        // TODO: ask for crew type
-        // ["engineer", "medic", ...]
-
-        CrewFactory crewFactory = new CrewFactory();
-        CrewMember liam = crewFactory.recruit("engineer", "Liam");
-
-        System.out.println(liam.toString());
-
-//        liam.hungerDay();
-
-        System.out.println(liam.toString());
-
 
     }
 

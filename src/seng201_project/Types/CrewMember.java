@@ -13,8 +13,6 @@ public abstract class CrewMember {
         name = mName;
     }
 
-    public ArrayList<CrewMember> crewList = new ArrayList<CrewMember>();
-
     void hungerDay() {
         hunger -= 1;
     }
