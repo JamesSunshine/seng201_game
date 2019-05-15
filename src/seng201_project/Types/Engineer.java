@@ -14,10 +14,7 @@ public class Engineer extends CrewMember {
         super(name);
     }
 
-    @Override
-    public String toString() {
-        return "Engineer(name=\"" + name + "\", health=" + hunger + ")";
-    }
+
 
     @Override
     public void hungerDay() {

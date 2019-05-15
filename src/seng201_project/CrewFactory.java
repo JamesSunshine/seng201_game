@@ -6,27 +6,30 @@ public class CrewFactory {
 
     CrewMember recruit(String type, String name) {
         switch (type) {
-            case "engineer":
-                Ship.addCrew(new Engineer(name));
+            case "engineer": {
+                return Ship.addCrew(new Engineer(name));
+            }
 
-            case "medic":
-                Ship.addCrew(new Medic(name));
+            case "medic": {
+                return Ship.addCrew(new Medic(name));
+            }
 
-            case "grunt":
-                Ship.addCrew(new Grunt(name));
+            case "grunt": {
+                return Ship.addCrew(new Grunt(name));
+            }
 
             case "gunner": {
-                Ship.addCrew(new Gunner(name));
+                return Ship.addCrew(new Gunner(name));
             }
+
             case "pilot": {
-                Ship.addCrew(new Pilot(name));
+                return Ship.addCrew(new Pilot(name));
             }
+
             case "scout": {
-                Ship.addCrew(new Scout(name));
+                return Ship.addCrew(new Scout(name));
             }
         }
-
-        // FIXME: Remove me later;
-        return new Engineer("ERROR");
+        return null;
     }
 }
