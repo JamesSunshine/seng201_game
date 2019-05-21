@@ -23,18 +23,7 @@ public class Startup {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Startup window = new Startup();
-					window.frmWelcome.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
@@ -66,7 +55,6 @@ public class Startup {
 		lblNewLabel_1.setBounds(115, 115, 271, 15);
 		frmWelcome.getContentPane().add(lblNewLabel_1);
 		
-		int[] dayList = new int[] {3, 4, 5, 6, 7, 8, 9, 10};
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"-", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		comboBox.setBounds(156, 153, 138, 24);
