@@ -1,12 +1,10 @@
 package gui;
-<<<<<<< HEAD
-import seng201_project.Game;
-import seng201_project.Ship;
+import main.Game;
+import main.Ship;
 
 import java.awt.EventQueue;
-=======
+
 import main.Game;
->>>>>>> 37ab6f935e52c1277d23376db18713cad401e85e
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

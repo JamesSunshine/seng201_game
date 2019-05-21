@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import main.Game;
 import javax.swing.JLabel;
-import seng201_project.Ship;
+import main.Ship;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
