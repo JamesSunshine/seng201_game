@@ -9,7 +9,7 @@ public class Ship {
 
     private String name;
     private int numberofCrew = 0;
-    private int shipCondition;
+    private int shipCondition = 100;
     private int crewPoints = 0;
     private int money = 100;
 
@@ -60,12 +60,12 @@ public class Ship {
 
     }
 
-    public void shipDamage() {
-
+    public void shipDamage(int damage) {
+        shipCondition =
     }
 
     public int checkCondition() {
-        return 1;
+        return shipCondition;
 
     }
 

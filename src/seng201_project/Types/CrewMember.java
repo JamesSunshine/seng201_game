@@ -16,4 +16,28 @@ public abstract class CrewMember {
     void hungerDay() {
         hunger -= 1;
     }
+
+    public void takeDamage(){
+
+    }
+
+    public void heal(){
+
+    }
+
+    public void getHungry(){
+
+    }
+
+    public void eatFood(){
+
+    }
+
+    public void getTired(){
+
+    }
+
+    public void sleep(){
+
+    }
 }
