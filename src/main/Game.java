@@ -10,11 +10,16 @@ public class Game {
     private static  String selection = "0";
     private Ship myShip;
     private Startup startupWindow;
+    private CrewFactory crewFactory = new CrewFactory();
 
     public void setShip(Ship newShip) {
     	myShip = newShip;
     }
     
+    public void makeCrew(String type, String name) {
+		myShip.addCrew(crewFactory.recruit(type, name));
+    	
+    }
     public Ship getShip() {
     	return myShip;
     }
@@ -37,12 +42,11 @@ public class Game {
     }
     
     public static void main(String[] args) {
-       
-        CrewFactory crewFactory = new CrewFactory();
-        
+                
         Game manager = new Game();
         
-        manager.launchStartup();   
+        manager.launchStartup();
+        System.out.println(Ship.crewList);
                
         }
 
