@@ -1,6 +1,6 @@
-package seng201_project;
+package main;
 
-import seng201_project.Items.*;
+import main.Items.*;
 
 import java.util.ArrayList;
 

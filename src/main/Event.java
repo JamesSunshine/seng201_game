@@ -1,7 +1,6 @@
-package seng201_project;
+package main;
 
-import seng201_project.Ship;
-import seng201_project.Types.CrewMember;
+import main.Types.CrewMember;
 
 public class Event {
 

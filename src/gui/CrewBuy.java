@@ -2,7 +2,7 @@ package gui;
 
 import javax.swing.JFrame;
 
-import seng201_project.Game;
+import main.Game;
 import javax.swing.JLabel;
 
 public class CrewBuy {

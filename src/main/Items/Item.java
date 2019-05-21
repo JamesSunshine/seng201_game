@@ -1,6 +1,4 @@
-package seng201_project.Items;
-
-import java.util.ArrayList;
+package main.Items;
 
 public abstract class Item {
 

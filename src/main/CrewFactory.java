@@ -1,6 +1,6 @@
-package seng201_project;
+package main;
 
-import seng201_project.Types.*;
+import main.Types.*;
 
 public class CrewFactory {
 

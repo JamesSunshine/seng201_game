@@ -1,4 +1,4 @@
-package seng201_project.Types;
+package main.Types;
 
 public class Medic extends CrewMember {
 
@@ -6,10 +6,12 @@ public class Medic extends CrewMember {
     private int tiredness = 10;
     private int health = 12;
     private String spec = "DW I'm a doctor";
-    private int HungerChange = -2;
-    private int TirednessChange = -2;
+    private int hungerChange = -2;
+    private int tirednessChange = -2;
+
 
     public Medic(String name) {
+
         super(name);
     }
 }

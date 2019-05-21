@@ -1,4 +1,4 @@
-package seng201_project;
+package main;
 
 public class Planet {
 
