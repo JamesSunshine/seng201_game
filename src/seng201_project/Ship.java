@@ -20,7 +20,7 @@ public class Ship {
         Ship myShip = new Ship(inputName);
     }
 
-    Ship(String mName) {
+    public Ship(String mName) {
         name = mName;
     }
 

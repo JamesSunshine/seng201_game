@@ -1,5 +1,6 @@
 package gui;
 import seng201_project.Game;
+import seng201_project.Ship;
 
 import java.awt.EventQueue;
 
@@ -22,6 +23,7 @@ public class Startup {
 	private JFrame frmWelcome;
 	private JTextField shipText;
 	private Game manager;
+	private Ship shipManager;
 
 
 	public Startup(Game incomingManager) {
@@ -34,6 +36,9 @@ public class Startup {
 		frmWelcome.dispose();
 	}
 	
+	public void close() {
+        manager.closeStartup(this);
+	}
 	public void finishedWindow() {
 		manager.closeStartup(this);
 	}
@@ -69,12 +74,17 @@ public class Startup {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				String shipName = shipText.getSelectedText();
-		        Ship.createShip(shipName);
+		        //Ship.createShip(shipName);
+				Ship myShip = new Ship(shipName);
+		        String selected = (String) comboBox.getSelectedItem();
+		        myShip.addPoints(Integer.parseInt(selected)*2);
+		        manager.setShip(myShip);
+		        close();
 		        
+		       
 		        
-		        
-				closeWindow();
-				manager.launchCrewBuy();
+				
+				
 			}
 		});
 		btnNewButton.setBounds(263, 238, 165, 25);

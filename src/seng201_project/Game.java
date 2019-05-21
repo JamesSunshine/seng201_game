@@ -11,7 +11,16 @@ public class Game {
     private static int numberDays;
     private static int pointBuy;
     private static  String selection = "0";
+    private Ship myShip;
+    private Startup startupWindow;
 
+    public void setShip(Ship newShip) {
+    	myShip = newShip;
+    }
+    
+    public Ship getShip() {
+    	return myShip;
+    }
 
     public void launchStartup() {
     	Startup startWindow = new Startup(this);
@@ -19,6 +28,7 @@ public class Game {
     
     public void closeStartup(Startup startupWindow) {
     	startupWindow.closeWindow();
+    	launchCrewBuy();
     }
     
     public void launchCrewBuy() {
@@ -34,9 +44,9 @@ public class Game {
         CrewFactory crewFactory = new CrewFactory();
         
         Game manager = new Game();
-        manager.launchStartup();
         
-        
+        manager.launchStartup();   
+               
         }
 
 
