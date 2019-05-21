@@ -1,4 +1,5 @@
 package gui;
+import seng201_project.Game;
 
 import java.awt.EventQueue;
 
@@ -6,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import seng201_project.Game;
 import seng201_project.Ship;
 
 import javax.swing.JComboBox;
@@ -19,22 +21,24 @@ public class Startup {
 
 	private JFrame frmWelcome;
 	private JTextField shipText;
-
-	/**
-	 * Launch the application.
-	 */
+	private Game manager;
 
 
-	/**
-	 * Create the application.
-	 */
-	public Startup() {
+	public Startup(Game incomingManager) {
+		manager = incomingManager;
 		initialize();
+		frmWelcome.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frmWelcome.dispose();
+	}
+	
+	public void finishedWindow() {
+		manager.closeStartup(this);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
 		frmWelcome = new JFrame();
 		frmWelcome.setTitle("Welcome");
@@ -69,7 +73,8 @@ public class Startup {
 		        
 		        
 		        
-				
+				closeWindow();
+				manager.launchCrewBuy();
 			}
 		});
 		btnNewButton.setBounds(263, 238, 165, 25);

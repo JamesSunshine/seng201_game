@@ -1,43 +1,38 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
+
+import seng201_project.Game;
+import javax.swing.JLabel;
 
 public class CrewBuy {
 
-	private JFrame frame;
+	private JFrame crewBuy;
+	private Game manager;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CrewBuy window = new CrewBuy();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
-	public CrewBuy() {
+	public CrewBuy(Game incomingManager) {
+		manager = incomingManager;
 		initialize();
+		crewBuy.setVisible(true);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	public void closeWindow() {
+		crewBuy.dispose();
+	}
+	
+	public void finishedWindow() {
+		manager.closeCrewBuy(this);
+	}
+	
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		crewBuy = new JFrame();
+		crewBuy.setBounds(100, 100, 450, 300);
+		crewBuy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		crewBuy.getContentPane().setLayout(null);
+		
+		JLabel lblCrewBuy = new JLabel("Crew Buy");
+		lblCrewBuy.setBounds(224, 111, 66, 15);
+		crewBuy.getContentPane().add(lblCrewBuy);
 	}
-
 }
