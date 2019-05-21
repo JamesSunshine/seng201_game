@@ -1,41 +1,36 @@
 package seng201_project;
 
+import seng201_project.Ship;
+import seng201_project.Types.CrewMember;
+
 public class Event {
 
     private int damage;
     private int threshold = 10;
     private double occurrence;
 
-    public boolean spacePirates() {
 
+    public void spacePirates() {
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
         if (occurrence >= threshold) {
             damage = 10;
-        	System.out.println("Your ship was attacked by space pirates "
-        			+ "durning flight. ");
-        	return true;
+            //TO DO: Pop-up window when event occurs
         }
-        return false;
     }
 
-    public boolean spaceAids() {
-
+    public void spaceAids(CrewMember member){
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
         if (occurrence >= threshold) {
-            return true;
+            member.contractAids();
         }
-
-        return false;
-
     }
 
-    public void asteroidBelt() {
-
+    public void asteroidBelt(Ship yourShip) {
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
         if (occurrence >= threshold) {
             damage = 10;
-        	System.out.println("Your ship ran into an asteroid belt durning flight "
-            		+ "and sustained " + damage + "damage.");
+        	yourShip.shipDamage(damage);
+        	//TO DO:Pop window when events occurs
         }
     }
 }
