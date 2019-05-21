@@ -1,18 +1,20 @@
 package gui;
+<<<<<<< HEAD
 import seng201_project.Game;
 import seng201_project.Ship;
 
 import java.awt.EventQueue;
+=======
+import main.Game;
+>>>>>>> 37ab6f935e52c1277d23376db18713cad401e85e
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import seng201_project.Game;
-import seng201_project.Ship;
+import main.Ship;
 
 import javax.swing.JComboBox;
-import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;

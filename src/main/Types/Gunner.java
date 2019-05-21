@@ -1,4 +1,4 @@
-package seng201_project.Types;
+package main.Types;
 
 public class Gunner extends CrewMember {
 
@@ -6,10 +6,12 @@ public class Gunner extends CrewMember {
     private int tiredness = 10;
     private int health = 10;
     private String spec = "Shooty Boi";
-    private int HungerChange = -2;
-    private int TirednessChange = -1;
+    private int hungerChange = -2;
+    private int tirednessChange = -1;
+
 
     public Gunner(String name) {
+
         super(name);
     }
 }

@@ -1,4 +1,4 @@
-package seng201_project.Items;
+package main.Items;
 
 public class TunaMelt extends Item {
 

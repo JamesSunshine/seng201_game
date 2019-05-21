@@ -1,7 +1,4 @@
-package seng201_project;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
+package main;
 
 import gui.CrewBuy;
 import gui.Startup;

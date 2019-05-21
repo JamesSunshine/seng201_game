@@ -1,7 +1,7 @@
-package seng201_project;
+package main;
 
-import seng201_project.Items.Item;
-import seng201_project.Types.CrewMember;
+import main.Items.Item;
+import main.Types.CrewMember;
 
 import java.util.ArrayList;
 
@@ -35,17 +35,14 @@ public class Ship {
 
     public int getnumberofCrew() {
         return crewList.size();
-
     }
 
     public static void addInventory(Item item) {
         Inventory.add(item);
-
     }
 
     public int getPoints() {
         return crewPoints;
-
     }
 
     public void addPoints(int points) {

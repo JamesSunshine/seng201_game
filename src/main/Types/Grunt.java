@@ -1,4 +1,4 @@
-package seng201_project.Types;
+package main.Types;
 
 public class Grunt extends CrewMember {
 
@@ -6,11 +6,12 @@ public class Grunt extends CrewMember {
     private int tiredness = 10;
     private int health = 5;
     private String spec = "";
-    private int HungerChange = -1;
-    private int TirednessChange = -1;
+    private int hungerChange = -1;
+    private int tirednessChange = -1;
 
 
     public Grunt(String name) {
+
         super(name);
     }
 }
