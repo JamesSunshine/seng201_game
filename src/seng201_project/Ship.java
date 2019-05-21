@@ -29,12 +29,12 @@ public class Ship {
         return member;
     }
 
-    public void subCrew() {
-
+    public void subCrew(CrewMember deadMember) {
+        crewList.remove(deadMember);
     }
 
     public int getnumberofCrew() {
-        return 1;
+        return crewList.size();
 
     }
 
@@ -56,12 +56,12 @@ public class Ship {
 
     }
 
-    public void shipRepair() {
-
+    public void shipRepair(int repair) {
+        shipCondition = shipCondition + repair;
     }
 
     public void shipDamage(int damage) {
-        shipCondition =
+        shipCondition = shipCondition - damage;
     }
 
     public int checkCondition() {
