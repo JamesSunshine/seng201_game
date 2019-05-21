@@ -3,17 +3,32 @@ package main.Types;
 public abstract class CrewMember {
 
     protected String name;
+    protected int health = 10;
     protected int hunger;
     protected int tiredness;
     private boolean hasAids = false;
     private int numActions = 2;
-    private int hungerChange = 0;
+    public int hungerChange = 0;
     private int tirednessChange = 0;
 
-    public CrewMember(String mName) {
+    public CrewMember(String mName, int mhealth, int mhunger, int mtiredness, int mhungerChange, int mtirednessChange) {
         name = mName;
+        health = mhealth;
+        hunger = mhunger;
+        tiredness = mtiredness;
+        hungerChange = mhungerChange;
+        tirednessChange = mtirednessChange;
     }
 
+    
+	public int getHunger() {
+		return hunger;
+	}
+
+
+	public void setHunger(int hunger) {
+		this.hunger = hunger;
+	}
     public void takeDamage(){
 
     }

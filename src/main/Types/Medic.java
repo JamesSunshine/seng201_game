@@ -12,6 +12,6 @@ public class Medic extends CrewMember {
 
     public Medic(String name) {
 
-        super(name);
+    	super(name, 15, 10, 10, -2, -2);
     }
 }
