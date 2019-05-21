@@ -10,31 +10,32 @@ public class Event {
 
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
         if (occurrence >= threshold) {
-            return false;
+            damage = 10;
+        	System.out.println("Your ship was attacked by space pirates "
+        			+ "durning flight. ");
+        	return true;
         }
-
-        return true;
+        return false;
     }
 
     public boolean spaceAids() {
 
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
         if (occurrence >= threshold) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
 
     }
 
-    public boolean asteroidBelt() {
+    public void asteroidBelt() {
 
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
         if (occurrence >= threshold) {
-            return false;
+            damage = 10;
+        	System.out.println("Your ship ran into an asteroid belt durning flight "
+            		+ "and sustained " + damage + "damage.");
         }
-
-        return true;
-
     }
 }

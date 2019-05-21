@@ -1,10 +1,11 @@
 package seng201_project;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
 
-    private static String numberDays = "0";
+    private static int numberDays;
     private static int pointBuy;
     private static  String selection = "0";
 
@@ -14,20 +15,25 @@ public class Game {
         Scanner user_input = new Scanner(System.in);
         String shipName;                                                                                //Create ship
         System.out.print("Enter ship name: ");
-        shipName = user_input.next();
+        shipName = user_input.nextLine();
         Ship.createShip(shipName);
         CrewFactory crewFactory = new CrewFactory();
 
-        while ((Integer.parseInt(numberDays) < 3) || (Integer.parseInt(numberDays) > 10)) {             //Enter number of days
+        while ((numberDays < 3) || (numberDays > 10)) {             //Enter number of days
             System.out.print("How many days is your voyage?: ");
-
-            numberDays = user_input.next();
-            if ((Integer.parseInt(numberDays) < 3) || (Integer.parseInt(numberDays) > 10)) {
+            try {
+            	numberDays = user_input.nextInt();
+            }
+            catch (InputMismatchException e) {
+            	System.out.print("REEEEEEE");
+            }
+        
+            if ((numberDays < 3) || (numberDays > 10)) {
                 System.out.print("Number of days must be between 3 and 10\n");
             }
         }
 
-        pointBuy = Integer.parseInt(numberDays) * 2;
+        pointBuy = numberDays * 2;
         while ((pointBuy > 0) && ((Ship.crewList.size() < 2) || (Ship.crewList.size() != 4))) {             //Buy Crew for your ship
             System.out.print("What crew would you like to buy? Max 4, Min 2: Current points " + pointBuy +
                     "\n1: Grunt 1 point\n" + "2: Gunner 2 points\n3: Pilot 3 points\n4: Medic 4 points\n" +
