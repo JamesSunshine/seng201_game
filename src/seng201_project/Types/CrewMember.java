@@ -7,7 +7,7 @@ public abstract class CrewMember {
     protected String name;
     protected int hunger;
     protected int tiredness;
-    private boolean isSick = false;
+    private boolean hasAids = false;
 
     public CrewMember(String mName) {
         name = mName;
@@ -21,8 +21,12 @@ public abstract class CrewMember {
 
     }
 
-    public void heal(){
+    public void heal(int healingAmount){
 
+    }
+
+    public void contractAids(){
+        this.hasAids = true;
     }
 
     public void getHungry(){

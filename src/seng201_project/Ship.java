@@ -44,24 +44,25 @@ public class Ship {
     }
 
     public int getPoints() {
-        return 1;
+        return crewPoints;
 
     }
 
-    public void addPoints() {
-        
+    public void addPoints(int points) {
+        crewPoints = crewPoints + points;
     }
 
-    public void subPoints() {
-
+    public void subPoints(int points) {
+        crewPoints = crewPoints - points;
     }
 
-    public void shipRepair(int repair) {
+    public int shipRepair(int repair) {
         shipCondition = shipCondition + repair;
+        return shipCondition;
     }
 
     public void shipDamage(int damage) {
-        shipCondition = shipCondition - damage;
+        this.shipCondition = shipCondition - damage;
     }
 
     public int checkCondition() {
