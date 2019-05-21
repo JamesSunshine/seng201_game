@@ -67,19 +67,19 @@ public class CrewBuy {
 		crewBuy.getContentPane().add(crewSize);
 		
 		JLabel lblGrunthp = new JLabel("HP");
-		lblGrunthp.setBounds(266, 77, 172, 15);
+		lblGrunthp.setBounds(264, 65, 48, 15);
 		crewBuy.getContentPane().add(lblGrunthp);
 		
 		JLabel lblGunnerhp = new JLabel("Class");
-		lblGunnerhp.setBounds(151, 77, 224, 15);
+		lblGunnerhp.setBounds(151, 65, 84, 15);
 		crewBuy.getContentPane().add(lblGunnerhp);
 		
 		JLabel lblClassHp = new JLabel("Specialisation");
-		lblClassHp.setBounds(387, 77, 208, 15);
+		lblClassHp.setBounds(388, 65, 208, 15);
 		crewBuy.getContentPane().add(lblClassHp);
 		
 		JLabel lblPilothp = new JLabel("5");
-		lblPilothp.setBounds(266, 104, 58, 15);
+		lblPilothp.setBounds(266, 104, 28, 15);
 		crewBuy.getContentPane().add(lblPilothp);
 		
 		JLabel lblMedichp = new JLabel("10");
@@ -114,22 +114,52 @@ public class CrewBuy {
 		crewBuy.getContentPane().add(btnGrunt);
 		
 		JButton btnGunner = new JButton("Gunner");
+		btnGunner.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				NewRecruit newGunner = new NewRecruit("gunner", manager);
+				newGunner.showDialog();
+			}
+		});
 		btnGunner.setBounds(110, 151, 114, 25);
 		crewBuy.getContentPane().add(btnGunner);
 		
 		JButton btnPilot = new JButton("Pilot");
+		btnPilot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				NewRecruit newPilot = new NewRecruit("pilot", manager);
+				newPilot.showDialog();
+			}
+		});
 		btnPilot.setBounds(110, 201, 114, 25);
 		crewBuy.getContentPane().add(btnPilot);
 		
 		JButton btnMedic = new JButton("Medic");
+		btnMedic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				NewRecruit newMedic = new NewRecruit("medic", manager);
+				newMedic.showDialog();
+			}
+		});
 		btnMedic.setBounds(110, 255, 114, 25);
 		crewBuy.getContentPane().add(btnMedic);
 		
 		JButton btnEngineer = new JButton("Engineer");
+		btnEngineer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				NewRecruit newEngineer = new NewRecruit("engineer", manager);
+				newEngineer.showDialog();
+			}
+		});
 		btnEngineer.setBounds(110, 303, 114, 25);
 		crewBuy.getContentPane().add(btnEngineer);
 		
 		JButton btnScout = new JButton("Scout");
+		btnScout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				NewRecruit newScout = new NewRecruit("scout", manager);
+				newScout.showDialog();
+			}
+		});
 		btnScout.setBounds(110, 353, 114, 25);
 		crewBuy.getContentPane().add(btnScout);
 		
@@ -154,7 +184,7 @@ public class CrewBuy {
 		crewBuy.getContentPane().add(lblMoreLikelyTo);
 		
 		JLabel lblCost = new JLabel("Cost");
-		lblCost.setBounds(309, 77, 66, 15);
+		lblCost.setBounds(309, 65, 66, 15);
 		crewBuy.getContentPane().add(lblCost);
 		
 		JLabel label_2 = new JLabel("1");
@@ -180,6 +210,10 @@ public class CrewBuy {
 		JLabel label_7 = new JLabel("5");
 		label_7.setBounds(309, 358, 66, 15);
 		crewBuy.getContentPane().add(label_7);
+		
+		JLabel lblExpendable = new JLabel("Expendable");
+		lblExpendable.setBounds(380, 104, 129, 15);
+		crewBuy.getContentPane().add(lblExpendable);
 		
 		
 		//table.setBounds(585, 359, -369, -215);
