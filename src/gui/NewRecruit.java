@@ -1,5 +1,6 @@
 package gui;
-
+import main.CrewFactory;
+import main.Game;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -11,14 +12,36 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import main.Ship;
 public class NewRecruit extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField recruitName;
+	private String name;
+	private static String type;
+	private static Game manager;
 
+	public static void showDialog() {
+		NewRecruit dialog = new NewRecruit(type, manager);
+		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		dialog.setVisible(true);
+	}
 	
-	public NewRecruit() {
+	public void setName() {
+		this.name = recruitName.getText();
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void closeDialog() {
+		this.dispose();
+	}
+	
+	public NewRecruit(String crewType, Game incomingManager) {
+		type = crewType;
+		manager = incomingManager;
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 450, 237);
@@ -42,6 +65,14 @@ public class NewRecruit extends JDialog {
 			getContentPane().add(buttonPane);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						setName();
+						manager.makeCrew(type, name);
+						System.out.println(Ship.crewList);
+						closeDialog();
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -50,7 +81,7 @@ public class NewRecruit extends JDialog {
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						
+						closeDialog();
 					}
 				});
 				cancelButton.setActionCommand("Cancel");

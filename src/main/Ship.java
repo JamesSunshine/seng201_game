@@ -23,10 +23,10 @@ public class Ship {
     public Ship(String mName) {
         name = mName;
     }
+    
 
-    public static CrewMember addCrew(CrewMember member) {
+    public void addCrew(CrewMember member) {
         crewList.add(member);
-        return member;
     }
 
     public void subCrew(CrewMember deadMember) {

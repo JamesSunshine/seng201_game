@@ -5,20 +5,23 @@ import javax.swing.JFrame;
 import main.Game;
 import javax.swing.JLabel;
 import main.Ship;
+import gui.NewRecruit;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CrewBuy {
 
 	private JFrame crewBuy;
 	private Game manager;
 	private int crewCount;
-	private JTable table_1;
+	private String tempName;
 	
 
-
+	
 	public CrewBuy(Game incomingManager) {
 		manager = incomingManager;
 		initialize();
@@ -33,6 +36,8 @@ public class CrewBuy {
 		manager.closeCrewBuy(this);
 	}
 	
+	
+
 	private void initialize() {
 		crewBuy = new JFrame();
 		crewBuy.setBounds(100, 100, 789, 552);
@@ -98,6 +103,13 @@ public class CrewBuy {
 		crewBuy.getContentPane().add(label_1);
 		
 		JButton btnGrunt = new JButton("Grunt");
+		btnGrunt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				NewRecruit newGrunt = new NewRecruit("grunt", manager);
+				newGrunt.showDialog();
+				
+			}
+		});
 		btnGrunt.setBounds(110, 99, 114, 25);
 		crewBuy.getContentPane().add(btnGrunt);
 		
