@@ -158,7 +158,7 @@ public class CrewBuy {
 				if (manager.getNumCrew() >= 4) {
 					CrewFull dialog = new CrewFull();
 					dialog.showDialog();
-				} else if (manager.getShipPoints() - 2 < 0) {
+				} else if (manager.getShipPoints() - 3 < 0) {
 					NotEnoughPoints dialog = new NotEnoughPoints();
 					dialog.showDialog();
 				}else {
@@ -176,7 +176,7 @@ public class CrewBuy {
 				if (manager.getNumCrew() >= 4) {
 					CrewFull dialog = new CrewFull();
 					dialog.showDialog();
-				} else if (manager.getShipPoints() - 3 < 0) {
+				} else if (manager.getShipPoints() - 4 < 0) {
 					NotEnoughPoints dialog = new NotEnoughPoints();
 					dialog.showDialog();
 				}else {
