@@ -1,4 +1,5 @@
 package gui;
+import gui.CrewBuy;
 import main.CrewFactory;
 import main.Game;
 import java.awt.BorderLayout;
@@ -30,9 +31,10 @@ public class NewRecruit extends JDialog {
 	private String name;
 	private static String type;
 	private static Game manager;
+	private static CrewBuy crewBuy;
 
 	public static void showDialog() {
-		NewRecruit dialog = new NewRecruit(type, manager);
+		NewRecruit dialog = new NewRecruit(type, manager, crewBuy);
 		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		dialog.setVisible(true);
 	}
@@ -53,28 +55,35 @@ public class NewRecruit extends JDialog {
         switch (type){
             case "grunt": {
             	manager.removeShipPoints(1);
+            	break;
             }
             case "gunner": {
-            	manager.removeShipPoints(2); 
+            	manager.removeShipPoints(2);
+            	break;
             }
             case "pilot": {
             	manager.removeShipPoints(3);
+            	break;
             }
             case "medic": {
             	manager.removeShipPoints(4);
+            	break;
             }
             case "engineer": {
             	manager.removeShipPoints(5);
+            	break;
             }
             case "scout": {
             	manager.removeShipPoints(5);
+            	break;
             }
                     
         }
     }
-	public NewRecruit(String crewType, Game incomingManager) {
+	public NewRecruit(String crewType, Game incomingManager, CrewBuy incomingCrewBuy) {
 		type = crewType;
 		manager = incomingManager;
+		crewBuy = incomingCrewBuy;
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 450, 237);
@@ -103,6 +112,8 @@ public class NewRecruit extends JDialog {
 						setName();
 						manager.makeCrew(type, name);
 						subPoints(type);
+						crewBuy.updatecrewCount();
+						crewBuy.updateCrewSize();
 						closeDialog();
 					}
 				});
