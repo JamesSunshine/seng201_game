@@ -1,7 +1,9 @@
 package main;
 
 import gui.CrewBuy;
+import gui.CrewManager;
 import gui.Startup;
+import gui.ShopWindow;
 
 public class Game {
 
@@ -66,6 +68,22 @@ public class Game {
     
     public void closeCrewBuy(CrewBuy crewbuyWindow) {
     	crewbuyWindow.closeWindow();
+    }
+    
+    public void launchShopWindow() {
+    	ShopWindow shopWindow = new ShopWindow(this);
+    }
+    
+    public void closeShopWindow(ShopWindow shopWindow) {
+    	shopWindow.closeWindow();
+    }
+    
+    public void launchCrewManager() {
+    	CrewManager crewManager = new CrewManager(this);
+    }
+    
+    public void closeCrewManager(CrewManager crewManager) {
+    	crewManager.closeWindow();
     }
     
     //GUI methods
