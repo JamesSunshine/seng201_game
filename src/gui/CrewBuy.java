@@ -63,7 +63,6 @@ public class CrewBuy {
 		int crewPoints = manager.getShipPoints();
 		
 		crewpointValue = new JLabel(Integer.toString(crewPoints));
-		System.out.println(crewpointValue);
 		crewpointValue.setBounds(110, 31, 66, 15);
 		crewBuy.getContentPane().add(crewpointValue);
 		
@@ -123,12 +122,13 @@ public class CrewBuy {
 				if (manager.getNumCrew() >= 4) {
 					CrewFull dialog = new CrewFull();
 					dialog.showDialog();
-				} else {
+				} else if (manager.getShipPoints() - 1 < 0) {
+					NotEnoughPoints dialog = new NotEnoughPoints();
+					dialog.showDialog();
+				}else {
 					NewRecruit newGrunt = new NewRecruit("grunt", manager, returnThis());
 					newGrunt.showDialog();
-				}
-				
-				
+				}		
 			}
 		});
 		btnGrunt.setBounds(110, 99, 114, 25);
@@ -140,7 +140,10 @@ public class CrewBuy {
 				if (manager.getNumCrew() >= 4) {
 					CrewFull dialog = new CrewFull();
 					dialog.showDialog();
-				} else {
+				} else if (manager.getShipPoints() - 2 < 0) {
+					NotEnoughPoints dialog = new NotEnoughPoints();
+					dialog.showDialog();
+				}else {
 					NewRecruit newGunner = new NewRecruit("gunner", manager, returnThis());
 					newGunner.showDialog();
 				}
@@ -155,7 +158,10 @@ public class CrewBuy {
 				if (manager.getNumCrew() >= 4) {
 					CrewFull dialog = new CrewFull();
 					dialog.showDialog();
-				} else {
+				} else if (manager.getShipPoints() - 2 < 0) {
+					NotEnoughPoints dialog = new NotEnoughPoints();
+					dialog.showDialog();
+				}else {
 					NewRecruit newPilot = new NewRecruit("pilot", manager, returnThis());
 					newPilot.showDialog();
 				}
@@ -170,7 +176,10 @@ public class CrewBuy {
 				if (manager.getNumCrew() >= 4) {
 					CrewFull dialog = new CrewFull();
 					dialog.showDialog();
-				} else {
+				} else if (manager.getShipPoints() - 3 < 0) {
+					NotEnoughPoints dialog = new NotEnoughPoints();
+					dialog.showDialog();
+				}else {
 					NewRecruit newMedic = new NewRecruit("medic", manager, returnThis());
 					newMedic.showDialog();
 				}
@@ -185,7 +194,10 @@ public class CrewBuy {
 				if (manager.getNumCrew() >= 4) {
 					CrewFull dialog = new CrewFull();
 					dialog.showDialog();
-				} else {
+				} else if (manager.getShipPoints() - 4 < 0) {
+					NotEnoughPoints dialog = new NotEnoughPoints();
+					dialog.showDialog();
+				}else {
 					NewRecruit newEngineer = new NewRecruit("engineer", manager, returnThis());
 					newEngineer.showDialog();
 				}
@@ -200,7 +212,10 @@ public class CrewBuy {
 				if (manager.getNumCrew() >= 4) {
 					CrewFull dialog = new CrewFull();
 					dialog.showDialog();
-				} else {
+				} else if (manager.getShipPoints() - 5 < 0) {
+					NotEnoughPoints dialog = new NotEnoughPoints();
+					dialog.showDialog();
+				}else {
 					NewRecruit newScout = new NewRecruit("scout", manager, returnThis());
 					newScout.showDialog();
 				}
@@ -278,9 +293,6 @@ public class CrewBuy {
 		});
 		btnStartGame.setBounds(579, 444, 155, 34);
 		crewBuy.getContentPane().add(btnStartGame);
-		
-		
-		//table.setBounds(585, 359, -369, -215);
-		//crewBuy.getContentPane().add(table);
+	
 	}
 }
