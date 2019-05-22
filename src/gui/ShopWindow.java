@@ -138,5 +138,14 @@ public class ShopWindow {
 		});
 		exitButton.setBounds(416, 353, 114, 25);
 		shopWindow.getContentPane().add(exitButton);
+		
+		JButton btnInventory = new JButton("Veiw Inventory");
+		btnInventory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchcurrentInventory();
+			}
+		});
+		btnInventory.setBounds(17, 353, 136, 25);
+		shopWindow.getContentPane().add(btnInventory);
 	}
 }

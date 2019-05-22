@@ -3,6 +3,7 @@ package main;
 import gui.CrewBuy;
 import gui.CrewManager;
 import gui.Startup;
+import gui.currentInventory;
 import gui.ShopWindow;
 
 public class Game {
@@ -84,6 +85,14 @@ public class Game {
     
     public void closeCrewManager(CrewManager crewManager) {
     	crewManager.closeWindow();
+    }
+    
+    public void launchcurrentInventory() {
+    	currentInventory invWindow = new currentInventory(this);
+    }
+    
+    public void closecurrentInventory(currentInventory invWindow) {
+    	invWindow.closeWindow();
     }
     
     //GUI methods
