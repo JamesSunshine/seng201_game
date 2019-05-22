@@ -11,40 +11,38 @@ public class SpaceOutpost {
 
     }
 
-    public Item purchase(String itemName) throws Exception{
+    public Item purchase(String itemName) {
         switch (itemName){
             case AidsCure.ITEM_NAME: {
-                Ship.addInventory(new AidsCure());
+                return new AidsCure();
             }
             case Bandages.ITEM_NAME: {
-                Ship.addInventory(new Bandages());
+                return new Bandages();
             }
             case CabinBread.ITEM_NAME: {
-                Ship.addInventory(new CabinBread());
+                return new CabinBread();
             }
             case CaesarSalad.ITEM_NAME: {
-                Ship.addInventory(new CaesarSalad());
+                return new CaesarSalad();
             }
             case ConcretePill.ITEM_NAME: {
-                Ship.addInventory(new ConcretePill()); 
+                return new ConcretePill(); 
             }
             case Doritos.ITEM_NAME: {
-                Ship.addInventory(new Doritos()); 
+                return new Doritos(); 
             }
             case MiGoreng.ITEM_NAME: {
-                Ship.addInventory(new MiGoreng()); 
+                return new MiGoreng(); 
             }
             case SpaceWhopper.ITEM_NAME: {
-                Ship.addInventory(new SpaceWhopper());
+                return new SpaceWhopper();
             }
             case TunaMelt.ITEM_NAME: {
-                Ship.addInventory(new TunaMelt());
+                return new TunaMelt();
             }
             
-
-            default: throw new Exception("Not an item");
-
         }
+        return null; 
     }
 
 }

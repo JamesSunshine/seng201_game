@@ -41,10 +41,26 @@ public class Ship {
         return crewList.size();
     }
 
-    public static void addInventory(Item item) {
+    public void addInventory(Item item) {
         Inventory.add(item);
     }
+    
+    public void subInventory(Item item) {
+    	Inventory.remove(item);
+    }
 
+    public int getMoney() {
+    	return money;
+    }
+    
+    public void addMoney(int foundMoney) {
+    	money += foundMoney;
+    }
+    
+    public void subMoney(int cost) {
+    	money -= cost;
+    }
+    
     public int getPoints() {
         return crewPoints;
     }

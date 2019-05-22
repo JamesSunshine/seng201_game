@@ -4,7 +4,6 @@ import gui.CrewBuy;
 import gui.CrewManager;
 import gui.Startup;
 import gui.currentInventory;
-import main.Types.CrewMember;
 import gui.ShopWindow;
 
 public class Game {
@@ -15,15 +14,16 @@ public class Game {
     private Ship myShip;
     private Startup startupWindow;
     private CrewFactory crewFactory = new CrewFactory();
-    
-    public CrewMember getCrewMember(int index) {
-    	return Ship.crewList.get(index);
-    }
+    private SpaceOutpost itemFactory = new SpaceOutpost();
 
     //game Ship object methods
     
     public void makeShip(String name) {
     	myShip = new Ship(name);
+    }
+    
+    public String getShipName() {
+    	return myShip.getName();
     }
     
     public int getShipPoints() {
@@ -38,13 +38,25 @@ public class Game {
     	myShip.subPoints(points);
     }
     
-    public String getShipName() {
-    	return myShip.getName();
+    public int getShipMoney() {
+    	return myShip.getMoney();
+    }
+    
+    public void addShipMoney(int foundMoney) {
+    	myShip.addMoney(foundMoney);
+    }
+    
+    public void subShipMoney(int cost) {
+    	myShip.subMoney(cost);
     }
     
     public void makeCrew(String type, String name) {
 		myShip.addCrew(crewFactory.recruit(type, name));
     	
+    }
+    
+    public void makeItem(String itemName) {
+    	myShip.addInventory(itemFactory.purchase(itemName));
     }
     public Ship getShip() {
     	return myShip;

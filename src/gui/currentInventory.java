@@ -5,9 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import main.Game;
+import main.Ship;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
 
 public class currentInventory {
 
@@ -54,5 +56,4 @@ public class currentInventory {
 		btnClose.setBounds(324, 235, 114, 25);
 		invWindow.getContentPane().add(btnClose);
 	}
-
 }
