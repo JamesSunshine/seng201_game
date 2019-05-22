@@ -9,6 +9,7 @@ import main.Types.CrewMember;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
@@ -32,6 +33,7 @@ public class CrewManager {
 	private JProgressBar progressTiredness4;
 	private JLabel lblAction3;
 	private JLabel lblAction4;
+	public static ArrayList<CrewMember> pilotList = new ArrayList<CrewMember>();
 	
 
 
@@ -83,10 +85,11 @@ public class CrewManager {
 		});
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(579, 548, 285, 159);
+		scrollPane.setBounds(543, 548, 321, 159);
 		crewManager.getContentPane().add(scrollPane);
 		
 		JTextPane txtConsole = new JTextPane();
+		txtConsole.setText("Welcome to day 1 Captain");
 		txtConsole.setEditable(false);
 		scrollPane.setViewportView(txtConsole);
 		
@@ -149,8 +152,26 @@ public class CrewManager {
 		JButton btnPilot1 = new JButton("Pilot Ship");
 		btnPilot1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String currentText = txtConsole.getText();
-				txtConsole.setText(currentText + "\n" + "poop");
+				
+				if (pilotList.contains(crew1)) {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew1.getName() + " is already in the cockpit.");
+				}
+				else if (pilotList.size() >= 2){
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + "The cockpit is full!");
+				}
+				else if ((crew1.getActions() > 0) && (!pilotList.contains(crew1))) {
+					pilotList.add(crew1);
+					crew1.useAction();
+					lblAction1.setText(Integer.toString(crew1.getActions()));
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew1.getName() + " is now in the cockpit.");
+				} else if (crew1.getActions() <= 0) {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew1.getName() + " does not have enough actions to fly.");
+				} 
+				
 			}
 		});
 		btnPilot1.setBounds(52, 482, 151, 25);
@@ -244,7 +265,7 @@ public class CrewManager {
 					lblAction2.setText(Integer.toString(crew2.getActions()));
 					String currentText = txtConsole.getText();
 					txtConsole.setText(currentText + "\n" + crew2.getName() + " had a nap.");
-				} else {
+				} else if (pilotList.size() > 2){
 					String currentText = txtConsole.getText();
 					txtConsole.setText(currentText + "\n" + crew2.getName() + " does not have enough actions to sleep.");
 				}
@@ -262,6 +283,30 @@ public class CrewManager {
 		crewManager.getContentPane().add(btnSearch2);
 		
 		JButton btnPilot2 = new JButton("Pilot Ship");
+		btnPilot2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if (pilotList.contains(crew2)) {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew2.getName() + " is already in the cockpit.");
+				}
+				else if (pilotList.size() >= 2){
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + "The cockpit is full!");
+				}
+				else if ((crew2.getActions() > 0) && (!pilotList.contains(crew2))) {
+					pilotList.add(crew2);
+					crew2.useAction();
+					lblAction2.setText(Integer.toString(crew2.getActions()));
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew2.getName() + " is now in the cockpit.");
+				} else if (crew2.getActions() <= 0) {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew2.getName() + " does not have enough actions to fly.");
+				}
+				
+			}
+		});
 		btnPilot2.setBounds(259, 482, 151, 25);
 		crewManager.getContentPane().add(btnPilot2);
 		
@@ -372,6 +417,30 @@ public class CrewManager {
 			crewManager.getContentPane().add(btnSearch3);
 			
 			JButton btnPilot3 = new JButton("Pilot Ship");
+			btnPilot3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+					if (pilotList.contains(crew3)) {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew3.getName() + " is already in the cockpit.");
+					}
+					else if (pilotList.size() >= 2){
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + "The cockpit is full!");
+					}
+					else if ((crew3.getActions() > 0) && (!pilotList.contains(crew3))) {
+						pilotList.add(crew3);
+						crew3.useAction();
+						lblAction3.setText(Integer.toString(crew3.getActions()));
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew3.getName() + " is now in the cockpit.");
+					} else if (crew3.getActions() <= 0) {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew3.getName() + " does not have enough actions to fly.");
+					}
+					
+				}
+			});
 			btnPilot3.setBounds(478, 482, 151, 25);
 			crewManager.getContentPane().add(btnPilot3);
 		}
@@ -456,6 +525,30 @@ public class CrewManager {
 			crewManager.getContentPane().add(btnSearch4);
 			
 			JButton btnPilot4 = new JButton("Pilot Ship");
+			btnPilot4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+					if (pilotList.contains(crew4)) {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew4.getName() + " is already in the cockpit.");
+					}
+					else if (pilotList.size() >= 2){
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + "The cockpit is full!");
+					}
+					else if ((crew4.getActions() > 0) && (!pilotList.contains(crew4))) {
+						pilotList.add(crew4);
+						crew4.useAction();
+						lblAction4.setText(Integer.toString(crew4.getActions()));
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew4.getName() + " is now in the cockpit.");
+					} else if (crew4.getActions() <= 0) {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew4.getName() + " does not have enough actions to fly.");
+					} 
+					
+				}
+			});
 			btnPilot4.setBounds(684, 482, 151, 25);
 			crewManager.getContentPane().add(btnPilot4);
 			
@@ -487,6 +580,7 @@ public class CrewManager {
 		JButton btnNextDay = new JButton("Next Day");
 		btnNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				pilotList = new ArrayList<CrewMember>();
 				crew1.resetActions();
 				lblAction1.setText(Integer.toString(crew1.getActions()));
 				crew1.getHungry();
@@ -524,18 +618,9 @@ public class CrewManager {
 		btnNextDay.setBounds(25, 575, 156, 25);
 		crewManager.getContentPane().add(btnNextDay);
 		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
+		JLabel label = new JLabel("4/5");
+		label.setBounds(382, 638, 66, 15);
+		crewManager.getContentPane().add(label);
 		
 	}
 }
