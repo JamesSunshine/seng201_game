@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JToggleButton;
 import java.awt.Color;
+import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
 
 public class CrewManager {
 
@@ -49,7 +51,7 @@ public class CrewManager {
 	 */
 	private void initialize() {
 		crewManager = new JFrame();
-		crewManager.setTitle("Crew Manager");
+		crewManager.setTitle(manager.getShipName() + "Crew Manager");
 		crewManager.setBounds(100, 100, 900, 769);
 		crewManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		crewManager.getContentPane().setLayout(null);
@@ -91,6 +93,14 @@ public class CrewManager {
 		JButton btnNextDay = new JButton("Next Day");
 		btnNextDay.setBounds(25, 575, 156, 25);
 		crewManager.getContentPane().add(btnNextDay);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(579, 548, 285, 159);
+		crewManager.getContentPane().add(scrollPane);
+		
+		JTextPane txtConsole = new JTextPane();
+		txtConsole.setEditable(false);
+		scrollPane.setViewportView(txtConsole);
 		
 		
 		//Crewmember 1
@@ -134,6 +144,12 @@ public class CrewManager {
 		crewManager.getContentPane().add(btnSearch1);
 		
 		JButton btnPilot1 = new JButton("Pilot Ship");
+		btnPilot1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String currentText = txtConsole.getText();
+				txtConsole.setText(currentText + "\n" + "poop");
+			}
+		});
 		btnPilot1.setBounds(52, 482, 151, 25);
 		crewManager.getContentPane().add(btnPilot1);
 		
@@ -230,6 +246,28 @@ public class CrewManager {
 		JButton btnPilot2 = new JButton("Pilot Ship");
 		btnPilot2.setBounds(259, 482, 151, 25);
 		crewManager.getContentPane().add(btnPilot2);
+		
+		JLabel lblShipStatus = new JLabel("Ship Status");
+		lblShipStatus.setBounds(302, 548, 111, 15);
+		crewManager.getContentPane().add(lblShipStatus);
+		
+		JLabel lblHealth_1 = new JLabel("Health");
+		lblHealth_1.setBounds(240, 585, 66, 15);
+		crewManager.getContentPane().add(lblHealth_1);
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(301, 585, 183, 14);
+		crewManager.getContentPane().add(progressBar);
+		
+		JLabel lblPartsFound = new JLabel("Parts Found");
+		lblPartsFound.setBounds(199, 617, 91, 15);
+		crewManager.getContentPane().add(lblPartsFound);
+		
+		JProgressBar progressBar_1 = new JProgressBar();
+		progressBar_1.setBounds(302, 612, 182, 14);
+		crewManager.getContentPane().add(progressBar_1);
+		
+		
 		
 		
 		
