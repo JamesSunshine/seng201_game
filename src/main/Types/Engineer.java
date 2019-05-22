@@ -7,7 +7,7 @@ public class Engineer extends CrewMember {
     
 	public Engineer(String name) {
 
-        super(name, 15, 10, 10, -2, -2, "Enginner");
+        super(name, 15, 0, 0, 20, 20, "Enginner");
     }
 
 

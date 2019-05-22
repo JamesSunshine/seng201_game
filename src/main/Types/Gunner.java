@@ -12,6 +12,6 @@ public class Gunner extends CrewMember {
 
     public Gunner(String name) {
 
-    	super(name, 15, 10, 10, -2, -2, "Gunner");
+    	super(name, 15, 0, 0, 20, 20, "Gunner");
     }
 }

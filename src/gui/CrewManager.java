@@ -22,6 +22,10 @@ public class CrewManager {
 
 	private JFrame crewManager;
 	private Game manager;
+	private CrewMember crew1;
+	private CrewMember crew2;
+	private CrewMember crew3;
+	private CrewMember crew4;
 	
 
 
@@ -71,28 +75,6 @@ public class CrewManager {
 				manager.launchcurrentInventory();
 			}
 		});
-		btnViewInventory.setBounds(25, 649, 156, 25);
-		crewManager.getContentPane().add(btnViewInventory);
-		
-		JProgressBar progressDays = new JProgressBar();
-		progressDays.setBounds(25, 26, 842, 14);
-		crewManager.getContentPane().add(progressDays);
-		
-		JLabel lblProgress = new JLabel("Progress");
-		lblProgress.setBounds(400, 12, 100, 15);
-		crewManager.getContentPane().add(lblProgress);
-		
-		JButton btnFly = new JButton("Fly to Next Planet");
-		btnFly.setBounds(25, 612, 156, 25);
-		crewManager.getContentPane().add(btnFly);
-		
-		JLabel lblPlayerActions = new JLabel("Player Actions");
-		lblPlayerActions.setBounds(52, 548, 105, 15);
-		crewManager.getContentPane().add(lblPlayerActions);
-		
-		JButton btnNextDay = new JButton("Next Day");
-		btnNextDay.setBounds(25, 575, 156, 25);
-		crewManager.getContentPane().add(btnNextDay);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(579, 548, 285, 159);
@@ -102,9 +84,8 @@ public class CrewManager {
 		txtConsole.setEditable(false);
 		scrollPane.setViewportView(txtConsole);
 		
-		
 		//Crewmember 1
-		CrewMember crew1 = manager.getCrewMember(0);
+		crew1 = manager.getCrewMember(0);
 		JLabel lblName1 = new JLabel(crew1.getName());
 		lblName1.setBounds(79, 180, 66, 15);
 		crewManager.getContentPane().add(lblName1);
@@ -180,7 +161,7 @@ public class CrewManager {
 		
 		
 		//Crewmember 2
-		CrewMember crew2 = manager.getCrewMember(1);
+		crew2 = manager.getCrewMember(1);
 		JLabel lblName2 = new JLabel(crew2.getName());
 		lblName2.setBounds(291, 180, 66, 15);
 		crewManager.getContentPane().add(lblName2);
@@ -273,7 +254,7 @@ public class CrewManager {
 		
 		//Crewmember 3
 		if (manager.getNumCrew() >= 3) {
-			CrewMember crew3 = manager.getCrewMember(2);
+			crew3 = manager.getCrewMember(2);
 			JLabel lblName3 = new JLabel(crew3.getName());
 			lblName3.setBounds(512, 180, 66, 15);
 			crewManager.getContentPane().add(lblName3);
@@ -346,7 +327,7 @@ public class CrewManager {
 		
 		//Crewmember 4
 		if (manager.getNumCrew() >= 4) {
-			CrewMember crew4 = manager.getCrewMember(3);
+			crew4 = manager.getCrewMember(3);
 			JLabel label_15 = new JLabel("Class");
 			label_15.setBounds(666, 203, 66, 15);
 			crewManager.getContentPane().add(label_15);
@@ -414,7 +395,47 @@ public class CrewManager {
 			crewManager.getContentPane().add(lblName4);
 		}
 		
+		btnViewInventory.setBounds(25, 649, 156, 25);
+		crewManager.getContentPane().add(btnViewInventory);
 		
+		JProgressBar progressDays = new JProgressBar();
+		progressDays.setBounds(25, 26, 842, 14);
+		crewManager.getContentPane().add(progressDays);
+		
+		JLabel lblProgress = new JLabel("Progress");
+		lblProgress.setBounds(400, 12, 100, 15);
+		crewManager.getContentPane().add(lblProgress);
+		
+		JButton btnFly = new JButton("Fly to Next Planet");
+		btnFly.setBounds(25, 612, 156, 25);
+		crewManager.getContentPane().add(btnFly);
+		
+		JLabel lblPlayerActions = new JLabel("Player Actions");
+		lblPlayerActions.setBounds(52, 548, 105, 15);
+		crewManager.getContentPane().add(lblPlayerActions);
+		
+		JButton btnNextDay = new JButton("Next Day");
+		btnNextDay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				crew1.getHungry();
+				crew1.getTired();
+				crew2.getHungry();
+				crew2.getTired();
+				if (manager.getNumCrew() >= 3) {
+					crew3.getHungry();
+					crew3.getTired();
+				}
+				if (manager.getNumCrew() >= 4) {
+					crew4.getHungry();
+					crew4.getTired();
+				}
+				
+			}
+		});
+		btnNextDay.setBounds(25, 575, 156, 25);
+		crewManager.getContentPane().add(btnNextDay);
+		
+
 		
 		
 		
