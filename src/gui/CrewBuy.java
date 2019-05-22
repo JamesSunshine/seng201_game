@@ -17,8 +17,10 @@ public class CrewBuy {
 
 	private JFrame crewBuy;
 	private Game manager;
-	private int crewCount;
+	private int crewCount = 0;
 	private String tempName;
+	private JLabel crewpointValue;
+	private JLabel crewSize;
 	
 
 	
@@ -27,7 +29,15 @@ public class CrewBuy {
 		initialize();
 		crewBuy.setVisible(true);
 	}
-
+	
+	public void updatecrewCount() {
+		crewpointValue.setText(Integer.toString(manager.getShipPoints()));
+	}
+	
+	public void updateCrewSize() {
+		crewSize.setText(Integer.toString(manager.getNumCrew()));
+	}
+	
 	public void closeWindow() {
 		crewBuy.dispose();
 	}
@@ -36,7 +46,9 @@ public class CrewBuy {
 		manager.closeCrewBuy(this);
 	}
 	
-	
+	public CrewBuy returnThis() {
+		return this;
+	}
 
 	private void initialize() {
 		crewBuy = new JFrame();
@@ -48,9 +60,11 @@ public class CrewBuy {
 		crewBuy.getContentPane().add(lblCrewBuy);
 		int crewPoints = manager.getShipPoints();
 		
-		JLabel lblNewLabel = new JLabel(Integer.toString(crewPoints));
-		lblNewLabel.setBounds(110, 31, 66, 15);
-		crewBuy.getContentPane().add(lblNewLabel);
+		crewpointValue = new JLabel(Integer.toString(crewPoints));
+		System.out.println(crewpointValue);
+		crewpointValue.setBounds(110, 31, 66, 15);
+		crewBuy.getContentPane().add(crewpointValue);
+		
 		
 		JLabel lblCrewPoints = new JLabel("Crew Points");
 		lblCrewPoints.setBounds(12, 31, 104, 15);
@@ -61,7 +75,7 @@ public class CrewBuy {
 		crewBuy.getContentPane().add(lblCrewSize);
 		
 		crewCount = manager.getNumCrew();
-		JLabel crewSize = new JLabel(Integer.toString(crewCount));
+		crewSize = new JLabel(Integer.toString(crewCount));
 		crewSize.setBounds(723, 31, 66, 15);
 		crewBuy.getContentPane().add(crewSize);
 		
@@ -104,7 +118,7 @@ public class CrewBuy {
 		JButton btnGrunt = new JButton("Grunt");
 		btnGrunt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newGrunt = new NewRecruit("grunt", manager);
+				NewRecruit newGrunt = new NewRecruit("grunt", manager, returnThis());
 				newGrunt.showDialog();
 				
 			}
@@ -115,7 +129,7 @@ public class CrewBuy {
 		JButton btnGunner = new JButton("Gunner");
 		btnGunner.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newGunner = new NewRecruit("gunner", manager);
+				NewRecruit newGunner = new NewRecruit("gunner", manager, returnThis());
 				newGunner.showDialog();
 			}
 		});
@@ -125,7 +139,7 @@ public class CrewBuy {
 		JButton btnPilot = new JButton("Pilot");
 		btnPilot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newPilot = new NewRecruit("pilot", manager);
+				NewRecruit newPilot = new NewRecruit("pilot", manager, returnThis());
 				newPilot.showDialog();
 			}
 		});
@@ -135,7 +149,7 @@ public class CrewBuy {
 		JButton btnMedic = new JButton("Medic");
 		btnMedic.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newMedic = new NewRecruit("medic", manager);
+				NewRecruit newMedic = new NewRecruit("medic", manager, returnThis());
 				newMedic.showDialog();
 			}
 		});
@@ -145,7 +159,7 @@ public class CrewBuy {
 		JButton btnEngineer = new JButton("Engineer");
 		btnEngineer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newEngineer = new NewRecruit("engineer", manager);
+				NewRecruit newEngineer = new NewRecruit("engineer", manager, returnThis());
 				newEngineer.showDialog();
 			}
 		});
@@ -155,7 +169,7 @@ public class CrewBuy {
 		JButton btnScout = new JButton("Scout");
 		btnScout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newScout = new NewRecruit("scout", manager);
+				NewRecruit newScout = new NewRecruit("scout", manager, returnThis());
 				newScout.showDialog();
 			}
 		});
