@@ -31,7 +31,6 @@ public class Game {
     }
     
     public String getShipName() {
-    	System.out.println(myShip.getName());
     	return myShip.getName();
     }
     
