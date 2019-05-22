@@ -79,6 +79,7 @@ public class Startup {
 				
 				//Add crew points to Ship based on game length 
 		        String selected = (String) comboBox.getSelectedItem();
+		        manager.setnumberDays(Integer.parseInt(selected));
 		        shipPoints = Integer.parseInt(selected)*2;
 		        manager.addShipPoints(shipPoints);
 		        

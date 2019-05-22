@@ -30,6 +30,8 @@ public class CrewManager {
 	private JProgressBar progressHunger4;
 	private JProgressBar progressTiredness3;
 	private JProgressBar progressTiredness4;
+	private JLabel lblAction3;
+	private JLabel lblAction4;
 	
 
 
@@ -117,6 +119,22 @@ public class CrewManager {
 		crewManager.getContentPane().add(btnEat1);
 		
 		JButton btnSleep1 = new JButton("Sleep");
+		btnSleep1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (crew1.getActions() > 0) {
+					crew1.sleep();
+					progressTiredness1.setValue(crew1.getTiredness());
+					crew1.useAction();
+					lblAction1.setText(Integer.toString(crew1.getActions()));
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew1.getName() + " had a nap.");
+				} else {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew1.getName() + " does not have enough actions to sleep.");
+				}
+				
+			}
+		});
 		btnSleep1.setBounds(52, 371, 151, 25);
 		crewManager.getContentPane().add(btnSleep1);
 		
@@ -217,6 +235,21 @@ public class CrewManager {
 		crewManager.getContentPane().add(btnEat2);
 		
 		JButton btnSleep2 = new JButton("Sleep");
+		btnSleep2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (crew2.getActions() > 0) {
+					crew2.sleep();
+					progressTiredness2.setValue(crew2.getTiredness());
+					crew2.useAction();
+					lblAction2.setText(Integer.toString(crew2.getActions()));
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew2.getName() + " had a nap.");
+				} else {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew2.getName() + " does not have enough actions to sleep.");
+				}
+			}
+		});
 		btnSleep2.setBounds(259, 371, 151, 25);
 		crewManager.getContentPane().add(btnSleep2);
 		
@@ -240,9 +273,11 @@ public class CrewManager {
 		lblHealth_1.setBounds(240, 585, 66, 15);
 		crewManager.getContentPane().add(lblHealth_1);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(301, 585, 183, 14);
-		crewManager.getContentPane().add(progressBar);
+		JProgressBar progressShipHealth = new JProgressBar();
+		progressShipHealth.setForeground(Color.GREEN);
+		progressShipHealth.setBounds(301, 585, 183, 14);
+		crewManager.getContentPane().add(progressShipHealth);
+		progressShipHealth.setValue(100);
 		
 		JLabel lblPartsFound = new JLabel("Parts Found");
 		lblPartsFound.setBounds(199, 617, 91, 15);
@@ -301,7 +336,7 @@ public class CrewManager {
 			label_13.setBounds(468, 310, 66, 15);
 			crewManager.getContentPane().add(label_13);
 			
-			JLabel lblAction3 = new JLabel(Integer.toString(crew3.getActions()));
+			lblAction3 = new JLabel(Integer.toString(crew3.getActions()));
 			lblAction3.setBounds(561, 310, 66, 15);
 			crewManager.getContentPane().add(lblAction3);
 			
@@ -310,6 +345,21 @@ public class CrewManager {
 			crewManager.getContentPane().add(btnEat3);
 			
 			JButton btnSleep3 = new JButton("Sleep");
+			btnSleep3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (crew3.getActions() > 0) {
+						crew3.sleep();
+						progressTiredness3.setValue(crew3.getTiredness());
+						crew3.useAction();
+						lblAction3.setText(Integer.toString(crew3.getActions()));
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew3.getName() + " had a nap.");
+					} else {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew3.getName() + " does not have enough actions to sleep.");
+					}
+				}
+			});
 			btnSleep3.setBounds(478, 371, 151, 25);
 			crewManager.getContentPane().add(btnSleep3);
 			
@@ -370,7 +420,7 @@ public class CrewManager {
 			label_20.setBounds(666, 310, 66, 15);
 			crewManager.getContentPane().add(label_20);
 			
-			JLabel lblAction4 = new JLabel(Integer.toString(crew4.getActions()));
+			lblAction4 = new JLabel(Integer.toString(crew4.getActions()));
 			lblAction4.setBounds(743, 310, 66, 15);
 			crewManager.getContentPane().add(lblAction4);
 			
@@ -379,6 +429,21 @@ public class CrewManager {
 			crewManager.getContentPane().add(btnEat4);
 			
 			JButton btnSleep4 = new JButton("Sleep");
+			btnSleep4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (crew4.getActions() > 0) {
+						crew4.sleep();
+						progressTiredness4.setValue(crew4.getTiredness());
+						crew4.useAction();
+						lblAction4.setText(Integer.toString(crew4.getActions()));
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew4.getName() + " had a nap.");
+					} else {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew4.getName() + " does not have enough actions to sleep.");
+					}
+				}
+			});
 			btnSleep4.setBounds(684, 371, 151, 25);
 			crewManager.getContentPane().add(btnSleep4);
 			
@@ -403,6 +468,7 @@ public class CrewManager {
 		crewManager.getContentPane().add(btnViewInventory);
 		
 		JProgressBar progressDays = new JProgressBar();
+		progressDays.setForeground(Color.BLUE);
 		progressDays.setBounds(25, 26, 842, 14);
 		crewManager.getContentPane().add(progressDays);
 		
@@ -421,10 +487,14 @@ public class CrewManager {
 		JButton btnNextDay = new JButton("Next Day");
 		btnNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				crew1.resetActions();
+				lblAction1.setText(Integer.toString(crew1.getActions()));
 				crew1.getHungry();
 				progressHunger1.setValue(crew1.getHunger());
 				crew1.getTired();
 				progressTiredness1.setValue(crew1.getTiredness());
+				crew2.resetActions();
+				lblAction2.setText(Integer.toString(crew2.getActions()));
 				crew2.getHungry();
 				progressHunger2.setValue(crew2.getHunger());
 				crew2.getTired();
@@ -434,14 +504,21 @@ public class CrewManager {
 					progressHunger3.setValue(crew3.getHunger());
 					crew3.getTired();
 					progressTiredness3.setValue(crew3.getTiredness());
+					crew3.resetActions();
+					lblAction3.setText(Integer.toString(crew3.getActions()));
 				}
 				if (manager.getNumCrew() >= 4) {
 					crew4.getHungry();
+					crew4.resetActions();
+					lblAction4.setText(Integer.toString(crew4.getActions()));
 					progressHunger4.setValue(crew4.getHunger());
 					crew4.getTired();
 					progressTiredness4.setValue(crew4.getTiredness());
 				}
-				
+				manager.addDay();
+				int dayStatus = (int) ((double)manager.getcurrentDay()/(double)manager.getnumberDays()*100);
+				progressDays.setValue(dayStatus);
+				txtConsole.setText("Welcome to day " + (manager.getcurrentDay() + 1) + " Captain" );
 			}
 		});
 		btnNextDay.setBounds(25, 575, 156, 25);

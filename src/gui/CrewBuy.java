@@ -277,7 +277,6 @@ public class CrewBuy {
 		crewBuy.getContentPane().add(lblExpendable);
 		
 		String shipName = manager.getShipName();
-		System.out.println(shipName);
 		JLabel shpName = new JLabel(shipName);
 		shpName.setBounds(370, 12, 283, 15);
 		crewBuy.getContentPane().add(shpName);

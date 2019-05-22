@@ -9,7 +9,8 @@ import gui.ShopWindow;
 
 public class Game {
 
-    private static int numberDays;
+    private int numberDays;
+    private int currentDay = 0;
     private static int pointBuy;
     private static  String selection = "0";
     private Ship myShip;
@@ -17,6 +18,22 @@ public class Game {
     private CrewFactory crewFactory = new CrewFactory();
     private SpaceOutpost itemFactory = new SpaceOutpost();
 
+    
+    public int getcurrentDay() {
+    	return currentDay;
+    }
+    
+    public int getnumberDays() {
+    	return numberDays;
+    }
+    public void addDay() {
+    	currentDay += 1;
+    }
+    
+    public void setnumberDays(int input) {
+    	numberDays = input;
+    }
+    
     //game Ship object methods
     
     public void makeShip(String name) {

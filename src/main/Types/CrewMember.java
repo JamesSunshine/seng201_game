@@ -46,6 +46,10 @@ public abstract class CrewMember {
 	public void setHunger(int hunger) {
 		this.hunger = hunger;
 	}
+	
+	public void sleep() {
+		tiredness -= 10;
+	}
     public void takeDamage(){
 
     }
@@ -63,15 +67,15 @@ public abstract class CrewMember {
     }
 
     public void getHungry() {
-    	System.out.println("poop");
         hunger = hunger + hungerChange;
     }
+    
     public void getTired(){
         tiredness = tiredness + tirednessChange;
     }
 
     public void useAction(){
-
+    	numActions -= 1;
     }
 
     public void resetActions(){
