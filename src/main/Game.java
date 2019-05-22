@@ -18,8 +18,16 @@ public class Game {
     	myShip = new Ship(name);
     }
     
+    public int getShipPoints() {
+    	return myShip.getPoints();
+    }
+    
     public void addShipPoints(int points) {
     	myShip.addPoints(points);
+    }
+    
+    public void removeShipPoints(int points) {
+    	myShip.subPoints(points);
     }
     
     public String getShipName() {
@@ -33,6 +41,10 @@ public class Game {
     }
     public Ship getShip() {
     	return myShip;
+    }
+    
+    public int getNumCrew() {
+    	return myShip.getnumberofCrew();
     }
     
     //game Ship object methods

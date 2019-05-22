@@ -43,11 +43,10 @@ public class CrewBuy {
 		crewBuy.setBounds(100, 100, 789, 552);
 		crewBuy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		crewBuy.getContentPane().setLayout(null);
-		Ship myShip = manager.getShip();
 		JLabel lblCrewBuy = new JLabel("Build Your Crew for the ");
 		lblCrewBuy.setBounds(203, 12, 208, 15);
 		crewBuy.getContentPane().add(lblCrewBuy);
-		int crewPoints = myShip.getPoints();
+		int crewPoints = manager.getShipPoints();
 		
 		JLabel lblNewLabel = new JLabel(Integer.toString(crewPoints));
 		lblNewLabel.setBounds(110, 31, 66, 15);
@@ -61,7 +60,7 @@ public class CrewBuy {
 		lblCrewSize.setBounds(522, 31, 172, 15);
 		crewBuy.getContentPane().add(lblCrewSize);
 		
-		crewCount = myShip.getnumberofCrew();
+		crewCount = manager.getNumCrew();
 		JLabel crewSize = new JLabel(Integer.toString(crewCount));
 		crewSize.setBounds(723, 31, 66, 15);
 		crewBuy.getContentPane().add(crewSize);

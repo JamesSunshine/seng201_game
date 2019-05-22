@@ -13,6 +13,16 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import main.Ship;
+import main.Items.AidsCure;
+import main.Items.Bandages;
+import main.Items.CabinBread;
+import main.Items.CaesarSalad;
+import main.Items.ConcretePill;
+import main.Items.Doritos;
+import main.Items.Item;
+import main.Items.MiGoreng;
+import main.Items.SpaceWhopper;
+import main.Items.TunaMelt;
 public class NewRecruit extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -39,6 +49,29 @@ public class NewRecruit extends JDialog {
 		this.dispose();
 	}
 	
+	public void subPoints(String type) {
+        switch (type){
+            case "grunt": {
+            	manager.removeShipPoints(1);
+            }
+            case "gunner": {
+            	manager.removeShipPoints(2); 
+            }
+            case "pilot": {
+            	manager.removeShipPoints(3);
+            }
+            case "medic": {
+            	manager.removeShipPoints(4);
+            }
+            case "engineer": {
+            	manager.removeShipPoints(5);
+            }
+            case "scout": {
+            	manager.removeShipPoints(5);
+            }
+                    
+        }
+    }
 	public NewRecruit(String crewType, Game incomingManager) {
 		type = crewType;
 		manager = incomingManager;
@@ -69,7 +102,7 @@ public class NewRecruit extends JDialog {
 					public void actionPerformed(ActionEvent arg0) {
 						setName();
 						manager.makeCrew(type, name);
-						System.out.println(Ship.crewList);
+						subPoints(type);
 						closeDialog();
 					}
 				});
