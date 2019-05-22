@@ -4,6 +4,7 @@ import gui.CrewBuy;
 import gui.CrewManager;
 import gui.Startup;
 import gui.currentInventory;
+import main.Types.CrewMember;
 import gui.ShopWindow;
 
 public class Game {
@@ -14,6 +15,10 @@ public class Game {
     private Ship myShip;
     private Startup startupWindow;
     private CrewFactory crewFactory = new CrewFactory();
+    
+    public CrewMember getCrewMember(int index) {
+    	return Ship.crewList.get(index);
+    }
 
     //game Ship object methods
     

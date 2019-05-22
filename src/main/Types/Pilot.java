@@ -12,6 +12,6 @@ public class Pilot extends CrewMember {
 
     public Pilot(String name) {
 
-    	super(name, 15, 10, 10, -2, -2);
+    	super(name, 15, 10, 10, -2, -2, "Pilot");
     }
 }

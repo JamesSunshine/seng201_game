@@ -10,19 +10,31 @@ public abstract class CrewMember {
     private int numActions = 2;
     public int hungerChange = 0;
     private int tirednessChange = 0;
+    private String type;
 
-    public CrewMember(String mName, int mhealth, int mhunger, int mtiredness, int mhungerChange, int mtirednessChange) {
+    public CrewMember(String mName, int mhealth, int mhunger, int mtiredness, int mhungerChange, int mtirednessChange, String mtype) {
         name = mName;
         health = mhealth;
         hunger = mhunger;
         tiredness = mtiredness;
         hungerChange = mhungerChange;
         tirednessChange = mtirednessChange;
+        type = mtype;
     }
 
-    
+    public String getType() {
+    	return type;
+    }
 	public int getHunger() {
 		return hunger;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getActions() {
+		return numActions;
 	}
 
 
