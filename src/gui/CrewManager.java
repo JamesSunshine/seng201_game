@@ -4,40 +4,57 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import main.Game;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class CrewManager {
 
-	private JFrame frame;
+	private JFrame crewManager;
+	private Game manager;
+	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CrewManager window = new CrewManager();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
 	 */
-	public CrewManager() {
+	public CrewManager(Game incomingManager) {
+		manager = incomingManager;
 		initialize();
+		crewManager.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		crewManager.dispose();
+	}
+	
+	public void finishedWindow() {
+		manager.closeCrewManager(this);
+	}
+	
+	public CrewManager returnThis() {
+		return this;
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		crewManager = new JFrame();
+		crewManager.setBounds(100, 100, 450, 300);
+		crewManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		crewManager.getContentPane().setLayout(null);
+		
+		JButton btnShop = new JButton("View Shop");
+		btnShop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchShopWindow();
+			}
+		});
+		btnShop.setBounds(168, 122, 114, 25);
+		crewManager.getContentPane().add(btnShop);
 	}
 
 }
