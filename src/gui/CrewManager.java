@@ -26,6 +26,10 @@ public class CrewManager {
 	private CrewMember crew2;
 	private CrewMember crew3;
 	private CrewMember crew4;
+	private JProgressBar progressHunger3;
+	private JProgressBar progressHunger4;
+	private JProgressBar progressTiredness3;
+	private JProgressBar progressTiredness4;
 	
 
 
@@ -281,7 +285,7 @@ public class CrewManager {
 			label_11.setBounds(468, 256, 68, 15);
 			crewManager.getContentPane().add(label_11);
 			
-			JProgressBar progressTiredness3 = new JProgressBar();
+			progressTiredness3 = new JProgressBar();
 			progressTiredness3.setBounds(556, 257, 93, 14);
 			crewManager.getContentPane().add(progressTiredness3);
 			
@@ -289,7 +293,7 @@ public class CrewManager {
 			label_12.setBounds(468, 283, 66, 15);
 			crewManager.getContentPane().add(label_12);
 			
-			JProgressBar progressHunger3 = new JProgressBar();
+			progressHunger3 = new JProgressBar();
 			progressHunger3.setBounds(557, 283, 92, 14);
 			crewManager.getContentPane().add(progressHunger3);
 			
@@ -350,7 +354,7 @@ public class CrewManager {
 			label_18.setBounds(664, 256, 68, 15);
 			crewManager.getContentPane().add(label_18);
 			
-			JProgressBar progressTiredness4 = new JProgressBar();
+			progressTiredness4 = new JProgressBar();
 			progressTiredness4.setBounds(742, 256, 93, 14);
 			crewManager.getContentPane().add(progressTiredness4);
 			
@@ -358,7 +362,7 @@ public class CrewManager {
 			label_19.setBounds(666, 283, 66, 15);
 			crewManager.getContentPane().add(label_19);
 			
-			JProgressBar progressHunger4 = new JProgressBar();
+			progressHunger4 = new JProgressBar();
 			progressHunger4.setBounds(743, 283, 92, 14);
 			crewManager.getContentPane().add(progressHunger4);
 			
@@ -418,16 +422,24 @@ public class CrewManager {
 		btnNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				crew1.getHungry();
+				progressHunger1.setValue(crew1.getHunger());
 				crew1.getTired();
+				progressTiredness1.setValue(crew1.getTiredness());
 				crew2.getHungry();
+				progressHunger2.setValue(crew2.getHunger());
 				crew2.getTired();
+				progressTiredness2.setValue(crew2.getTiredness());
 				if (manager.getNumCrew() >= 3) {
 					crew3.getHungry();
+					progressHunger3.setValue(crew3.getHunger());
 					crew3.getTired();
+					progressTiredness3.setValue(crew3.getTiredness());
 				}
 				if (manager.getNumCrew() >= 4) {
 					crew4.getHungry();
+					progressHunger4.setValue(crew4.getHunger());
 					crew4.getTired();
+					progressTiredness4.setValue(crew4.getTiredness());
 				}
 				
 			}

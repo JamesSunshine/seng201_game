@@ -25,8 +25,13 @@ public abstract class CrewMember {
     public String getType() {
     	return type;
     }
+    
 	public int getHunger() {
 		return hunger;
+	}
+	
+	public int getTiredness() {
+		return tiredness;
 	}
 	
 	public String getName() {
@@ -58,6 +63,7 @@ public abstract class CrewMember {
     }
 
     public void getHungry() {
+    	System.out.println("poop");
         hunger = hunger + hungerChange;
     }
     public void getTired(){
