@@ -6,15 +6,21 @@ import javax.swing.JFrame;
 
 import main.Game;
 import main.Ship;
+import main.Items.*;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class currentInventory {
 
 	private JFrame invWindow;
 	private Game manager;
+	private Item item;
 
 	
 	/**
@@ -55,5 +61,21 @@ public class currentInventory {
 		});
 		btnClose.setBounds(324, 235, 114, 25);
 		invWindow.getContentPane().add(btnClose);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 12, 426, 211);
+		invWindow.getContentPane().add(scrollPane);
+		
+		DefaultListModel listModel = new DefaultListModel();
+		for (int i = 0; i < Ship.Inventory.size(); i++)
+		{
+		    item = Ship.Inventory.get(i);
+			listModel.addElement(item.getName() + "<html>\t</html>" + item.getEffect());
+		}
+		JList<Item> list = new JList<Item>(listModel);
+		list.setBounds(12, 12, 426, 211);
+		invWindow.getContentPane().add(list);
+		scrollPane.setViewportView(list);
+		
 	}
 }

@@ -7,4 +7,9 @@ public class ConcretePill extends Item {
     private int itemStat = 2;
     private int itemValue = 10;
     private boolean isCure = false;
+    
+	public ConcretePill() {
+
+        super("Pain Killers", "Medicine", 2, 1, "Restores 1 health", false);
+    }
 }
