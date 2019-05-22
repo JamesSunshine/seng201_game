@@ -24,7 +24,11 @@ public class Ship {
         name = mName;
     }
     
-
+    public String getName() {
+    	return name;
+    }
+    
+    
     public void addCrew(CrewMember member) {
         crewList.add(member);
     }
@@ -46,7 +50,7 @@ public class Ship {
     }
 
     public void addPoints(int points) {
-        crewPoints = crewPoints + points;
+        crewPoints += points;
     }
 
     public void subPoints(int points) {

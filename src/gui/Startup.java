@@ -23,7 +23,7 @@ public class Startup {
 	private JFrame frmWelcome;
 	private JTextField shipText;
 	private Game manager;
-	private Ship shipManager;
+	private int shipPoints;
 
 
 	public Startup(Game incomingManager) {
@@ -73,12 +73,15 @@ public class Startup {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String shipName = shipText.getSelectedText();
-		        //Ship.createShip(shipName);
-				Ship myShip = new Ship(shipName);
+				//make a Ship object with selected text 
+				String shipName = shipText.getText();
+				manager.makeShip(shipName);
+				
+				//Add crew points to Ship based on game length 
 		        String selected = (String) comboBox.getSelectedItem();
-		        myShip.addPoints(Integer.parseInt(selected)*2);
-		        manager.setShip(myShip);
+		        shipPoints = Integer.parseInt(selected)*2;
+		        manager.addShipPoints(shipPoints);
+		        
 		        close();
 		        
 		       

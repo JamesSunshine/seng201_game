@@ -12,8 +12,19 @@ public class Game {
     private Startup startupWindow;
     private CrewFactory crewFactory = new CrewFactory();
 
-    public void setShip(Ship newShip) {
-    	myShip = newShip;
+    //game Ship object methods
+    
+    public void makeShip(String name) {
+    	myShip = new Ship(name);
+    }
+    
+    public void addShipPoints(int points) {
+    	myShip.addPoints(points);
+    }
+    
+    public String getShipName() {
+    	System.out.println(myShip.getName());
+    	return myShip.getName();
     }
     
     public void makeCrew(String type, String name) {
@@ -23,7 +34,12 @@ public class Game {
     public Ship getShip() {
     	return myShip;
     }
+    
+    //game Ship object methods
 
+    
+    //GUI methods
+    
     public void launchStartup() {
     	Startup startWindow = new Startup(this);
     }
@@ -41,12 +57,13 @@ public class Game {
     	crewbuyWindow.closeWindow();
     }
     
+    //GUI methods
+    
     public static void main(String[] args) {
                 
         Game manager = new Game();
         
         manager.launchStartup();
-        System.out.println(Ship.crewList);
                
         }
 

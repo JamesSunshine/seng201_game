@@ -44,8 +44,8 @@ public class CrewBuy {
 		crewBuy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		crewBuy.getContentPane().setLayout(null);
 		Ship myShip = manager.getShip();
-		JLabel lblCrewBuy = new JLabel("Build Your Crew");
-		lblCrewBuy.setBounds(309, 12, 139, 15);
+		JLabel lblCrewBuy = new JLabel("Build Your Crew for the ");
+		lblCrewBuy.setBounds(203, 12, 208, 15);
 		crewBuy.getContentPane().add(lblCrewBuy);
 		int crewPoints = myShip.getPoints();
 		
@@ -214,6 +214,12 @@ public class CrewBuy {
 		JLabel lblExpendable = new JLabel("Expendable");
 		lblExpendable.setBounds(380, 104, 129, 15);
 		crewBuy.getContentPane().add(lblExpendable);
+		
+		String shipName = manager.getShipName();
+		System.out.println(shipName);
+		JLabel shpName = new JLabel(shipName);
+		shpName.setBounds(370, 12, 63, 15);
+		crewBuy.getContentPane().add(shpName);
 		
 		
 		//table.setBounds(585, 359, -369, -215);
