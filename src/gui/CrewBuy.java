@@ -12,6 +12,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import gui.NotEnoughCrew;
+import gui.CrewFull;
 
 public class CrewBuy {
 
@@ -56,7 +58,7 @@ public class CrewBuy {
 		crewBuy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		crewBuy.getContentPane().setLayout(null);
 		JLabel lblCrewBuy = new JLabel("Build Your Crew for the ");
-		lblCrewBuy.setBounds(203, 12, 208, 15);
+		lblCrewBuy.setBounds(203, 12, 172, 15);
 		crewBuy.getContentPane().add(lblCrewBuy);
 		int crewPoints = manager.getShipPoints();
 		
@@ -118,8 +120,14 @@ public class CrewBuy {
 		JButton btnGrunt = new JButton("Grunt");
 		btnGrunt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newGrunt = new NewRecruit("grunt", manager, returnThis());
-				newGrunt.showDialog();
+				if (manager.getNumCrew() >= 4) {
+					CrewFull dialog = new CrewFull();
+					dialog.showDialog();
+				} else {
+					NewRecruit newGrunt = new NewRecruit("grunt", manager, returnThis());
+					newGrunt.showDialog();
+				}
+				
 				
 			}
 		});
@@ -129,8 +137,13 @@ public class CrewBuy {
 		JButton btnGunner = new JButton("Gunner");
 		btnGunner.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newGunner = new NewRecruit("gunner", manager, returnThis());
-				newGunner.showDialog();
+				if (manager.getNumCrew() >= 4) {
+					CrewFull dialog = new CrewFull();
+					dialog.showDialog();
+				} else {
+					NewRecruit newGunner = new NewRecruit("gunner", manager, returnThis());
+					newGunner.showDialog();
+				}
 			}
 		});
 		btnGunner.setBounds(110, 151, 114, 25);
@@ -139,8 +152,13 @@ public class CrewBuy {
 		JButton btnPilot = new JButton("Pilot");
 		btnPilot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newPilot = new NewRecruit("pilot", manager, returnThis());
-				newPilot.showDialog();
+				if (manager.getNumCrew() >= 4) {
+					CrewFull dialog = new CrewFull();
+					dialog.showDialog();
+				} else {
+					NewRecruit newPilot = new NewRecruit("pilot", manager, returnThis());
+					newPilot.showDialog();
+				}
 			}
 		});
 		btnPilot.setBounds(110, 201, 114, 25);
@@ -149,8 +167,13 @@ public class CrewBuy {
 		JButton btnMedic = new JButton("Medic");
 		btnMedic.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newMedic = new NewRecruit("medic", manager, returnThis());
-				newMedic.showDialog();
+				if (manager.getNumCrew() >= 4) {
+					CrewFull dialog = new CrewFull();
+					dialog.showDialog();
+				} else {
+					NewRecruit newMedic = new NewRecruit("medic", manager, returnThis());
+					newMedic.showDialog();
+				}
 			}
 		});
 		btnMedic.setBounds(110, 255, 114, 25);
@@ -159,8 +182,13 @@ public class CrewBuy {
 		JButton btnEngineer = new JButton("Engineer");
 		btnEngineer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newEngineer = new NewRecruit("engineer", manager, returnThis());
-				newEngineer.showDialog();
+				if (manager.getNumCrew() >= 4) {
+					CrewFull dialog = new CrewFull();
+					dialog.showDialog();
+				} else {
+					NewRecruit newEngineer = new NewRecruit("engineer", manager, returnThis());
+					newEngineer.showDialog();
+				}
 			}
 		});
 		btnEngineer.setBounds(110, 303, 114, 25);
@@ -169,8 +197,13 @@ public class CrewBuy {
 		JButton btnScout = new JButton("Scout");
 		btnScout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewRecruit newScout = new NewRecruit("scout", manager, returnThis());
-				newScout.showDialog();
+				if (manager.getNumCrew() >= 4) {
+					CrewFull dialog = new CrewFull();
+					dialog.showDialog();
+				} else {
+					NewRecruit newScout = new NewRecruit("scout", manager, returnThis());
+					newScout.showDialog();
+				}
 			}
 		});
 		btnScout.setBounds(110, 353, 114, 25);
@@ -231,8 +264,20 @@ public class CrewBuy {
 		String shipName = manager.getShipName();
 		System.out.println(shipName);
 		JLabel shpName = new JLabel(shipName);
-		shpName.setBounds(370, 12, 63, 15);
+		shpName.setBounds(370, 12, 283, 15);
 		crewBuy.getContentPane().add(shpName);
+		
+		JButton btnStartGame = new JButton("Start Game");
+		btnStartGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (manager.getNumCrew() < 2) {
+					NotEnoughCrew dialog = new NotEnoughCrew();
+					dialog.showDialog();
+				}
+			}
+		});
+		btnStartGame.setBounds(579, 444, 155, 34);
+		crewBuy.getContentPane().add(btnStartGame);
 		
 		
 		//table.setBounds(585, 359, -369, -215);
