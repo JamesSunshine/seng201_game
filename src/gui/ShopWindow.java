@@ -4,15 +4,30 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class SpaceOutpost {
+public class ShopWindow {
 
 	private JFrame frame;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ShopWindow window = new ShopWindow();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
-	public SpaceOutpost() {
+	public ShopWindow() {
 		initialize();
 	}
 
