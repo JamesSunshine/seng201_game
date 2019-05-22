@@ -289,6 +289,10 @@ public class CrewBuy {
 					NotEnoughCrew dialog = new NotEnoughCrew();
 					dialog.showDialog();
 				}
+				else {
+					manager.launchCrewManager();
+					manager.closeCrewBuy(returnThis());
+				}
 			}
 		});
 		btnStartGame.setBounds(579, 444, 155, 34);
