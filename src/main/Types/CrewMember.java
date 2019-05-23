@@ -12,6 +12,7 @@ public abstract class CrewMember {
     public int hungerChange = 0;
     private int tirednessChange = 0;
     private String type;
+    private boolean dead = false;
 
     public CrewMember(String mName, int mhealth, int mhunger, int mtiredness, int mhungerChange, int mtirednessChange, String mtype) {
         name = mName;
@@ -26,6 +27,18 @@ public abstract class CrewMember {
 
     public String getType() {
     	return type;
+    }
+    
+    public void setDead() {
+    	dead = true;
+    }
+    
+    public boolean isDead() {
+    	if (dead) {
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
     
     public int getHealth() {

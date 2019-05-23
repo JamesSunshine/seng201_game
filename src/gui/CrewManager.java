@@ -38,6 +38,16 @@ public class CrewManager {
 	private JProgressBar progressShipHealth;
 	private JProgressBar progressHealth3;
 	private JProgressBar progressHealth4;
+	private JButton btnEat3;
+	private JButton btnSleep3;
+	private JButton btnRepair3;
+	private JButton btnSearch3;
+	private JButton btnPilot3;
+	private JButton btnEat4;
+	private JButton btnSleep4;
+	private JButton btnRepair4;
+	private JButton btnSearch4;
+	private JButton btnPilot4;
 	private JLabel lblAction3;
 	private JLabel lblAction4;
 	private static ArrayList<CrewMember> pilotList = new ArrayList<CrewMember>();
@@ -46,6 +56,7 @@ public class CrewManager {
 	private Ship myShip;
 	private RNGEvent event = new RNGEvent();
 	private Planet currentPlanet;
+	
 	
 	
 	
@@ -105,6 +116,22 @@ public class CrewManager {
 		
 	}
 	
+	public boolean checkDead(CrewMember member) {
+		if (member.isDead()) {
+			return true;
+		}
+		else if ((member.getHealth() == 0) || (member.getHunger() == 100) || (member.getTiredness() == 100)) {
+			member.setDead();
+			Ship.crewList.remove(member);
+			System.out.println(Ship.crewList);
+			String currentText = txtConsole.getText();
+			txtConsole.setText(currentText + "\n" + member.getName() + " died. RIP.");
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	
 	/**
 	 * Window manager methods
@@ -137,7 +164,7 @@ public class CrewManager {
 	private void initialize() {
 		myShip = manager.getShip();
 		crewManager = new JFrame();
-		crewManager.setTitle(manager.getShipName() + "Crew Manager");
+		crewManager.setTitle(manager.getShipName() + " Crew Manager");
 		crewManager.setBounds(100, 100, 900, 769);
 		crewManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		crewManager.getContentPane().setLayout(null);
@@ -326,6 +353,7 @@ public class CrewManager {
 		/**
 		 * Crew1 labels
 		 */
+		
 		JLabel lblClass1 = new JLabel(crew1.getType());
 		lblClass1.setBounds(100, 203, 66, 15);
 		crewManager.getContentPane().add(lblClass1);
@@ -349,6 +377,7 @@ public class CrewManager {
 		JLabel lblClass = new JLabel("Class");
 		lblClass.setBounds(27, 203, 66, 15);
 		crewManager.getContentPane().add(lblClass);
+
 		
 		
 		
@@ -578,14 +607,14 @@ public class CrewManager {
 			/**
 			 * Use item
 			 */
-			JButton btnEat3 = new JButton("Use Item");
+			btnEat3 = new JButton("Use Item");
 			btnEat3.setBounds(478, 334, 151, 25);
 			crewManager.getContentPane().add(btnEat3);
 			
 			/**
 			 * Sleep
 			 */
-			JButton btnSleep3 = new JButton("Sleep");
+			btnSleep3 = new JButton("Sleep");
 			btnSleep3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if (crew3.getActions() > 0) {
@@ -607,7 +636,7 @@ public class CrewManager {
 			/**
 			 * Repair ship
 			 */
-			JButton btnRepair3 = new JButton("Repair Ship");
+			btnRepair3 = new JButton("Repair Ship");
 			btnRepair3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if (myShip.checkCondition() == 0) {
@@ -634,6 +663,7 @@ public class CrewManager {
 			/**
 			 * Search planet
 			 */
+<<<<<<< HEAD
 			JButton btnSearch3 = new JButton("Search Planet");
 			btnSearch3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -661,13 +691,16 @@ public class CrewManager {
 					}
 				}
 			});
+=======
+			btnSearch3 = new JButton("Search Planet");
+>>>>>>> c00ba331dbc68a41e1ddd230b6711028a2b328e4
 			btnSearch3.setBounds(480, 445, 149, 25);
 			crewManager.getContentPane().add(btnSearch3);
 			
 			/**
 			 * Pilot Ship
 			 */
-			JButton btnPilot3 = new JButton("Pilot Ship");
+			btnPilot3 = new JButton("Pilot Ship");
 			btnPilot3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
@@ -748,14 +781,14 @@ public class CrewManager {
 			/**
 			 * Use item
 			 */
-			JButton btnEat4 = new JButton("Use Item");
+			btnEat4 = new JButton("Use Item");
 			btnEat4.setBounds(684, 334, 151, 25);
 			crewManager.getContentPane().add(btnEat4);
 			
 			/**
 			 * Sleep
 			 */
-			JButton btnSleep4 = new JButton("Sleep");
+			btnSleep4 = new JButton("Sleep");
 			btnSleep4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if (crew4.getActions() > 0) {
@@ -777,7 +810,7 @@ public class CrewManager {
 			/**
 			 * Repair
 			 */
-			JButton btnRepair4 = new JButton("Repair Ship");
+			btnRepair4 = new JButton("Repair Ship");
 			btnRepair4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if (myShip.checkCondition() == 0) {
@@ -804,6 +837,7 @@ public class CrewManager {
 			/**
 			 * Search Planet
 			 */
+<<<<<<< HEAD
 			JButton btnSearch4 = new JButton("Search Planet");
 			btnSearch4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -831,13 +865,16 @@ public class CrewManager {
 					}
 				}
 			});
+=======
+			btnSearch4 = new JButton("Search Planet");
+>>>>>>> c00ba331dbc68a41e1ddd230b6711028a2b328e4
 			btnSearch4.setBounds(684, 445, 149, 25);
 			crewManager.getContentPane().add(btnSearch4);
 			
 			/**
 			 * Pilot Ship
 			 */
-			JButton btnPilot4 = new JButton("Pilot Ship");
+			btnPilot4 = new JButton("Pilot Ship");
 			btnPilot4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
@@ -951,7 +988,7 @@ public class CrewManager {
 				//Crew1 methods
 				crew1.resetActions();
 				lblAction1.setText(Integer.toString(crew1.getActions()));
-				crew1.getHungry();
+				//crew1.getHungry();
 				progressHunger1.setValue(crew1.getHunger());
 				crew1.getTired();
 				progressTiredness1.setValue(crew1.getTiredness());
@@ -960,54 +997,82 @@ public class CrewManager {
 					crew1.takeDamage(2);
 					progressHealth1.setValue(crew1.getHealth());
 				}
+				if (checkDead(crew1)) {
+					crewManager.getContentPane().remove(btnEat1);
+					crewManager.getContentPane().remove(btnSleep1);
+					crewManager.getContentPane().remove(btnRepair1);
+					crewManager.getContentPane().remove(btnSearch1);
+					crewManager.getContentPane().remove(btnPilot1);
+				}
 				
 				//Crew2 methods
 				crew2.resetActions();
 				lblAction2.setText(Integer.toString(crew2.getActions()));
-				crew2.getHungry();
+				//crew2.getHungry();
 				progressHunger2.setValue(crew2.getHunger());
 				crew2.getTired();
+				progressTiredness2.setValue(crew2.getTiredness());
 				if (crew2.gotAids()) {
 					progressHealth2.setForeground(Color.RED);
 					crew2.takeDamage(2);
-					progressHealth2.setValue(crew1.getHealth());
+					progressHealth2.setValue(crew2.getHealth());
 				}
-				progressTiredness2.setValue(crew2.getTiredness());
-				
+				if (checkDead(crew2)) {
+					crewManager.getContentPane().remove(btnEat2);
+					crewManager.getContentPane().remove(btnSleep2);
+					crewManager.getContentPane().remove(btnRepair2);
+					crewManager.getContentPane().remove(btnSearch2);
+					crewManager.getContentPane().remove(btnPilot2);
+				}
 				//Crew3 methods
-				if (manager.getNumCrew() >= 3) {
-					crew3.getHungry();
+				if (crewList.size() >= 3) {
+					crew3.resetActions();
+					lblAction3.setText(Integer.toString(crew3.getActions()));
+					//crew3.getHungry();
 					progressHunger3.setValue(crew3.getHunger());
 					crew3.getTired();
 					progressTiredness3.setValue(crew3.getTiredness());
-					crew3.resetActions();
-					lblAction3.setText(Integer.toString(crew3.getActions()));
 					if (crew3.gotAids()) {
 						progressHealth3.setForeground(Color.RED);
 						crew3.takeDamage(2);
-						progressHealth3.setValue(crew1.getHealth());
+						progressHealth3.setValue(crew3.getHealth());
+					}
+					if (checkDead(crew3)) {
+						crewManager.getContentPane().remove(btnEat3);
+						crewManager.getContentPane().remove(btnSleep3);
+						crewManager.getContentPane().remove(btnRepair3);
+						crewManager.getContentPane().remove(btnSearch3);
+						crewManager.getContentPane().remove(btnPilot3);
 					}
 				}
 				
 				//Crew4 methods
-				if (manager.getNumCrew() >= 4) {
-					crew4.getHungry();
+				if (crewList.size() >= 4) {
 					crew4.resetActions();
 					lblAction4.setText(Integer.toString(crew4.getActions()));
+					//crew4.getHungry();
 					progressHunger4.setValue(crew4.getHunger());
 					crew4.getTired();
 					progressTiredness4.setValue(crew4.getTiredness());
 					if (crew4.gotAids()) {
 						progressHealth4.setForeground(Color.RED);
 						crew4.takeDamage(2);
-						progressHealth4.setValue(crew1.getHealth());
+						progressHealth4.setValue(crew4.getHealth());
+					}
+					if (checkDead(crew4)) {
+						crewManager.getContentPane().remove(btnEat4);
+						crewManager.getContentPane().remove(btnSleep4);
+						crewManager.getContentPane().remove(btnRepair4);
+						crewManager.getContentPane().remove(btnSearch4);
+						crewManager.getContentPane().remove(btnPilot4);
 					}
 				}
 				manager.addDay();
 				progressShipHealth.setValue(myShip.checkCondition());
 				int dayStatus = (int) ((double)manager.getcurrentDay()/(double)manager.getnumberDays()*100);
 				progressDays.setValue(dayStatus);
-				
+				crewManager.getContentPane().revalidate();
+				crewManager.repaint();
 			}
 		});
 		btnNextDay.setBounds(25, 575, 156, 25);
@@ -1020,5 +1085,4 @@ public class CrewManager {
 		
 		
 	}
-	
 }
