@@ -24,7 +24,6 @@ public class RNGEvent {
         		this.hasGunner = true;
         	}
         }
-<<<<<<< HEAD
         if (occurrence >= threshold) {
             if ((this.hasGunner == true) && (occurrence < (this.threshold += 2))) {
             	return true;
@@ -32,15 +31,7 @@ public class RNGEvent {
             else {
             	shipDamage = 10;
             	yourShip.shipDamage(shipDamage);
-=======
-        if (this.hasGunner == true) {
-        	this.threshold += 2;
-        }
-        if (occurrence >= threshold) {
-            shipDamage = 10;
-            yourShip.shipDamage(shipDamage);
->>>>>>> f72f39ff1e53673c4062b3fece1bfa89c84161df
-            
+          
             	if (Ship.Inventory.size() == 0) {
             	;
             	}
@@ -50,14 +41,8 @@ public class RNGEvent {
             	Ship.Inventory.remove((int) randNum);
             	return false;}
             }
-<<<<<<< HEAD
         } 	
-=======
-        }
-        else if ((hasGunner == true) && (occurrence < threshold)){
-        	return true;
-        }
->>>>>>> f72f39ff1e53673c4062b3fece1bfa89c84161df
+
 		return false;
     }
 
