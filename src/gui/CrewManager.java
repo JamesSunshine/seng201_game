@@ -56,6 +56,18 @@ public class CrewManager {
 		crewManager.setVisible(true);
 	}
 	
+	public void eventPirate() {
+		if (event.spacePirates(myShip) == true) {
+			String currentText = txtConsole.getText();
+			txtConsole.setText(currentText + "\nYour gunner protected the ship from pirates.");
+		}
+		else {
+			String currentText = txtConsole.getText();
+			txtConsole.setText(currentText + "\nYour ship was attacked by pirates, I think they"
+					+ " took something!");	
+		}
+	}
+	
 	public void closeWindow() {
 		crewManager.dispose();
 	}
@@ -73,12 +85,6 @@ public class CrewManager {
 		txtConsole.setText(currentText + "\nThe ship does not need repairing.");
 	}
 	
-	public void printGunnerSave() {
-		System.out.println("poop6");
-		String currentText = txtConsole.getText();
-		txtConsole.setText(currentText + "\nYour gunner protected the ship from pirates.");
-	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -394,15 +400,7 @@ public class CrewManager {
 		lblShipStatus.setBounds(302, 548, 111, 15);
 		crewManager.getContentPane().add(lblShipStatus);
 		
-<<<<<<< HEAD
-		JLabel lblHealth_1 = new JLabel("Health");
-		lblHealth_1.setBounds(217, 585, 66, 15);
-		crewManager.getContentPane().add(lblHealth_1);
-		
-		JProgressBar progressShipHealth = new JProgressBar();
-		progressShipHealth.setForeground(Color.GREEN);
-		progressShipHealth.setBounds(290, 585, 183, 14);
-=======
+
 		JLabel lblHealth_1 = new JLabel("Damage");
 		lblHealth_1.setBounds(240, 585, 66, 15);
 		crewManager.getContentPane().add(lblHealth_1);
@@ -410,7 +408,6 @@ public class CrewManager {
 		progressShipHealth = new JProgressBar();
 		progressShipHealth.setForeground(Color.RED);
 		progressShipHealth.setBounds(301, 585, 183, 14);
->>>>>>> ca507df75da441beb279e1dc727d983267d4cafc
 		crewManager.getContentPane().add(progressShipHealth);
 		progressShipHealth.setValue(0);
 		
@@ -711,10 +708,8 @@ public class CrewManager {
 		btnNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				txtConsole.setText("Welcome to day " + (manager.getcurrentDay() + 1) + " Captain" );
-				if (event.spacePirates(myShip) == true) {
-					System.out.println("poop5");
-					printGunnerSave();
-				}
+			
+				
 				pilotList = new ArrayList<CrewMember>();
 				crew1.resetActions();
 				lblAction1.setText(Integer.toString(crew1.getActions()));

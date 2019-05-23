@@ -25,11 +25,9 @@ public class RNGEvent {
         	}
         }
         if (this.hasGunner == true) {
-        	System.out.println("poop1");
         	this.threshold += 2;
         }
         if (occurrence >= threshold) {
-        	System.out.println("poop2");
             shipDamage = 10;
             yourShip.shipDamage(shipDamage);
             
@@ -43,10 +41,8 @@ public class RNGEvent {
             }
         }
         else if ((hasGunner == true) && (occurrence < threshold)){
-        	System.out.println("poop3");
         	return true;
         }
-        System.out.println("poop4");
 		return false;
     }
 
