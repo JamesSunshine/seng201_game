@@ -1,8 +1,6 @@
 package gui;
 import gui.CrewBuy;
-import main.CrewFactory;
 import main.Game;
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -13,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+<<<<<<< HEAD
 import main.Ship;
 import main.Items.AidsCure;
 import main.Items.Bandages;
@@ -29,6 +28,9 @@ import main.Items.TunaMelt;
 /**
  * The Class NewRecruit.
  */
+=======
+
+>>>>>>> dc00c9ee9ba4b5f3d9f77d0bcda8b902af59c3ce
 public class NewRecruit extends JDialog {
 
 	/** The content panel. */

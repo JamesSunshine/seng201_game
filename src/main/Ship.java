@@ -178,7 +178,6 @@ public class Ship {
     		} else {
     			shipCondition = 0;
     		}
-    		
     	}
     }
 
@@ -198,7 +197,6 @@ public class Ship {
      */
     public int checkCondition() {
         return shipCondition;
-
     }
     
     /**

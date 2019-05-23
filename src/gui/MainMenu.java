@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -73,9 +71,14 @@ public class MainMenu {
 		btnNewButton_1.setBounds(152, 206, 121, 25);
 		mainMenu.getContentPane().add(btnNewButton_1);
 		
+<<<<<<< HEAD
 		JLabel lblNewLabel = new JLabel(" (the game based on the TV show Based on the other TV show about the Island or whatever that show ");
 		lblNewLabel.setFont(new Font("DejaVu Sans Light", Font.BOLD, 8));
 		lblNewLabel.setBounds(12, 97, 691, 34);
+=======
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(181, 37, 66, 15);
+>>>>>>> dc00c9ee9ba4b5f3d9f77d0bcda8b902af59c3ce
 		mainMenu.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_2 = new JLabel("was about, you get it, right?)");

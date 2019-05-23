@@ -446,7 +446,7 @@ public class CrewManager {
 
 				
 		/**
-		 * Console initialise
+		 * Console initialize
 		 */
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(543, 548, 321, 159);
@@ -1370,9 +1370,6 @@ public class CrewManager {
 		lblPlanet = new JLabel("Welcome to the planet " + currentPlanet.getplanetName());
 		lblPlanet.setFont(new Font("DejaVu Sans Light", Font.BOLD, 28));
 		lblPlanet.setBounds(187, 80, 594, 64);
-		crewManager.getContentPane().add(lblPlanet);
-		
-		
-		
+		crewManager.getContentPane().add(lblPlanet);	
 	}
 }
