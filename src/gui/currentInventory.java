@@ -70,7 +70,7 @@ public class currentInventory {
 		for (int i = 0; i < Ship.Inventory.size(); i++)
 		{
 		    item = Ship.Inventory.get(i);
-			listModel.addElement(item.getName() + "<html>\t</html>" + item.getEffect());
+			listModel.addElement(item.getName() + "" + item.getEffect());
 		}
 		JList<Item> list = new JList<Item>(listModel);
 		list.setBounds(12, 12, 426, 211);
