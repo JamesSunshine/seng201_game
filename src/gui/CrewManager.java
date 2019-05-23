@@ -21,7 +21,7 @@ import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 
-public class CrewManager {
+public class CrewManager extends GameOver {
 
 	private JFrame crewManager;
 	private Game manager;

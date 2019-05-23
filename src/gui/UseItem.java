@@ -16,7 +16,7 @@ import main.Ship;
 import main.Items.Item;
 import main.Types.CrewMember;
 
-public class UseItem {
+public class UseItem extends CrewManager {
 
 	private JFrame useWindow;
 	private CrewManager manager;

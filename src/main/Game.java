@@ -9,7 +9,7 @@ import gui.currentInventory;
 import main.Types.CrewMember;
 import gui.ShopWindow;
 
-public class Game {
+public class Game extends Planet {
 
     private int numberDays;
     private int currentDay = 1;

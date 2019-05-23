@@ -9,6 +9,13 @@ import javax.swing.JLabel;
 import main.Game;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
+
+/**
+ * @author jsu85
+ *
+ */
 
 public class MainMenu {
 
@@ -23,6 +30,8 @@ public class MainMenu {
 		initialize();
 		mainMenu.setVisible(true);
 	}
+	
+	
 	
 	public void closeWindow() {
 		mainMenu.dispose();
@@ -44,7 +53,7 @@ public class MainMenu {
 				closeWindow();
 			}
 		});
-		btnNewButton.setBounds(152, 141, 121, 25);
+		btnNewButton.setBounds(152, 169, 121, 25);
 		mainMenu.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("EXIT");
@@ -53,21 +62,22 @@ public class MainMenu {
 				closeWindow();
 			}
 		});
-		btnNewButton_1.setBounds(152, 178, 121, 25);
+		btnNewButton_1.setBounds(152, 206, 121, 25);
 		mainMenu.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("How To Play");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				GameInstructions dialog = new GameInstructions();
-				dialog.showDialog();
-			}
-		});
-		btnNewButton_2.setBounds(152, 215, 121, 25);
-		mainMenu.getContentPane().add(btnNewButton_2);
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(181, 37, 66, 15);
+		JLabel lblNewLabel = new JLabel(" (the game based on the TV show Based on the other TV show about the Island or whatever that show ");
+		lblNewLabel.setFont(new Font("DejaVu Sans Light", Font.BOLD, 8));
+		lblNewLabel.setBounds(12, 97, 691, 34);
 		mainMenu.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel("was about, you get it, right?)");
+		lblNewLabel_2.setFont(new Font("DejaVu Sans Light", Font.BOLD, 8));
+		lblNewLabel_2.setBounds(167, 129, 238, 15);
+		mainMenu.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblLostInSpace = new JLabel("Lost in Space");
+		lblLostInSpace.setFont(new Font("L M Roman Dunh10", Font.BOLD, 32));
+		lblLostInSpace.setBounds(122, 30, 223, 68);
+		mainMenu.getContentPane().add(lblLostInSpace);
 	}
 }
