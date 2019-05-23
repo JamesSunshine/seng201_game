@@ -10,16 +10,27 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ShopWindow.
+ */
 public class ShopWindow {
 
+	/** The shop window. */
 	private JFrame shopWindow;
+	
+	/** The manager. */
 	private Game manager;
+	
+	/** The money value. */
 	private JLabel moneyValue;
 
 	
 	
 	/**
-	 * Create the application.
+	 * Instantiates a new shop window.
+	 *
+	 * @param incomingManager the incoming manager
 	 */
 	public ShopWindow(Game incomingManager) {
 		manager = incomingManager;
@@ -27,23 +38,38 @@ public class ShopWindow {
 		shopWindow.setVisible(true);
 	}
 	
+	/**
+	 * Close shop window.
+	 */
 	public void closeWindow() {
 		shopWindow.dispose();
 	}
 	
+	/**
+	 * Finished shop window.
+	 */
 	public void finishedWindow() {
 		manager.closeShopWindow(this);
 	}
 	
+	/**
+	 * Return this shop object.
+	 *
+	 * @return the shop window
+	 */
 	public ShopWindow returnThis() {
 		return this;
 	}
+	
+	/**
+	 * Update ship money.
+	 */
 	public void updateMoney() {
 		moneyValue.setText(Integer.toString(manager.getShipMoney()));
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize.
 	 */
 	private void initialize() {
 		shopWindow = new JFrame();

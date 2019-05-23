@@ -2,16 +2,31 @@ package main;
 
 import java.util.Random;
 
+
+/**
+ * The Class Planet.
+ */
 public class Planet {
 
+    /** The name. */
     public String name;
+    
+    /** has the planet been searched. */
     public boolean searched = false;
     
+    /**
+     * Instantiates a new planet.
+     */
     public Planet() {
     	name = nameGenerator();
     }
 
 
+    /**
+     * Name generator.
+     *
+     * @return the string
+     */
     public String nameGenerator() {
 
        String[] Beginning = { "Kr", "Ca", "Ra", "Mrok", "Cru",
@@ -32,14 +47,27 @@ public class Planet {
                 		End[rand.nextInt(End.length)];
     }
 
+    /**
+     * Gets the planet name.
+     *
+     * @return the planet name
+     */
     public String getplanetName() {
     	return name;
     }
     
+    /**
+     * Check searched.
+     *
+     * @return true, if successful
+     */
     public boolean checkSearched() {
     	return searched;
     }
     
+    /**
+     * Sets searched to true.
+     */
     public void setSearched() {
     	searched = true;
     }

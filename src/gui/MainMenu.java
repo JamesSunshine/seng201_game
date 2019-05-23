@@ -12,18 +12,23 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author jsu85
- *
+ * The Class MainMenu.
  */
 
 public class MainMenu {
 
+	/** The main menu. */
 	private JFrame mainMenu;
+	
+	/** The manager. */
 	private Game manager;
 
 	/**
-	 * Create the application.
+	 * Instantiates a new main menu.
+	 *
+	 * @param incomingGame the incoming game
 	 */
 	public MainMenu(Game incomingGame) {
 		manager = incomingGame;
@@ -33,12 +38,15 @@ public class MainMenu {
 	
 	
 	
+	/**
+	 * Close window.
+	 */
 	public void closeWindow() {
 		mainMenu.dispose();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize.
 	 */
 	private void initialize() {
 		mainMenu = new JFrame();

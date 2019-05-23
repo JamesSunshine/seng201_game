@@ -12,13 +12,22 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GameOver.
+ */
 public class GameOver {
 
+	/** The Game over. */
 	private JFrame GameOver;
+	
+	/** The my ship. */
 	private Ship myShip;
 
 	/**
-	 * Launch the application.
+	 * Instantiates a new game over.
+	 *
+	 * @param incomingShip the incoming ship
 	 */
 	public GameOver(Ship incomingShip) {
 		myShip = incomingShip;
@@ -26,11 +35,15 @@ public class GameOver {
 		GameOver.setVisible(true);
 	}
 	
+	/**
+	 * Close window.
+	 */
 	public void closeWindow() {
 		GameOver.dispose();
 	}
+	
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize.
 	 */
 	private void initialize() {
 		GameOver = new JFrame();

@@ -18,32 +18,61 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Startup.
+ */
 public class Startup {
 
+	/** The frm welcome. */
 	private JFrame frmWelcome;
+	
+	/** The ship text. */
 	private JTextField shipText;
+	
+	/** The manager. */
 	private Game manager;
+	
+	/** The ship points. */
 	private int shipPoints;
 
 
+	/**
+	 * Instantiates a new startup.
+	 *
+	 * @param incomingManager the incoming manager
+	 */
 	public Startup(Game incomingManager) {
 		manager = incomingManager;
 		initialize();
 		frmWelcome.setVisible(true);
 	}
 	
+	/**
+	 * Close window.
+	 */
 	public void closeWindow() {
 		frmWelcome.dispose();
 	}
 	
+	/**
+	 * Close startup.
+	 */
 	public void close() {
         manager.closeStartup(this);
 	}
+	
+	/**
+	 * Finished window.
+	 */
 	public void finishedWindow() {
 		manager.closeStartup(this);
 	}
 
 
+	/**
+	 * Initialize.
+	 */
 	private void initialize() {
 		frmWelcome = new JFrame();
 		frmWelcome.setTitle("Welcome");
@@ -84,11 +113,6 @@ public class Startup {
 		        manager.addShipPoints(shipPoints);
 		        
 		        close();
-		        
-		       
-		        
-				
-				
 			}
 		});
 		btnNewButton.setBounds(263, 238, 165, 25);

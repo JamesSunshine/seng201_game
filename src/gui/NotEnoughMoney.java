@@ -11,19 +11,34 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NotEnoughMoney.
+ */
 public class NotEnoughMoney extends JDialog {
 
+	/** The content panel. */
 	private final JPanel contentPanel = new JPanel();
 
+	/**
+	 * Show dialog.
+	 */
 	public static void showDialog() {
 		NotEnoughMoney dialog = new NotEnoughMoney();
 		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		dialog.setVisible(true);
 	}
 
+	/**
+	 * Close dialog.
+	 */
 	public void closeDialog() {
 		this.dispose();
 	}
+	
+	/**
+	 * Instantiates a new not enough money.
+	 */
 	public NotEnoughMoney() {
 		setBounds(100, 100, 272, 172);
 		getContentPane().setLayout(null);

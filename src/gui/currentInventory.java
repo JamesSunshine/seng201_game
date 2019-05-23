@@ -18,15 +18,26 @@ import javax.swing.JTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class currentInventory.
+ */
 public class currentInventory {
 
+	/** The inv window. */
 	private JFrame invWindow;
+	
+	/** The manager. */
 	private Game manager;
+	
+	/** The item. */
 	private Item item;
 
 	
 	/**
-	 * Create the application.
+	 * Instantiates a new current inventory.
+	 *
+	 * @param incomingManager the incoming manager
 	 */
 	public currentInventory(Game incomingManager) {
 		manager = incomingManager;
@@ -34,21 +45,32 @@ public class currentInventory {
 		invWindow.setVisible(true);
 	}
 	
+	/**
+	 * Close window.
+	 */
 	public void closeWindow() {
 		invWindow.dispose();
 	}
 	
+	/**
+	 * Finished window.
+	 */
 	public void finishedWindow() {
 		manager.closecurrentInventory(this);
 	}
 	
+	/**
+	 * Return this.
+	 *
+	 * @return the current inventory
+	 */
 	public currentInventory returnThis() {
 		return this;
 	}
 
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize.
 	 */
 	private void initialize() {
 		invWindow = new JFrame();

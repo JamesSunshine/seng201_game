@@ -24,33 +24,66 @@ import main.Items.Item;
 import main.Items.MiGoreng;
 import main.Items.SpaceWhopper;
 import main.Items.TunaMelt;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class NewRecruit.
+ */
 public class NewRecruit extends JDialog {
 
+	/** The content panel. */
 	private final JPanel contentPanel = new JPanel();
+	
+	/** The recruit name. */
 	private JTextField recruitName;
+	
+	/** The name. */
 	private String name;
+	
+	/** The type. */
 	private static String type;
+	
+	/** The manager. */
 	private static Game manager;
+	
+	/** The crew buy. */
 	private static CrewBuy crewBuy;
 
+	/**
+	 * Show dialog.
+	 */
 	public static void showDialog() {
 		NewRecruit dialog = new NewRecruit(type, manager, crewBuy);
 		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		dialog.setVisible(true);
 	}
 	
+	/**
+	 * Sets the recruits name.
+	 */
 	public void setName() {
 		this.name = recruitName.getText();
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.Component#getName()
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * Close dialog.
+	 */
 	public void closeDialog() {
 		this.dispose();
 	}
 	
+	/**
+	 * Subtract ship points when purchasing crew.
+	 *
+	 * @param type the type
+	 */
 	public void subPoints(String type) {
         switch (type){
             case "grunt": {
@@ -80,6 +113,14 @@ public class NewRecruit extends JDialog {
                     
         }
     }
+	
+	/**
+	 * Instantiates a new new recruit.
+	 *
+	 * @param crewType the crew type
+	 * @param incomingManager the incoming manager
+	 * @param incomingCrewBuy the incoming crew buy
+	 */
 	public NewRecruit(String crewType, Game incomingManager, CrewBuy incomingCrewBuy) {
 		type = crewType;
 		manager = incomingManager;

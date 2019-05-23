@@ -4,6 +4,13 @@ import main.Types.*;
 
 public class CrewFactory {
 
+    /**
+     * Recruit a crewmember
+     *
+     * @param type the type
+     * @param name the name
+     * @return the crew member
+     */
     public CrewMember recruit(String type, String name) {
         switch (type) {
             case "engineer": {

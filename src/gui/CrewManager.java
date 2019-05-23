@@ -21,49 +21,136 @@ import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 
-public class CrewManager extends GameOver {
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CrewManager.
+ */
+public class CrewManager {
 
+	/** The crew manager. */
 	private JFrame crewManager;
+	
+	/** The manager. */
 	private Game manager;
+	
+	/** The crew 1. */
 	private CrewMember crew1;
+	
+	/** The crew 2. */
 	private CrewMember crew2;
+	
+	/** The crew 3. */
 	private CrewMember crew3;
+	
+	/** The crew 4. */
 	private CrewMember crew4;
+	
+	/** The progress hunger 1. */
 	private JProgressBar progressHunger1;
+	
+	/** The progress hunger 2. */
 	private JProgressBar progressHunger2;
+	
+	/** The progress hunger 3. */
 	private JProgressBar progressHunger3;
+	
+	/** The progress hunger 4. */
 	private JProgressBar progressHunger4;
+	
+	/** The progress tiredness 3. */
 	private JProgressBar progressTiredness3;
+	
+	/** The progress tiredness 4. */
 	private JProgressBar progressTiredness4;
+	
+	/** The progress ship health. */
 	private JProgressBar progressShipHealth;
+	
+	/** The progress health 1. */
 	private JProgressBar progressHealth1;
+	
+	/** The progress health 2. */
 	private JProgressBar progressHealth2;
+	
+	/** The progress health 3. */
 	private JProgressBar progressHealth3;
+	
+	/** The progress health 4. */
 	private JProgressBar progressHealth4;
+	
+	/** The progress parts. */
 	private JProgressBar progressParts;
+	
+	/** The btn eat 3. */
 	private JButton btnEat3;
+	
+	/** The btn sleep 3. */
 	private JButton btnSleep3;
+	
+	/** The btn repair 3. */
 	private JButton btnRepair3;
+	
+	/** The btn search 3. */
 	private JButton btnSearch3;
+	
+	/** The btn pilot 3. */
 	private JButton btnPilot3;
+	
+	/** The btn eat 4. */
 	private JButton btnEat4;
+	
+	/** The btn sleep 4. */
 	private JButton btnSleep4;
+	
+	/** The btn repair 4. */
 	private JButton btnRepair4;
+	
+	/** The btn search 4. */
 	private JButton btnSearch4;
+	
+	/** The btn pilot 4. */
 	private JButton btnPilot4;
+	
+	/** The lbl planet. */
 	private JLabel lblPlanet;
+	
+	/** The lbl parts. */
 	private JLabel lblParts;
+	
+	/** The lbl action 3. */
 	private JLabel lblAction3;
+	
+	/** The lbl action 4. */
 	private JLabel lblAction4;
+	
+	/** The pilot list. */
 	public static ArrayList<CrewMember> pilotList = new ArrayList<CrewMember>();
+	
+	/** The crew list. */
 	private static ArrayList<CrewMember> crewList = new ArrayList<CrewMember>();
+	
+	/** The txt console. */
 	private JTextPane txtConsole;
+	
+	/** The my ship. */
 	private Ship myShip;
+	
+	/** The event. */
 	private RNGEvent event = new RNGEvent();
+	
+	/** The current planet. */
 	private Planet currentPlanet = new Planet();
+	
+	/** The space outpost. */
 	private SpaceOutpost spaceOutpost = new SpaceOutpost();
+    
+    /** The rand. */
     private Random rand = new Random();
+	
+	/** The max parts. */
 	private int maxParts;
+	
+	/** The rand num. */
 	private double randNum;
 	
 	
@@ -71,7 +158,9 @@ public class CrewManager extends GameOver {
 
 
 	/**
-	 * Create the application.
+	 * Instantiates a new crew manager.
+	 *
+	 * @param incomingManager the incoming manager
 	 */
 	public CrewManager(Game incomingManager) {
 		manager = incomingManager;
@@ -82,8 +171,11 @@ public class CrewManager extends GameOver {
 	}
 	
 	
+	
 	/**
-	 * Game Over Method
+	 * Game over.
+	 *
+	 * @param myShip the my ship
 	 */
 	public void gameOver(Ship myShip) {
 		GameOver gameOver = new GameOver(myShip);
@@ -91,7 +183,7 @@ public class CrewManager extends GameOver {
 	}
 	
 	/**
-	 * Checks if Game Over conditions are met
+	 * Check end game.
 	 */
 	public void checkEndGame() {
 		if (manager.getcurrentDay() == manager.getnumberDays()) {
@@ -106,7 +198,7 @@ public class CrewManager extends GameOver {
 	}
 	
 	/**
-	 * Check if game has been won
+	 * Check win.
 	 */
 	public void checkWin() {
 		if (myShip.getParts() == maxParts) {
@@ -114,8 +206,9 @@ public class CrewManager extends GameOver {
 			closeWindow();
 		}
 	}
+	
 	/**
- 	 * Methods to run random events
+	 * Event pirate.
 	 */
 	
 	/**
@@ -144,6 +237,9 @@ public class CrewManager extends GameOver {
 		}
 	}
 	
+	/**
+	 * Event aids.
+	 */
 	public void eventAids() {
 		for (CrewMember member : crewList) {
 			if (event.spaceAids(member)) {
@@ -156,7 +252,7 @@ public class CrewManager extends GameOver {
 	}
 	
 	/**
-	 * Random Event for Asteroid Belt
+	 * Event asteroid belt.
 	 */
 	public void eventBelt() {
 		if (event.asteroidBelt(myShip) == "Pilot Pass") {
@@ -175,8 +271,9 @@ public class CrewManager extends GameOver {
 	}
 	
 	/**
-	 * Searches Planet and prints effect to console
-	 * @param member
+	 * Search planet.
+	 *
+	 * @param member the member
 	 */
 	public void searchPlanet(CrewMember member) {
 		int foundID = (int) (Math.random() * 4 + 1);
@@ -228,9 +325,10 @@ public class CrewManager extends GameOver {
 	}
 	
 	/**
-	 * Checks if a given crew member is dead
-	 * @param member
-	 * @return
+	 * Check if crew member dead.
+	 *
+	 * @param member the member
+	 * @return true, if successful
 	 */
 	public boolean checkDead(CrewMember member) {
 		if (member.isDead()) {
@@ -249,7 +347,7 @@ public class CrewManager extends GameOver {
 	}
 	
 	/**
-	 * Updates Health and Hunger bars of crew
+	 * Update crew bars.
 	 */
 	public void updateBars() {
 		progressHealth1.setValue(crew1.getHealth());
@@ -267,8 +365,9 @@ public class CrewManager extends GameOver {
 	}
 	
 	/**
-	 * Cures the crewmember and sets health bar to green
-	 * @param member
+	 * Update gui if crewmember is cured.
+	 *
+	 * @param member the member
 	 */
 	public void cured(CrewMember member) {
 		String currentText = txtConsole.getText();
@@ -292,35 +391,48 @@ public class CrewManager extends GameOver {
 	
 	
 	/**
-	 * Window manager methods
+	 * Close window.
 	 */
 	public void closeWindow() {
 		crewManager.dispose();
 	}
 	
+	/**
+	 * Finished window.
+	 */
 	public void finishedWindow() {
 		manager.closeCrewManager(this);
 	}
 	
+	/**
+	 * Return this.
+	 *
+	 * @return the crew manager
+	 */
 	public CrewManager returnThis() {
 		return this;
 	}
 	
 	
 	/**
-	 * Console print methods
+	 * Prints the no repair needed message.
 	 */
 	public void printNoRepair() {
 		String currentText = txtConsole.getText();
 		txtConsole.setText(currentText + "\nThe ship does not need repairing.");
 	}
 	
+    /**
+     * Launch use item.
+     *
+     * @param member the member
+     */
     public void launchUseItem(CrewMember member) {
     	UseItem useWindow = new UseItem(this, member);
     }
 	
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize.
 	 */
 	private void initialize() {
 		myShip = manager.getShip();
@@ -374,7 +486,7 @@ public class CrewManager extends GameOver {
 		crewManager.getContentPane().add(lblAction1);
 		
 		/**
-		 * Use item
+		 * Crew 1 Use item
 		 */
 		JButton btnEat1 = new JButton("Use Item");
 		btnEat1.addActionListener(new ActionListener() {
@@ -400,7 +512,7 @@ public class CrewManager extends GameOver {
 		crewManager.getContentPane().add(btnEat1);
 		
 		/**
-		 * Sleep
+		 * Crew 1 Sleep
 		 */
 		JButton btnSleep1 = new JButton("Sleep");
 		btnSleep1.addActionListener(new ActionListener() {
@@ -423,7 +535,7 @@ public class CrewManager extends GameOver {
 		crewManager.getContentPane().add(btnSleep1);
 		
 		/**
-		 * Repair
+		 * Crew 1 Repair
 		 */
 		JButton btnRepair1 = new JButton("Repair Ship");
 		btnRepair1.addActionListener(new ActionListener() {
@@ -451,7 +563,7 @@ public class CrewManager extends GameOver {
 		
 		
 		/**
-		 * Search planet
+		 * Crew 1 Search planet
 		 */
 		JButton btnSearch1 = new JButton("Search Planet");
 		btnSearch1.addActionListener(new ActionListener() {
@@ -471,7 +583,7 @@ public class CrewManager extends GameOver {
 		crewManager.getContentPane().add(btnSearch1);
 		
 		/**
-		 * Pilot ship
+		 * Crew 1 Pilot ship
 		 */
 		JButton btnPilot1 = new JButton("Pilot Ship");
 		btnPilot1.addActionListener(new ActionListener() {
@@ -500,10 +612,7 @@ public class CrewManager extends GameOver {
 		});
 		btnPilot1.setBounds(52, 482, 151, 25);
 		crewManager.getContentPane().add(btnPilot1);
-		
-		/**
-		 * Crew1 labels
-		 */
+
 		
 		JLabel lblClass1 = new JLabel(crew1.getType());
 		lblClass1.setBounds(100, 203, 66, 15);
@@ -584,7 +693,7 @@ public class CrewManager extends GameOver {
 		crewManager.getContentPane().add(lblAction2);
 		
 		/**
-		 * Use item
+		 * Crew 2 Use item
 		 */
 		JButton btnEat2 = new JButton("Use Item");
 		btnEat2.addActionListener(new ActionListener() {
@@ -610,7 +719,7 @@ public class CrewManager extends GameOver {
 		crewManager.getContentPane().add(btnEat2);
 		
 		/**
-		 * Sleep
+		 * Crew 2 Sleep
 		 */
 		JButton btnSleep2 = new JButton("Sleep");
 		btnSleep2.addActionListener(new ActionListener() {
@@ -632,7 +741,7 @@ public class CrewManager extends GameOver {
 		crewManager.getContentPane().add(btnSleep2);
 		
 		/**
-		 * Repair ship
+		 * Crew 2 Repair ship
 		 */
 		JButton btnRepair2 = new JButton("Repair Ship");
 		btnRepair2.addActionListener(new ActionListener() {
@@ -659,7 +768,7 @@ public class CrewManager extends GameOver {
 		crewManager.getContentPane().add(btnRepair2);
 		
 		/**
-		 * Search planet
+		 * Crew 2 Search planet
 		 */
 		JButton btnSearch2 = new JButton("Search Planet");
 		btnSearch2.addActionListener(new ActionListener() {
@@ -678,7 +787,7 @@ public class CrewManager extends GameOver {
 		crewManager.getContentPane().add(btnSearch2);
 		
 		/**
-		 * Pilot Ship
+		 * Crew 2 Pilot Ship
 		 */
 		JButton btnPilot2 = new JButton("Pilot Ship");
 		btnPilot2.addActionListener(new ActionListener() {
@@ -761,7 +870,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(lblAction3);
 			
 			/**
-			 * Use item
+			 * Crew 3 Use item
 			 */
 			btnEat3 = new JButton("Use Item");
 			btnEat3.addActionListener(new ActionListener() {
@@ -787,7 +896,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(btnEat3);
 			
 			/**
-			 * Sleep
+			 * Crew 3 Sleep
 			 */
 			btnSleep3 = new JButton("Sleep");
 			btnSleep3.addActionListener(new ActionListener() {
@@ -809,7 +918,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(btnSleep3);
 			
 			/**
-			 * Repair ship
+			 * crew 3 Repair ship
 			 */
 			btnRepair3 = new JButton("Repair Ship");
 			btnRepair3.addActionListener(new ActionListener() {
@@ -836,7 +945,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(btnRepair3);
 			
 			/**
-			 * Search planet
+			 * Crew 3 Search planet
 			 */
 			btnSearch3 = new JButton("Search Planet");
 			btnSearch3.addActionListener(new ActionListener() {
@@ -855,7 +964,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(btnSearch3);
 			
 			/**
-			 * Pilot Ship
+			 * Crew 3 Pilot Ship
 			 */
 			btnPilot3 = new JButton("Pilot Ship");
 			btnPilot3.addActionListener(new ActionListener() {
@@ -936,7 +1045,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(lblAction4);
 			
 			/**
-			 * Use item
+			 * Crew 4 Use item
 			 */
 			btnEat4 = new JButton("Use Item");
 			btnEat4.addActionListener(new ActionListener() {
@@ -962,7 +1071,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(btnEat4);
 			
 			/**
-			 * Sleep
+			 * Crew 4 Sleep
 			 */
 			btnSleep4 = new JButton("Sleep");
 			btnSleep4.addActionListener(new ActionListener() {
@@ -984,7 +1093,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(btnSleep4);
 			
 			/**
-			 * Repair
+			 * Crew 4 Repair
 			 */
 			btnRepair4 = new JButton("Repair Ship");
 			btnRepair4.addActionListener(new ActionListener() {
@@ -1011,7 +1120,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(btnRepair4);
 			
 			/**
-			 * Search Planet
+			 * Crew 4 Search Planet
 			 */
 			btnSearch4 = new JButton("Search Planet");
 			btnSearch4.addActionListener(new ActionListener() {
@@ -1030,7 +1139,7 @@ public class CrewManager extends GameOver {
 			crewManager.getContentPane().add(btnSearch4);
 			
 			/**
-			 * Pilot Ship
+			 * Crew 4 Pilot Ship
 			 */
 			btnPilot4 = new JButton("Pilot Ship");
 			btnPilot4.addActionListener(new ActionListener() {

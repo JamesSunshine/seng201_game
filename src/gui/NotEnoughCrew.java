@@ -11,10 +11,14 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NotEnoughCrew.
+ */
 public class NotEnoughCrew extends JDialog {
 
 	/**
-	 * Launch the application.
+	 * Show dialog.
 	 */
 	public static void showDialog() {
 		NotEnoughCrew dialog = new NotEnoughCrew();
@@ -22,12 +26,15 @@ public class NotEnoughCrew extends JDialog {
 		dialog.setVisible(true);
 	}
 
+	/**
+	 * Close dialog.
+	 */
 	public void closeDialog() {
 		this.dispose();
 	}
 	
 	/**
-	 * Create the dialog.
+	 * Instantiates a new not enough crew.
 	 */
 	public NotEnoughCrew() {
 		setBounds(100, 100, 272, 172);

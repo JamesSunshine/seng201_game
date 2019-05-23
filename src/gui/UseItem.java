@@ -15,19 +15,38 @@ import main.Game;
 import main.Ship;
 import main.Items.Item;
 import main.Types.CrewMember;
+import gui.CrewManager;
 
-public class UseItem extends CrewManager {
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UseItem.
+ */
+public class UseItem {
 
+	/** The use window. */
 	private JFrame useWindow;
+	
+	/** The manager. */
 	private CrewManager manager;
+	
+	/** The item. */
 	private Item item;
+	
+	/** The type. */
 	private String type;
+	
+	/** The stat. */
 	private int stat;
+	
+	/** The member. */
 	private CrewMember member;
 
 	
 	/**
-	 * Create the application.
+	 * Instantiates a new use item.
+	 *
+	 * @param incomingManager the incoming manager
+	 * @param incomingMember the incoming member
 	 */
 	public UseItem(CrewManager incomingManager, CrewMember incomingMember) {
 		manager = incomingManager;
@@ -37,28 +56,53 @@ public class UseItem extends CrewManager {
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see gui.CrewManager#closeWindow()
+	 */
 	public void closeWindow() {
 		useWindow.dispose();
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see gui.CrewManager#returnThis()
+	 */
 	public UseItem returnThis() {
 		return this;
 	}
 	
+	/**
+	 * Gets the variables for an item.
+	 *
+	 * @param i the i
+	 * @return the variables
+	 */
 	public void getVariables(Item i) {
 		type = i.getType();
 		stat = i.getStat();
 	}
 	
+	/**
+	 * Gets the item type.
+	 *
+	 * @return the type
+	 */
 	public String getType() {
 		return type;
 	}
 	
+	/**
+	 * Gets the item stats.
+	 *
+	 * @return the stat
+	 */
 	public int getStat() {
 		return stat;
 	}
 	
+	/**
+	 * Use an item.
+	 */
 	public void itemUse() {
 		if (getType() == "Medicine") {
 			member.heal(getStat());
@@ -74,7 +118,7 @@ public class UseItem extends CrewManager {
 
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize.
 	 */
 	private void initialize() {
 		useWindow = new JFrame();

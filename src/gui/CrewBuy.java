@@ -15,43 +15,83 @@ import java.awt.event.ActionEvent;
 import gui.NotEnoughCrew;
 import gui.CrewFull;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CrewBuy.
+ */
 public class CrewBuy {
 
+	/** The crew buy. */
 	private JFrame crewBuy;
+	
+	/** The manager. */
 	private Game manager;
+	
+	/** The crew count. */
 	private int crewCount = 0;
+	
+	/** The temp name. */
 	private String tempName;
+	
+	/** The crewpoint value. */
 	private JLabel crewpointValue;
+	
+	/** The crew size. */
 	private JLabel crewSize;
 	
 
 	
+	/**
+	 * Instantiates a new crew buy.
+	 *
+	 * @param incomingManager the incoming manager
+	 */
 	public CrewBuy(Game incomingManager) {
 		manager = incomingManager;
 		initialize();
 		crewBuy.setVisible(true);
 	}
 	
+	/**
+	 * Update crew count.
+	 */
 	public void updatecrewCount() {
 		crewpointValue.setText(Integer.toString(manager.getShipPoints()));
 	}
 	
+	/**
+	 * Update crew size.
+	 */
 	public void updateCrewSize() {
 		crewSize.setText(Integer.toString(manager.getNumCrew()));
 	}
 	
+	/**
+	 * Close window.
+	 */
 	public void closeWindow() {
 		crewBuy.dispose();
 	}
 	
+	/**
+	 * Finished window.
+	 */
 	public void finishedWindow() {
 		manager.closeCrewBuy(this);
 	}
 	
+	/**
+	 * Return this crewbuy object.
+	 *
+	 * @return the crew buy
+	 */
 	public CrewBuy returnThis() {
 		return this;
 	}
 
+	/**
+	 * Initialize.
+	 */
 	private void initialize() {
 		crewBuy = new JFrame();
 		crewBuy.setBounds(100, 100, 789, 552);

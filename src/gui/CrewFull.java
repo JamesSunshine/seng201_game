@@ -11,12 +11,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CrewFull.
+ */
 public class CrewFull extends JDialog {
 
+	/** The content panel. */
 	private final JPanel contentPanel = new JPanel();
 
 	/**
-	 * Launch the application.
+	 * Show dialog.
 	 */
 
 	public static void showDialog() {
@@ -25,11 +30,15 @@ public class CrewFull extends JDialog {
 		dialog.setVisible(true);
 	}
 
+	/**
+	 * Close dialog.
+	 */
 	public void closeDialog() {
 		this.dispose();
 	}
+	
 	/**
-	 * Create the dialog.
+	 * Instantiates a new crewfull.
 	 */
 	public CrewFull() {
 		setBounds(100, 100, 272, 172);

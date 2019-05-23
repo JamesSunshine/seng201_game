@@ -4,13 +4,28 @@ import main.Items.*;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SpaceOutpost.
+ */
 public class SpaceOutpost {
 
+    /**
+     * View shop.
+     *
+     * @return the array list
+     */
     public ArrayList<String> viewShop() {
         return new ArrayList<String>();
 
     }
 
+    /**
+     * Purchase an item
+     *
+     * @param itemName the item name
+     * @return the item
+     */
     public Item purchase(String itemName) {
         switch (itemName){
             case "Aids Cure": {
