@@ -77,17 +77,6 @@ public class currentInventory {
 		}
 		JList<Item> list = new JList<Item>(listModel);
 		list.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent mouseEvent) {
-				JList list = (JList) mouseEvent.getSource();
-				if (mouseEvent.getClickCount() == 2) {
-					int index = list.locationToIndex(mouseEvent.getPoint());
-					if (index >= 0) {
-					Ship.Inventory.remove(index);
-					closeWindow();
-					}
-				}
-			}
 		});
 		list.setBounds(12, 12, 426, 211);
 		scrollPane.setViewportView(list);

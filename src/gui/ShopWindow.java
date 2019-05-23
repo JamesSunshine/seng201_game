@@ -313,11 +313,11 @@ public class ShopWindow {
 		breadPrice.setBounds(200, 147, 66, 15);
 		shopWindow.getContentPane().add(breadPrice);
 		
-		JLabel pkEffect = new JLabel("Restores 1 Health");
+		JLabel pkEffect = new JLabel("Restores 2 Health");
 		pkEffect.setBounds(262, 39, 120, 15);
 		shopWindow.getContentPane().add(pkEffect);
 		
-		JLabel bandEffect = new JLabel("Restores 2 Health");
+		JLabel bandEffect = new JLabel("Restores 4 Health");
 		bandEffect.setBounds(262, 66, 136, 15);
 		shopWindow.getContentPane().add(bandEffect);
 		
