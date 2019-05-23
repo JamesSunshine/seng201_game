@@ -120,7 +120,6 @@ public class CrewManager {
 		else if ((member.getHealth() == 0) || (member.getHunger() == 100) || (member.getTiredness() == 100)) {
 			member.setDead();
 			Ship.crewList.remove(member);
-			System.out.println(Ship.crewList);
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\n" + member.getName() + " died. RIP.");
 			return true;
