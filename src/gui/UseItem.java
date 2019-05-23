@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import main.Game;
 import main.Ship;
 import main.Items.Item;
+import main.Types.CrewMember;
 
 public class UseItem {
 
@@ -22,13 +23,15 @@ public class UseItem {
 	private Item item;
 	private String type;
 	private int stat;
+	private CrewMember member;
 
 	
 	/**
 	 * Create the application.
 	 */
-	public UseItem(Game incomingManager) {
+	public UseItem(Game incomingManager, CrewMember incomingMember) {
 		manager = incomingManager;
+		member = incomingMember;
 		initialize();
 		useWindow.setVisible(true);
 	}
@@ -54,6 +57,18 @@ public class UseItem {
 	
 	public int getStat() {
 		return stat;
+	}
+	
+	public void itemUse() {
+		if (getType() == "Medicine") {
+			member.heal(getStat());
+		}
+		else if (getType() == "Food") {
+			member.eat(getStat());
+		}
+		else {
+			member.cureAids();;
+		}
 	}
 	
 	
@@ -87,6 +102,7 @@ public class UseItem {
 					int index = list.locationToIndex(mouseEvent.getPoint());
 					if (index >= 0) {
 					getVariables(Ship.Inventory.get(index));
+					itemUse();
 					Ship.Inventory.remove(index);
 					closeWindow();
 					}

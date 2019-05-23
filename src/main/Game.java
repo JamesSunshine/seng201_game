@@ -143,8 +143,8 @@ public class Game {
     	currentInventory invWindow = new currentInventory(this);
     }
     
-    public void launchUseItem() {
-    	UseItem useWindow = new UseItem(this);
+    public void launchUseItem(CrewMember member) {
+    	UseItem useWindow = new UseItem(this, member);
     }
     
     public void closecurrentInventory(currentInventory invWindow) {

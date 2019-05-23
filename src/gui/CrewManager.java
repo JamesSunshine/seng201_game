@@ -240,7 +240,7 @@ public class CrewManager {
 			public void actionPerformed(ActionEvent arg0) {
 				if (crew1.getActions() > 0) {
 					if (Ship.Inventory.size() > 0) {
-					manager.launchUseItem();
+					manager.launchUseItem(crew1);
 					}
 					else {
 						String currentText = txtConsole.getText();
@@ -917,7 +917,7 @@ public class CrewManager {
 				//Crew1 methods
 				crew1.resetActions();
 				lblAction1.setText(Integer.toString(crew1.getActions()));
-				//crew1.getHungry();
+				crew1.getHungry();
 				progressHunger1.setValue(crew1.getHunger());
 				crew1.getTired();
 				progressTiredness1.setValue(crew1.getTiredness());
@@ -937,7 +937,7 @@ public class CrewManager {
 				//Crew2 methods
 				crew2.resetActions();
 				lblAction2.setText(Integer.toString(crew2.getActions()));
-				//crew2.getHungry();
+				crew2.getHungry();
 				progressHunger2.setValue(crew2.getHunger());
 				crew2.getTired();
 				progressTiredness2.setValue(crew2.getTiredness());
@@ -957,7 +957,7 @@ public class CrewManager {
 				if (crewList.size() >= 3) {
 					crew3.resetActions();
 					lblAction3.setText(Integer.toString(crew3.getActions()));
-					//crew3.getHungry();
+					crew3.getHungry();
 					progressHunger3.setValue(crew3.getHunger());
 					crew3.getTired();
 					progressTiredness3.setValue(crew3.getTiredness());
@@ -979,7 +979,7 @@ public class CrewManager {
 				if (crewList.size() >= 4) {
 					crew4.resetActions();
 					lblAction4.setText(Integer.toString(crew4.getActions()));
-					//crew4.getHungry();
+					crew4.getHungry();
 					progressHunger4.setValue(crew4.getHunger());
 					crew4.getTired();
 					progressTiredness4.setValue(crew4.getTiredness());

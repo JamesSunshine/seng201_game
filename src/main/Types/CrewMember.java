@@ -88,7 +88,15 @@ public abstract class CrewMember {
     public boolean gotAids() {
     	return this.hasAids;
     }
+    
+    public void cureAids() {
+    	this.hasAids = false;
+    }
 
+    public void eat(int food) {
+    	hunger -= food;
+    }
+    
     public void getHungry() {
         hunger = hunger + hungerChange;
     }
