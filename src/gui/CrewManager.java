@@ -109,6 +109,15 @@ public class CrewManager {
 	}
 	
 	/**
+	 * Check if game has been won
+	 */
+	public void checkWin() {
+		if (myShip.getParts() == maxParts) {
+			WinGame winGame = new WinGame();
+			closeWindow();
+		}
+	}
+	/**
  	 * Methods to run random events
 	 */
 	
@@ -204,6 +213,7 @@ public class CrewManager {
 				currentPlanet.setSearched();
 				member.useAction();
 				myShip.addParts();
+				checkWin();
 				int partsStatus = (int) ((double)myShip.getParts()/(double)maxParts *100);
 				progressParts.setValue(partsStatus);
 				lblParts.setText(myShip.getParts() + "/" + maxParts);

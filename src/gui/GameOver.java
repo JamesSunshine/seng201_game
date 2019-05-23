@@ -39,6 +39,12 @@ public class GameOver {
 		GameOver.getContentPane().setLayout(null);
 		
 		JButton btnMainMenu = new JButton("Main Menu");
+		btnMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Game.main(new String[1]);
+				closeWindow();
+			}
+		});
 		btnMainMenu.setBounds(48, 161, 114, 25);
 		GameOver.getContentPane().add(btnMainMenu);
 		
