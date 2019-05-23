@@ -8,12 +8,14 @@ import main.Game;
 import main.Planet;
 import main.RNGEvent;
 import main.Ship;
+import main.SpaceOutpost;
 import main.Types.CrewMember;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
@@ -56,6 +58,8 @@ public class CrewManager {
 	private Ship myShip;
 	private RNGEvent event = new RNGEvent();
 	private Planet currentPlanet = new Planet();
+	private SpaceOutpost spaceOutpost = new SpaceOutpost();
+    private Random rand = new Random();
 	
 	
 	
@@ -113,25 +117,40 @@ public class CrewManager {
 	}
 	
 	public void searchPlanet(CrewMember member) {
+		int foundID = (int) (Math.random() * 4 + 1);
+		if (member.getType() == "Scout") {
+			if (foundID == 1) {
+				foundID += 1;
+			}
+		}
 		if (currentPlanet.checkSearched() == true) {
 			String currentText = txtConsole.getText();
-			txtConsole.setText(currentText + "\nPlanet has already benn searched");
+			txtConsole.setText(currentText + "\nPlanet " + currentPlanet.getplanetName() +
+					" has already been searched");
 		}
 		else {
-			if (event.planetSearch(member, myShip) == "Found Nothing") {
+			if (event.planetSearch(member, foundID) == "Found Nothing") {
+				currentPlanet.setSearched();
 				String currentText = txtConsole.getText();
 				txtConsole.setText(currentText + "\n" + member.getName() + " Found nothing while searching " + currentPlanet.getplanetName() + ".");
 			}
-			else if (event.planetSearch(member, myShip) == "Found Money") {
+			else if (event.planetSearch(member, foundID) == "Found Money") {
+				currentPlanet.setSearched();
 				myShip.addMoney(10);
 				String currentText = txtConsole.getText();
 				txtConsole.setText(currentText + "\n" + member.getName() + " Found some money while searching " + currentPlanet.getplanetName() + ".");
 			}
-			else if (event.planetSearch(member, myShip) == "Found Item") {
+			else if (event.planetSearch(member, foundID) == "Found Item") {
+				currentPlanet.setSearched();
+				int index = rand.nextInt(8);
+				index += 1;
+				myShip.addInventory(spaceOutpost.purchase(RNGEvent.foundItem.get(index)));
 				String currentText = txtConsole.getText();
 				txtConsole.setText(currentText + "\n" + member.getName() + " Found an item while searching " + currentPlanet.getplanetName() + ".");
 			}
-			else if (event.planetSearch(member, myShip) == "Found Part") {
+			else if (event.planetSearch(member, foundID) == "Found Part") {
+				currentPlanet.setSearched();
+				myShip.addParts();
 				String currentText = txtConsole.getText();
 				txtConsole.setText(currentText + "\n" + member.getName() + " Found a transporter part while searching " + currentPlanet.getplanetName() + ".");
 			}

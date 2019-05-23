@@ -39,5 +39,8 @@ public class Planet {
     public boolean checkSearched() {
     	return searched;
     }
-
+    
+    public void setSearched() {
+    	searched = true;
+    }
 }
