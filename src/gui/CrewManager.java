@@ -58,14 +58,17 @@ public class CrewManager {
 	 * Methods to run random events
 	 */
 	public void eventPirate() {
-		if (event.spacePirates(myShip) == true) {
+		if (event.spacePirates(myShip) == "Gunner Pass") {
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\nYour gunner protected the ship from pirates.");
 		}
-		else {
+		else if (event.spacePirates(myShip) == "Gunner Fail") {
+			
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\nYour ship was attacked by pirates, I think they"
 					+ " took something!");	
+		} else {
+			;
 		}
 	}
 	
@@ -74,7 +77,15 @@ public class CrewManager {
 	}
 	
 	public void eventBelt() {
-		
+		if (event.asteroidBelt(myShip) == "Pilot Pass") {
+			String currentText = txtConsole.getText();
+			txtConsole.setText(currentText + "\nYour pilot avoided an asteroid belt.");
+		} else if (event.asteroidBelt(myShip) == "Pilot Fail") {
+			String currentText = txtConsole.getText();
+			txtConsole.setText(currentText + "\nYour ship was damaged by an asteroid belt.");
+		} else {
+			;
+		}
 	}
 	
 	
