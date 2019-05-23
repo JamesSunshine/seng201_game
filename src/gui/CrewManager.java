@@ -315,21 +315,21 @@ public class CrewManager {
 		crewManager.getContentPane().add(lblShipStatus);
 		
 		JLabel lblHealth_1 = new JLabel("Health");
-		lblHealth_1.setBounds(240, 585, 66, 15);
+		lblHealth_1.setBounds(217, 585, 66, 15);
 		crewManager.getContentPane().add(lblHealth_1);
 		
 		JProgressBar progressShipHealth = new JProgressBar();
 		progressShipHealth.setForeground(Color.GREEN);
-		progressShipHealth.setBounds(301, 585, 183, 14);
+		progressShipHealth.setBounds(290, 585, 183, 14);
 		crewManager.getContentPane().add(progressShipHealth);
 		progressShipHealth.setValue(100);
 		
 		JLabel lblPartsFound = new JLabel("Parts Found");
-		lblPartsFound.setBounds(199, 617, 91, 15);
+		lblPartsFound.setBounds(199, 643, 91, 15);
 		crewManager.getContentPane().add(lblPartsFound);
 		
 		JProgressBar progressBar_1 = new JProgressBar();
-		progressBar_1.setBounds(302, 612, 182, 14);
+		progressBar_1.setBounds(291, 644, 182, 14);
 		crewManager.getContentPane().add(progressBar_1);
 		
 		
@@ -619,7 +619,7 @@ public class CrewManager {
 		crewManager.getContentPane().add(btnNextDay);
 		
 		JLabel label = new JLabel("4/5");
-		label.setBounds(382, 638, 66, 15);
+		label.setBounds(371, 673, 66, 15);
 		crewManager.getContentPane().add(label);
 		
 	}
