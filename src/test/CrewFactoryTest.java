@@ -27,6 +27,7 @@ class CrewFactoryTest {
 		gazza.takeDamage(10);
 		int finalHealth = gazza.getHealth();
 		int healthDiff = initialHealth - finalHealth;
+		System.out.println(healthDiff);
 		
 		assert(name == "Gazza");
 		assert(type == "Engineer");
