@@ -10,13 +10,22 @@ class Xd2_thexdening {
 
 	@Test
 	void test() {
-		Engineer bobby = new Engineer("Gaz");
-		int beforeHunger = bobby.getHunger();
+		Engineer bobby = new Engineer("Bobby");
+		String name =bobby.getName();
+		String type = bobby.getType();
+		int initialHunger = bobby.getHunger();
 		bobby.getHungry();
-		int afterHunger = bobby.getHunger();
-		int hungerDiff = beforeHunger - afterHunger;
-		System.out.println(beforeHunger + " " + afterHunger);
-		assert(hungerDiff == 2);
+		int finalHunger = bobby.getHunger();
+		int hungerDiff = finalHunger - initialHunger;
+		int initialTiredness = bobby.getTiredness();
+		bobby.getTired();
+		int finalTiredness = bobby.getTiredness();
+		int tiredDiff = finalTiredness - initialTiredness;
+		
+		assert(name == "Bobby");
+		assert(type == "Engineer");
+		assert(hungerDiff == 15);
+		assert(tiredDiff == 15);
 		
 	}
 

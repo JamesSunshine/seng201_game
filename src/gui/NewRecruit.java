@@ -1,8 +1,6 @@
 package gui;
 import gui.CrewBuy;
-import main.CrewFactory;
 import main.Game;
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -13,17 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import main.Ship;
-import main.Items.AidsCure;
-import main.Items.Bandages;
-import main.Items.CabinBread;
-import main.Items.CaesarSalad;
-import main.Items.ConcretePill;
-import main.Items.Doritos;
-import main.Items.Item;
-import main.Items.MiGoreng;
-import main.Items.SpaceWhopper;
-import main.Items.TunaMelt;
+
 public class NewRecruit extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();

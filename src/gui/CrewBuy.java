@@ -20,7 +20,6 @@ public class CrewBuy {
 	private JFrame crewBuy;
 	private Game manager;
 	private int crewCount = 0;
-	private String tempName;
 	private JLabel crewpointValue;
 	private JLabel crewSize;
 	

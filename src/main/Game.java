@@ -4,7 +4,6 @@ import gui.CrewBuy;
 import gui.CrewManager;
 import gui.MainMenu;
 import gui.Startup;
-import gui.UseItem;
 import gui.currentInventory;
 import main.Types.CrewMember;
 import gui.ShopWindow;

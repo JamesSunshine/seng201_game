@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import main.Game;
@@ -14,9 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class currentInventory {
 

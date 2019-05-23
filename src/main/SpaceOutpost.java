@@ -8,7 +8,6 @@ public class SpaceOutpost {
 
     public ArrayList<String> viewShop() {
         return new ArrayList<String>();
-
     }
 
     public Item purchase(String itemName) {
@@ -39,8 +38,7 @@ public class SpaceOutpost {
             }
             case "Tuna Melt Sandwich": {
                 return new TunaMelt();
-            }
-            
+            }  
         }
         return null; 
     }
