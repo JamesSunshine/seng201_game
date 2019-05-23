@@ -112,8 +112,30 @@ public class CrewManager {
 		}
 	}
 	
-	public void searchPlanet() {
-		
+	public void searchPlanet(CrewMember member) {
+		if (currentPlanet.checkSearched() == true) {
+			String currentText = txtConsole.getText();
+			txtConsole.setText(currentText + "\nPlanet has already benn searched");
+		}
+		else {
+			if (event.planetSearch(member, myShip) == "Found Nothing") {
+				String currentText = txtConsole.getText();
+				txtConsole.setText(currentText + "\n" + member.getName() + " Found nothing while searching " + currentPlanet.getplanetName() + ".");
+			}
+			else if (event.planetSearch(member, myShip) == "Found Money") {
+				myShip.addMoney(10);
+				String currentText = txtConsole.getText();
+				txtConsole.setText(currentText + "\n" + member.getName() + " Found some money while searching " + currentPlanet.getplanetName() + ".");
+			}
+			else if (event.planetSearch(member, myShip) == "Found Item") {
+				String currentText = txtConsole.getText();
+				txtConsole.setText(currentText + "\n" + member.getName() + " Found an item while searching " + currentPlanet.getplanetName() + ".");
+			}
+			else if (event.planetSearch(member, myShip) == "Found Part") {
+				String currentText = txtConsole.getText();
+				txtConsole.setText(currentText + "\n" + member.getName() + " Found a transporter part while searching " + currentPlanet.getplanetName() + ".");
+			}
+		}
 	}
 	
 	public boolean checkDead(CrewMember member) {
@@ -291,28 +313,7 @@ public class CrewManager {
 		JButton btnSearch1 = new JButton("Search Planet");
 		btnSearch1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (currentPlanet.checkSearched() == true) {
-					String currentText = txtConsole.getText();
-					txtConsole.setText(currentText + "\nPlanet has already benn searched");
-				}
-				else {
-					if (event.planetSearch(crew1) == "Found Nothing") {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\n" + crew1.getName() + " Found nothing while searching " + currentPlanet.getplanetName() + ".");
-					}
-					else if (event.planetSearch(crew1) == "Found Money") {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\n" + crew1.getName() + " Found some money while searching " + currentPlanet.getplanetName() + ".");
-					}
-					else if (event.planetSearch(crew1) == "Found Item") {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\n" + crew1.getName() + " Found an item while searching " + currentPlanet.getplanetName() + ".");
-					}
-					else if (event.planetSearch(crew1) == "Found Part") {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\n" + crew1.getName() + " Found a transporter part while searching " + currentPlanet.getplanetName() + ".");
-					}
-				}
+				searchPlanet(crew1);
 			}
 		});
 		btnSearch1.setBounds(54, 445, 149, 25);
@@ -493,28 +494,7 @@ public class CrewManager {
 		JButton btnSearch2 = new JButton("Search Planet");
 		btnSearch2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (currentPlanet.checkSearched() == true) {
-					String currentText = txtConsole.getText();
-					txtConsole.setText(currentText + "\nPlanet has already benn searched");
-				}
-				else {
-					if (event.planetSearch(crew2) == "Found Nothing") {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\n" + crew2.getName() + " Found nothing while searching " + currentPlanet.getplanetName() + ".");
-					}
-					else if (event.planetSearch(crew2) == "Found Money") {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\n" + crew2.getName() + " Found some money while searching " + currentPlanet.getplanetName() + ".");
-					}
-					else if (event.planetSearch(crew2) == "Found Item") {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\n" + crew2.getName() + " Found an item while searching " + currentPlanet.getplanetName() + ".");
-					}
-					else if (event.planetSearch(crew2) == "Found Part") {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\n" + crew2.getName() + " Found a transporter part while searching " + currentPlanet.getplanetName() + ".");
-					}
-				}
+				searchPlanet(crew2);
 			}
 		});
 		btnSearch2.setBounds(259, 445, 149, 25);
@@ -665,28 +645,7 @@ public class CrewManager {
 			btnSearch3 = new JButton("Search Planet");
 			btnSearch3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					if (currentPlanet.checkSearched() == true) {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\nPlanet has already benn searched");
-					}
-					else {
-						if (event.planetSearch(crew3) == "Found Nothing") {
-							String currentText = txtConsole.getText();
-							txtConsole.setText(currentText + "\n" + crew3.getName() + " Found nothing while searching " + currentPlanet.getplanetName() + ".");
-						}
-						else if (event.planetSearch(crew3) == "Found Money") {
-							String currentText = txtConsole.getText();
-							txtConsole.setText(currentText + "\n" + crew3.getName() + " Found some money while searching " + currentPlanet.getplanetName() + ".");
-						}
-						else if (event.planetSearch(crew3) == "Found Item") {
-							String currentText = txtConsole.getText();
-							txtConsole.setText(currentText + "\n" + crew3.getName() + " Found an item while searching " + currentPlanet.getplanetName() + ".");
-						}
-						else if (event.planetSearch(crew3) == "Found Part") {
-							String currentText = txtConsole.getText();
-							txtConsole.setText(currentText + "\n" + crew3.getName() + " Found a transporter part while searching " + currentPlanet.getplanetName() + ".");
-						}
-					}
+					searchPlanet(crew3);
 				}
 			});
 			btnSearch3.setBounds(480, 445, 149, 25);
@@ -835,28 +794,7 @@ public class CrewManager {
 			btnSearch4 = new JButton("Search Planet");
 			btnSearch4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					if (currentPlanet.checkSearched() == true) {
-						String currentText = txtConsole.getText();
-						txtConsole.setText(currentText + "\nPlanet has already benn searched");
-					}
-					else {
-						if (event.planetSearch(crew4) == "Found Nothing") {
-							String currentText = txtConsole.getText();
-							txtConsole.setText(currentText + "\n" + crew4.getName() + " Found nothing while searching " + currentPlanet.getplanetName() + ".");
-						}
-						else if (event.planetSearch(crew4) == "Found Money") {
-							String currentText = txtConsole.getText();
-							txtConsole.setText(currentText + "\n" + crew4.getName() + " Found some money while searching " + currentPlanet.getplanetName() + ".");
-						}
-						else if (event.planetSearch(crew4) == "Found Item") {
-							String currentText = txtConsole.getText();
-							txtConsole.setText(currentText + "\n" + crew4.getName() + " Found an item while searching " + currentPlanet.getplanetName() + ".");
-						}
-						else if (event.planetSearch(crew4) == "Found Part") {
-							String currentText = txtConsole.getText();
-							txtConsole.setText(currentText + "\n" + crew4.getName() + " Found a transporter part while searching " + currentPlanet.getplanetName() + ".");
-						}
-					}
+					searchPlanet(crew4);
 				}
 			});
 			btnSearch4.setBounds(684, 445, 149, 25);

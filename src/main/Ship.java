@@ -55,7 +55,7 @@ public class Ship {
     }
     
     public void addMoney(int foundMoney) {
-    	money += foundMoney;
+    	money = money + foundMoney;
     }
     
     public void subMoney(int cost) {

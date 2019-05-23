@@ -98,15 +98,15 @@ public class RNGEvent {
         return "Pass";
     }
     
-    public String planetSearch(CrewMember member) {
+    public String planetSearch(CrewMember member, Ship incomingShip) {
     	//Scout cannot find nothing
+    	yourShip = incomingShip;
     	System.out.println("el poopo");
     	if (member.getType() == "Scout") {
     		System.out.println("el poopo 2");
-    		foundID = (int) Math.random() * ((4 - 2) + 1) + 2;
+    		foundID = (int) (Math.random() * ((4 - 2) + 1) + 2);
     		switch (foundID) {
     			case 2:{
-    				yourShip.addMoney(10);
     				return "Found Money";
     			}
     			case 3: {
@@ -122,7 +122,7 @@ public class RNGEvent {
     	}
     	else {
     		System.out.println("el poopo 3");
-    		foundID = (int) Math.random() * ((4 - 1) + 1) + 1;
+    		foundID = (int) (Math.random() * ((4 - 1) + 1) + 1);
     		System.out.println(foundID);
     		switch (foundID) {
     			case 1: {
