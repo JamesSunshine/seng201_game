@@ -9,7 +9,7 @@ public class Ship {
 
     private String name;
     private int numberofCrew = 0;
-    private int shipCondition = 100;
+    private int shipCondition = 0;
     private int crewPoints = 0;
     private int money = 100;
 
@@ -73,13 +73,25 @@ public class Ship {
         crewPoints = crewPoints - points;
     }
 
-    public int shipRepair(int repair) {
-        shipCondition = shipCondition + repair;
-        return shipCondition;
+    public void shipRepair(String type) {
+    	if (type == "Engineer") {
+    		if (this.checkCondition() >= 20) {
+    			shipCondition -= 20;
+    		} else {
+    			shipCondition = 0;
+    		}
+    	} else {
+    		if (this.checkCondition() >= 10) {
+    			shipCondition -= 10;
+    		} else {
+    			shipCondition = 0;
+    		}
+    		
+    	}
     }
 
     public void shipDamage(int damage) {
-        this.shipCondition = shipCondition - damage;
+        this.shipCondition = shipCondition + damage;
     }
 
     public int checkCondition() {
