@@ -73,7 +73,11 @@ public class currentInventory {
 		for (int i = 0; i < Ship.Inventory.size(); i++)
 		{
 		    item = Ship.Inventory.get(i);
+<<<<<<< HEAD
+			listModel.addElement(item.getName() + "" + item.getEffect());
+=======
 			listModel.addElement(item.getName() + item.getEffect());
+>>>>>>> 9d1a7224d58b4990b11a5705c08d638d9c2ea315
 		}
 		JList<Item> list = new JList<Item>(listModel);
 		list.addMouseListener(new MouseAdapter() {
