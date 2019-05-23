@@ -42,10 +42,7 @@ public class RNGEvent {
             if ((this.hasGunner == true) && (occurrence < (this.threshold += 2))) {
             	return "Gunner Pass";
             	}
-            else {
-            	shipDamage = 10;
-            	yourShip.shipDamage(shipDamage);
-          
+            else {          
             	if (Ship.Inventory.size() == 0) {
             	return "Gunner Fail";
             	}

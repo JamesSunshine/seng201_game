@@ -84,14 +84,18 @@ public class CrewManager {
 		crewManager.setVisible(true);
 	}
 	
+	
 	/**
-	 * Game Over
+	 * Game Over Method
 	 */
 	public void gameOver(Ship myShip) {
 		GameOver gameOver = new GameOver(myShip);
 		closeWindow();
 	}
 	
+	/**
+	 * Checks if Game Over conditions are met
+	 */
 	public void checkEndGame() {
 		if (manager.getcurrentDay() == manager.getnumberDays() - 1) {
 			gameOver(myShip);
@@ -110,7 +114,7 @@ public class CrewManager {
 			txtConsole.setText(currentText + "\nYour gunner protected the ship from pirates.");
 		}
 		else if (event.spacePirates(myShip) == "Gunner Fail") {
-			
+        	myShip.shipDamage(10);
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\nYour ship was attacked by pirates, I think they"
 					+ " took something!");	
@@ -130,11 +134,17 @@ public class CrewManager {
 		}
 	}
 	
+	/**
+	 * Random Event for Asteroid Belt
+	 */
 	public void eventBelt() {
 		if (event.asteroidBelt(myShip) == "Pilot Pass") {
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\nYour pilot avoided an asteroid belt.");
 		} else if (event.asteroidBelt(myShip) == "Pilot Fail") {
+			int damage = myShip.checkCondition() / 2;
+			myShip.shipDamage(damage);
+			progressShipHealth.setValue(myShip.checkCondition());
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\nYour ship was damaged by an asteroid belt.");
 		} else {
@@ -142,6 +152,10 @@ public class CrewManager {
 		}
 	}
 	
+	/**
+	 * Searches Planet and prints effect to console
+	 * @param member
+	 */
 	public void searchPlanet(CrewMember member) {
 		int foundID = (int) (Math.random() * 4 + 1);
 		if (member.getType() == "Scout") {
@@ -186,6 +200,11 @@ public class CrewManager {
 		}
 	}
 	
+	/**
+	 * Checks if a given crew member is dead
+	 * @param member
+	 * @return
+	 */
 	public boolean checkDead(CrewMember member) {
 		if (member.isDead()) {
 			return true;
@@ -201,6 +220,9 @@ public class CrewManager {
 		}
 	}
 	
+	/**
+	 * Updates Health and Hunger bars of crew
+	 */
 	public void updateBars() {
 		progressHealth1.setValue(crew1.getHealth());
 		progressHunger1.setValue(crew1.getHunger());
@@ -215,6 +237,11 @@ public class CrewManager {
 		progressHunger4.setValue(crew4.getHunger());
 		}
 	}
+	
+	/**
+	 * Cures the crewmember and sets health bar to green
+	 * @param member
+	 */
 	public void cured(CrewMember member) {
 		String currentText = txtConsole.getText();
 		txtConsole.setText(currentText + "\n" + member.getName() + " has been cured.");
@@ -1052,6 +1079,7 @@ public class CrewManager {
 					currentPlanet = new Planet();
 					lblPlanet.setText("Welcome to the planet " + currentPlanet.getplanetName());
 					pilotList = new ArrayList<CrewMember>();
+					eventBelt();
 				} else {
 					String currentText = txtConsole.getText();
 					txtConsole.setText(currentText + "\n" + "There is not enough crew in the cockpit.");	
@@ -1073,23 +1101,23 @@ public class CrewManager {
 		crewManager.getContentPane().add(lblShipStatus);
 		
 
-		JLabel lblHealth_1 = new JLabel("Damage");
-		lblHealth_1.setBounds(225, 585, 66, 15);
+		JLabel lblHealth_1 = new JLabel("Shield Damage");
+		lblHealth_1.setBounds(195, 586, 111, 15);
 		crewManager.getContentPane().add(lblHealth_1);
 		
 		progressShipHealth = new JProgressBar();
 		progressShipHealth.setForeground(Color.RED);
-		progressShipHealth.setBounds(291, 585, 183, 14);
+		progressShipHealth.setBounds(317, 586, 183, 14);
 		crewManager.getContentPane().add(progressShipHealth);
 		progressShipHealth.setValue(0);
 		
 		JLabel lblPartsFound = new JLabel("Parts Found");
-		lblPartsFound.setBounds(199, 643, 91, 15);
+		lblPartsFound.setBounds(215, 649, 91, 15);
 		crewManager.getContentPane().add(lblPartsFound);
 		
 		progressParts = new JProgressBar();
 		progressParts.setForeground(Color.MAGENTA);
-		progressParts.setBounds(291, 644, 182, 14);
+		progressParts.setBounds(318, 649, 182, 14);
 		crewManager.getContentPane().add(progressParts);
 		
 		/**
@@ -1099,6 +1127,7 @@ public class CrewManager {
 		btnNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				checkEndGame();
+				
 				txtConsole.setText("Welcome to day " + (manager.getcurrentDay() + 1) + " Captain" );
 				
 				eventPirate();
@@ -1200,7 +1229,7 @@ public class CrewManager {
 		crewManager.getContentPane().add(btnNextDay);
 		
 		lblParts = new JLabel(myShip.getParts() + "/" + maxParts);
-		lblParts.setBounds(363, 670, 66, 15);
+		lblParts.setBounds(400, 675, 66, 15);
 		crewManager.getContentPane().add(lblParts);
 		
 		lblPlanet = new JLabel("Welcome to the planet " + currentPlanet.getplanetName());
