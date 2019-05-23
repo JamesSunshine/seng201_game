@@ -24,29 +24,24 @@ public class RNGEvent {
         		this.hasGunner = true;
         	}
         }
-        if (this.hasGunner == true) {
-        	System.out.println("poop1");
-        	this.threshold += 2;
-        }
         if (occurrence >= threshold) {
-        	System.out.println("poop2");
-            shipDamage = 10;
-            yourShip.shipDamage(shipDamage);
-            
-            if (Ship.Inventory.size() == 0) {
-            	;
-            }
+            if ((this.hasGunner == true) && (occurrence < (this.threshold += 2))) {
+            	return true;
+            	}
             else {
+            	shipDamage = 10;
+            	yourShip.shipDamage(shipDamage);
+            
+            	if (Ship.Inventory.size() == 0) {
+            	;
+            	}
+            	else {
             	maxIndex = Ship.Inventory.size() - 1;
             	randNum = Math.random() * ((maxIndex - 1) + 1) + 0;
             	Ship.Inventory.remove((int) randNum);
+            	return false;}
             }
-        }
-        else if ((hasGunner == true) && (occurrence < threshold)){
-        	System.out.println("poop3");
-        	return true;
-        }
-        System.out.println("poop4");
+        } 	
 		return false;
     }
 
