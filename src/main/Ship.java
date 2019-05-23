@@ -10,7 +10,7 @@ public class Ship {
     private int numberofCrew = 0;
     private int shipCondition = 0;
     private int crewPoints = 0;
-    private int money = 25;
+    private int money = 15;
     private int shipParts = 0;
 
     public static ArrayList<Item> Inventory  = new ArrayList<Item>();
