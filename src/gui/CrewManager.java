@@ -25,6 +25,7 @@ import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class CrewManager {
 
@@ -41,6 +42,7 @@ public class CrewManager {
 	private JProgressBar progressShipHealth;
 	private JProgressBar progressHealth3;
 	private JProgressBar progressHealth4;
+	private JProgressBar progressParts;
 	private JButton btnEat3;
 	private JButton btnSleep3;
 	private JButton btnRepair3;
@@ -51,6 +53,8 @@ public class CrewManager {
 	private JButton btnRepair4;
 	private JButton btnSearch4;
 	private JButton btnPilot4;
+	private JLabel lblPlanet;
+	private JLabel lblParts;
 	private JLabel lblAction3;
 	private JLabel lblAction4;
 	public static ArrayList<CrewMember> pilotList = new ArrayList<CrewMember>();
@@ -61,7 +65,7 @@ public class CrewManager {
 	private Planet currentPlanet = new Planet();
 	private SpaceOutpost spaceOutpost = new SpaceOutpost();
     private Random rand = new Random();
-	
+	private int maxParts;
 	
 	
 	
@@ -77,7 +81,24 @@ public class CrewManager {
 	}
 	
 	/**
-	 * Methods to run random events
+	 * Game Over
+	 */
+	public void gameOver(Ship myShip) {
+		GameOver gameOver = new GameOver(myShip);
+		closeWindow();
+	}
+	
+	public void checkEndGame() {
+		if (manager.getcurrentDay() == manager.getnumberDays() - 1) {
+			gameOver(myShip);
+		}
+		if (myShip.checkCondition() >= 100) {	
+			gameOver(myShip);
+		}
+	}
+	
+	/**
+ 	 * Methods to run random events
 	 */
 	public void eventPirate() {
 		if (event.spacePirates(myShip) == "Gunner Pass") {
@@ -133,13 +154,13 @@ public class CrewManager {
 			if (event.planetSearch(member, foundID) == "Found Nothing") {
 				currentPlanet.setSearched();
 				String currentText = txtConsole.getText();
-				txtConsole.setText(currentText + "\n" + member.getName() + " Found nothing while searching " + currentPlanet.getplanetName() + ".");
+				txtConsole.setText(currentText + "\n" + member.getName() + " found nothing while searching " + currentPlanet.getplanetName() + ".");
 			}
 			else if (event.planetSearch(member, foundID) == "Found Money") {
 				currentPlanet.setSearched();
 				myShip.addMoney(10);
 				String currentText = txtConsole.getText();
-				txtConsole.setText(currentText + "\n" + member.getName() + " Found some money while searching " + currentPlanet.getplanetName() + ".");
+				txtConsole.setText(currentText + "\n" + member.getName() + " found some money while searching " + currentPlanet.getplanetName() + ".");
 			}
 			else if (event.planetSearch(member, foundID) == "Found Item") {
 				currentPlanet.setSearched();
@@ -147,13 +168,16 @@ public class CrewManager {
 				index += 1;
 				myShip.addInventory(spaceOutpost.purchase(RNGEvent.foundItem.get(index)));
 				String currentText = txtConsole.getText();
-				txtConsole.setText(currentText + "\n" + member.getName() + " Found an item while searching " + currentPlanet.getplanetName() + ".");
+				txtConsole.setText(currentText + "\n" + member.getName() + " found an item while searching " + currentPlanet.getplanetName() + ".");
 			}
 			else if (event.planetSearch(member, foundID) == "Found Part") {
 				currentPlanet.setSearched();
 				myShip.addParts();
+				int partsStatus = (int) ((double)myShip.getParts()/(double)maxParts *100);
+				progressParts.setValue(partsStatus);
+				lblParts.setText(myShip.getParts() + "/" + maxParts);
 				String currentText = txtConsole.getText();
-				txtConsole.setText(currentText + "\n" + member.getName() + " Found a transporter part while searching " + currentPlanet.getplanetName() + ".");
+				txtConsole.setText(currentText + "\n" + member.getName() + " found a transporter part while searching " + currentPlanet.getplanetName() + ".");
 			}
 		}
 	}
@@ -207,6 +231,7 @@ public class CrewManager {
 	 */
 	private void initialize() {
 		myShip = manager.getShip();
+		maxParts = manager.getnumberDays() / 3 * 2;
 		crewManager = new JFrame();
 		crewManager.setTitle(manager.getShipName() + " Crew Manager");
 		crewManager.setBounds(100, 100, 900, 769);
@@ -886,11 +911,23 @@ public class CrewManager {
 		progressDays.setBounds(25, 26, 842, 14);
 		crewManager.getContentPane().add(progressDays);
 		
-		JLabel lblProgress = new JLabel("Progress");
+		JLabel lblProgress = new JLabel("Days Passed");
 		lblProgress.setBounds(400, 12, 100, 15);
 		crewManager.getContentPane().add(lblProgress);
 		
 		JButton btnFly = new JButton("Fly to Next Planet");
+		btnFly.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (pilotList.size() == 2) {
+					currentPlanet = new Planet();
+					lblPlanet.setText("Welcome to the planet " + currentPlanet.getplanetName());
+					pilotList = new ArrayList<CrewMember>();
+				} else {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + "There is not enough crew in the cockpit.");	
+				}
+			}
+		});
 		btnFly.setBounds(25, 612, 156, 25);
 		crewManager.getContentPane().add(btnFly);
 		
@@ -920,9 +957,10 @@ public class CrewManager {
 		lblPartsFound.setBounds(199, 643, 91, 15);
 		crewManager.getContentPane().add(lblPartsFound);
 		
-		JProgressBar progressBar_1 = new JProgressBar();
-		progressBar_1.setBounds(291, 644, 182, 14);
-		crewManager.getContentPane().add(progressBar_1);
+		progressParts = new JProgressBar();
+		progressParts.setForeground(Color.MAGENTA);
+		progressParts.setBounds(291, 644, 182, 14);
+		crewManager.getContentPane().add(progressParts);
 		
 		/**
 		 * NEXT DAY BUTTON 
@@ -930,6 +968,7 @@ public class CrewManager {
 		JButton btnNextDay = new JButton("Next Day");
 		btnNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				checkEndGame();
 				txtConsole.setText("Welcome to day " + (manager.getcurrentDay() + 1) + " Captain" );
 				
 				eventPirate();
@@ -1030,14 +1069,14 @@ public class CrewManager {
 		btnNextDay.setBounds(25, 575, 156, 25);
 		crewManager.getContentPane().add(btnNextDay);
 		
-		JLabel label = new JLabel("4/5");
-		label.setBounds(371, 673, 66, 15);
-		crewManager.getContentPane().add(label);
+		lblParts = new JLabel(myShip.getParts() + "/" + maxParts);
+		lblParts.setBounds(363, 670, 66, 15);
+		crewManager.getContentPane().add(lblParts);
 		
-		JLabel lblNewLabel = new JLabel("Welcome to the planet " + currentPlanet.getplanetName());
-		lblNewLabel.setFont(new Font("DejaVu Sans Light", Font.BOLD, 28));
-		lblNewLabel.setBounds(164, 80, 594, 64);
-		crewManager.getContentPane().add(lblNewLabel);
+		lblPlanet = new JLabel("Welcome to the planet " + currentPlanet.getplanetName());
+		lblPlanet.setFont(new Font("DejaVu Sans Light", Font.BOLD, 28));
+		lblPlanet.setBounds(187, 80, 594, 64);
+		crewManager.getContentPane().add(lblPlanet);
 		
 		
 		
