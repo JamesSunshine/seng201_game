@@ -103,10 +103,17 @@ public class CrewManager {
 		if (myShip.checkCondition() >= 100) {	
 			gameOver(myShip);
 		}
+		if (crewList.size() == 0) {
+			gameOver(myShip);
+		}
 	}
 	
 	/**
  	 * Methods to run random events
+	 */
+	
+	/**
+	 * Encounter Space Pirates
 	 */
 	public void eventPirate() {
 		if (event.spacePirates(myShip) == "Gunner Pass") {
@@ -115,6 +122,7 @@ public class CrewManager {
 		}
 		else if (event.spacePirates(myShip) == "Gunner Fail") {
         	myShip.shipDamage(10);
+        	checkEndGame();
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\nYour ship was attacked by pirates, I think they"
 					+ " took something!");	
@@ -144,6 +152,7 @@ public class CrewManager {
 		} else if (event.asteroidBelt(myShip) == "Pilot Fail") {
 			int damage = myShip.checkCondition() / 2;
 			myShip.shipDamage(damage);
+			checkEndGame();
 			progressShipHealth.setValue(myShip.checkCondition());
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\nYour ship was damaged by an asteroid belt.");
@@ -216,6 +225,7 @@ public class CrewManager {
 		else if ((member.getHealth() == 0) || (member.getHunger() == 100) || (member.getTiredness() == 100)) {
 			member.setDead();
 			Ship.crewList.remove(member);
+			checkEndGame();
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\n" + member.getName() + " died. RIP.");
 			return true;
