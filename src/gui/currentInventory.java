@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class currentInventory {
 
@@ -44,6 +46,7 @@ public class currentInventory {
 		return this;
 	}
 
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -70,11 +73,12 @@ public class currentInventory {
 		for (int i = 0; i < Ship.Inventory.size(); i++)
 		{
 		    item = Ship.Inventory.get(i);
-			listModel.addElement(item.getName() + "<html>\t</html>" + item.getEffect());
+			listModel.addElement(item.getName() + item.getEffect());
 		}
 		JList<Item> list = new JList<Item>(listModel);
+		list.addMouseListener(new MouseAdapter() {
+		});
 		list.setBounds(12, 12, 426, 211);
-		invWindow.getContentPane().add(list);
 		scrollPane.setViewportView(list);
 		
 	}

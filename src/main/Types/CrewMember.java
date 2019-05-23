@@ -50,8 +50,8 @@ public abstract class CrewMember {
 	public void sleep() {
 		tiredness -= 10;
 	}
-    public void takeDamage(){
-
+    public void takeDamage(int damage){
+    		health -= damage;
     }
 
     /**
@@ -59,7 +59,7 @@ public abstract class CrewMember {
      * @param healingAmount amount of HP healed by item
      */
     public void heal(int healingAmount){
-
+    	health += healingAmount;
     }
 
     public void contractAids(){
