@@ -1,6 +1,7 @@
 package main;
 
 import main.Types.CrewMember;
+import gui.CrewManager;
 import main.Ship;
 
 public class RNGEvent {
@@ -12,6 +13,7 @@ public class RNGEvent {
     private double randNum;
     private Ship yourShip;
     private boolean hasGunner = false;
+    private boolean hasPilot = false;
 
 
     public boolean spacePirates(Ship incomingShip) {
@@ -53,12 +55,24 @@ public class RNGEvent {
         }
     }
 
-    public void asteroidBelt(Ship yourShip) {
+    public boolean asteroidBelt(Ship yourShip) {
+    	hasPilot = false;
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
-        if (occurrence >= threshold) {
-            shipDamage = 20;
-        	yourShip.shipDamage(shipDamage);
-
+        for (CrewMember member : CrewManager.pilotList) {
+        	if (member.getType() == "Pilot") {
+        		hasPilot = true;
+        	}
         }
+        if (occurrence >= threshold) {
+        	if ((hasPilot == true) && ((occurrence) < (threshold += 2))) {
+        		return true;
+        	}
+        	else {
+        		shipDamage = 20;
+            	yourShip.shipDamage(shipDamage);
+            	return false;
+        	}
+        }
+        return false;
     }
 }
