@@ -19,7 +19,7 @@ import main.Types.CrewMember;
 public class UseItem {
 
 	private JFrame useWindow;
-	private Game manager;
+	private CrewManager manager;
 	private Item item;
 	private String type;
 	private int stat;
@@ -29,12 +29,13 @@ public class UseItem {
 	/**
 	 * Create the application.
 	 */
-	public UseItem(Game incomingManager, CrewMember incomingMember) {
+	public UseItem(CrewManager incomingManager, CrewMember incomingMember) {
 		manager = incomingManager;
 		member = incomingMember;
 		initialize();
 		useWindow.setVisible(true);
 	}
+	
 	
 	public void closeWindow() {
 		useWindow.dispose();

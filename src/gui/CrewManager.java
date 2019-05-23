@@ -24,6 +24,7 @@ import javax.swing.JToggleButton;
 import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
+import java.awt.Font;
 
 public class CrewManager {
 
@@ -197,6 +198,9 @@ public class CrewManager {
 		txtConsole.setText(currentText + "\nThe ship does not need repairing.");
 	}
 	
+    public void launchUseItem(CrewMember member) {
+    	UseItem useWindow = new UseItem(this, member);
+    }
 	
 	/**
 	 * Initialize the contents of the frame.
@@ -259,7 +263,7 @@ public class CrewManager {
 			public void actionPerformed(ActionEvent arg0) {
 				if (crew1.getActions() > 0) {
 					if (Ship.Inventory.size() > 0) {
-					manager.launchUseItem(crew1);
+					launchUseItem(crew1);
 					}
 					else {
 						String currentText = txtConsole.getText();
@@ -903,12 +907,12 @@ public class CrewManager {
 		
 
 		JLabel lblHealth_1 = new JLabel("Damage");
-		lblHealth_1.setBounds(240, 585, 66, 15);
+		lblHealth_1.setBounds(225, 585, 66, 15);
 		crewManager.getContentPane().add(lblHealth_1);
 		
 		progressShipHealth = new JProgressBar();
 		progressShipHealth.setForeground(Color.RED);
-		progressShipHealth.setBounds(301, 585, 183, 14);
+		progressShipHealth.setBounds(291, 585, 183, 14);
 		crewManager.getContentPane().add(progressShipHealth);
 		progressShipHealth.setValue(0);
 		
@@ -1029,6 +1033,11 @@ public class CrewManager {
 		JLabel label = new JLabel("4/5");
 		label.setBounds(371, 673, 66, 15);
 		crewManager.getContentPane().add(label);
+		
+		JLabel lblNewLabel = new JLabel("Welcome to the planet " + currentPlanet.getplanetName());
+		lblNewLabel.setFont(new Font("DejaVu Sans Light", Font.BOLD, 28));
+		lblNewLabel.setBounds(164, 80, 594, 64);
+		crewManager.getContentPane().add(lblNewLabel);
 		
 		
 		
