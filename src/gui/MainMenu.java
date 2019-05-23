@@ -54,16 +54,6 @@ public class MainMenu {
 		btnNewButton_1.setBounds(152, 178, 121, 25);
 		mainMenu.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("How To Play");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				GameInstructions dialog = new GameInstructions();
-				dialog.showDialog();
-			}
-		});
-		btnNewButton_2.setBounds(152, 215, 121, 25);
-		mainMenu.getContentPane().add(btnNewButton_2);
-		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(181, 37, 66, 15);
 		mainMenu.getContentPane().add(lblNewLabel);

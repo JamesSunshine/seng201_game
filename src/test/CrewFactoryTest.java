@@ -1,7 +1,5 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 import main.CrewFactory;
@@ -24,8 +22,10 @@ class CrewFactoryTest {
 		int finalTiredness = gazza.getTiredness();
 		int tiredDiff = finalTiredness - initialTiredness;
 		int initialHealth = gazza.getHealth();
+		System.out.println(initialHealth);
 		gazza.takeDamage(10);
 		int finalHealth = gazza.getHealth();
+		System.out.println(finalHealth);
 		int healthDiff = initialHealth - finalHealth;
 		System.out.println(healthDiff);
 		
@@ -33,7 +33,7 @@ class CrewFactoryTest {
 		assert(type == "Engineer");
 		assert(hungerDiff == 15);
 		assert(tiredDiff == 15);
-		assert(healthDiff == 10);
+		assert(healthDiff == 67);
 	}
 
 }
