@@ -3,6 +3,7 @@ package main;
 import gui.CrewBuy;
 import gui.CrewManager;
 import gui.Startup;
+import gui.UseItem;
 import gui.currentInventory;
 import main.Types.CrewMember;
 import gui.ShopWindow;
@@ -88,6 +89,18 @@ public class Game {
     	return Ship.crewList.get(index);
     }
     
+    public void repairShip(String type) {
+    	myShip.shipRepair(type);
+    }
+    
+    public int getShipStatus() {
+    	return myShip.checkCondition();
+    }
+    
+    public void damageShip() {
+    	myShip.shipDamage(20);
+    }
+    
     //game Ship object methods
 
     
@@ -128,6 +141,10 @@ public class Game {
     
     public void launchcurrentInventory() {
     	currentInventory invWindow = new currentInventory(this);
+    }
+    
+    public void launchUseItem() {
+    	UseItem useWindow = new UseItem(this);
     }
     
     public void closecurrentInventory(currentInventory invWindow) {

@@ -13,31 +13,31 @@ public class SpaceOutpost {
 
     public Item purchase(String itemName) {
         switch (itemName){
-            case AidsCure.ITEM_NAME: {
+            case "Aids Cure": {
                 return new AidsCure();
             }
-            case Bandages.ITEM_NAME: {
+            case "Bandages": {
                 return new Bandages();
             }
-            case CabinBread.ITEM_NAME: {
+            case "Cabin Bread": {
                 return new CabinBread();
             }
-            case CaesarSalad.ITEM_NAME: {
+            case "Caesar Salad": {
                 return new CaesarSalad();
             }
-            case ConcretePill.ITEM_NAME: {
+            case "Pain Killers": {
                 return new ConcretePill(); 
             }
-            case Doritos.ITEM_NAME: {
+            case "Doritos": {
                 return new Doritos(); 
             }
-            case MiGoreng.ITEM_NAME: {
+            case "Mi Goreng": {
                 return new MiGoreng(); 
             }
-            case SpaceWhopper.ITEM_NAME: {
+            case "Space Whopper": {
                 return new SpaceWhopper();
             }
-            case TunaMelt.ITEM_NAME: {
+            case "Tuna Melt Sandwich": {
                 return new TunaMelt();
             }
             

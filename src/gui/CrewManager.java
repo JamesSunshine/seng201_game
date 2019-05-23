@@ -5,8 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import main.Game;
+import main.RNGEvent;
+import main.Ship;
 import main.Types.CrewMember;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,6 +19,8 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JToggleButton;
 import java.awt.Color;
+import java.awt.Event;
+
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 
@@ -31,9 +36,14 @@ public class CrewManager {
 	private JProgressBar progressHunger4;
 	private JProgressBar progressTiredness3;
 	private JProgressBar progressTiredness4;
+	private JProgressBar progressShipHealth;
 	private JLabel lblAction3;
 	private JLabel lblAction4;
 	public static ArrayList<CrewMember> pilotList = new ArrayList<CrewMember>();
+	public JTextPane txtConsole;
+	public Ship myShip;
+	public RNGEvent event = new RNGEvent();  
+	
 	
 
 
@@ -57,11 +67,23 @@ public class CrewManager {
 	public CrewManager returnThis() {
 		return this;
 	}
+	
+	public void printNoRepair() {
+		String currentText = txtConsole.getText();
+		txtConsole.setText(currentText + "\nThe ship does not need repairing.");
+	}
+	
+	public void printGunnerSave() {
+		System.out.println("poop6");
+		String currentText = txtConsole.getText();
+		txtConsole.setText(currentText + "\nYour gunner protected the ship from pirates.");
+	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		myShip = manager.getShip();
 		crewManager = new JFrame();
 		crewManager.setTitle(manager.getShipName() + "Crew Manager");
 		crewManager.setBounds(100, 100, 900, 769);
@@ -88,7 +110,7 @@ public class CrewManager {
 		scrollPane.setBounds(543, 548, 321, 159);
 		crewManager.getContentPane().add(scrollPane);
 		
-		JTextPane txtConsole = new JTextPane();
+		txtConsole = new JTextPane();
 		txtConsole.setText("Welcome to day 1 Captain");
 		txtConsole.setEditable(false);
 		scrollPane.setViewportView(txtConsole);
@@ -104,6 +126,7 @@ public class CrewManager {
 		progressHealth1.setBounds(100, 230, 92, 14);
 		crewManager.getContentPane().add(progressHealth1);
 		progressHealth1.setValue(100);
+
 		
 		JProgressBar progressTiredness1 = new JProgressBar();
 		progressTiredness1.setBounds(100, 257, 93, 14);
@@ -117,7 +140,24 @@ public class CrewManager {
 		lblAction1.setBounds(103, 310, 66, 15);
 		crewManager.getContentPane().add(lblAction1);
 		
-		JButton btnEat1 = new JButton("Eat");
+		JButton btnEat1 = new JButton("Use Item");
+		btnEat1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (crew1.getActions() > 0) {
+					if (Ship.Inventory.size() > 0) {
+					manager.launchUseItem();
+					}
+					else {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + "You do not currently have any items to use");
+					}
+				}
+				else {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew1.getName() + " does not have enough actions to use item");
+				}
+			}
+		});
 		btnEat1.setBounds(52, 334, 151, 25);
 		crewManager.getContentPane().add(btnEat1);
 		
@@ -130,7 +170,7 @@ public class CrewManager {
 					crew1.useAction();
 					lblAction1.setText(Integer.toString(crew1.getActions()));
 					String currentText = txtConsole.getText();
-					txtConsole.setText(currentText + "\n" + crew1.getName() + " had a nap.");
+					txtConsole.setText(currentText + "\n" + crew1.getName() + " had a dnap.");
 				} else {
 					String currentText = txtConsole.getText();
 					txtConsole.setText(currentText + "\n" + crew1.getName() + " does not have enough actions to sleep.");
@@ -142,6 +182,26 @@ public class CrewManager {
 		crewManager.getContentPane().add(btnSleep1);
 		
 		JButton btnRepair1 = new JButton("Repair Ship");
+		btnRepair1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (myShip.checkCondition() == 0) {
+					printNoRepair();
+				}
+				else if (crew1.getActions() > 0) {
+					crew1.useAction();
+					lblAction1.setText(Integer.toString(crew1.getActions()));
+					if (crew1.getType() == "Engineer") {
+						myShip.shipRepair("Engineer");
+					} else {
+						myShip.shipRepair("");
+					}
+				} else {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew1.getName() + " does not have enough actions to repair the ship.");
+				}
+				progressShipHealth.setValue(myShip.checkCondition());
+			}
+		});
 		btnRepair1.setBounds(54, 408, 149, 25);
 		crewManager.getContentPane().add(btnRepair1);
 		
@@ -251,7 +311,7 @@ public class CrewManager {
 		lblAction2.setBounds(318, 310, 66, 15);
 		crewManager.getContentPane().add(lblAction2);
 		
-		JButton btnEat2 = new JButton("Eat");
+		JButton btnEat2 = new JButton("Use Item");
 		btnEat2.setBounds(259, 334, 151, 25);
 		crewManager.getContentPane().add(btnEat2);
 		
@@ -275,6 +335,26 @@ public class CrewManager {
 		crewManager.getContentPane().add(btnSleep2);
 		
 		JButton btnRepair2 = new JButton("Repair Ship");
+		btnRepair2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (myShip.checkCondition() == 0) {
+					printNoRepair();
+				}
+				else if (crew2.getActions() > 0) {
+					crew2.useAction();
+					lblAction2.setText(Integer.toString(crew2.getActions()));
+					if (crew2.getType() == "Engineer") {
+						myShip.shipRepair("Engineer");
+					} else {
+						myShip.shipRepair("");
+					}
+				} else {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew2.getName() + " does not have enough actions to repair the ship.");
+				}
+				progressShipHealth.setValue(myShip.checkCondition());
+			}
+		});
 		btnRepair2.setBounds(261, 408, 149, 25);
 		crewManager.getContentPane().add(btnRepair2);
 		
@@ -314,22 +394,32 @@ public class CrewManager {
 		lblShipStatus.setBounds(302, 548, 111, 15);
 		crewManager.getContentPane().add(lblShipStatus);
 		
+<<<<<<< HEAD
 		JLabel lblHealth_1 = new JLabel("Health");
-		lblHealth_1.setBounds(240, 585, 66, 15);
+		lblHealth_1.setBounds(217, 585, 66, 15);
 		crewManager.getContentPane().add(lblHealth_1);
 		
 		JProgressBar progressShipHealth = new JProgressBar();
 		progressShipHealth.setForeground(Color.GREEN);
+		progressShipHealth.setBounds(290, 585, 183, 14);
+=======
+		JLabel lblHealth_1 = new JLabel("Damage");
+		lblHealth_1.setBounds(240, 585, 66, 15);
+		crewManager.getContentPane().add(lblHealth_1);
+		
+		progressShipHealth = new JProgressBar();
+		progressShipHealth.setForeground(Color.RED);
 		progressShipHealth.setBounds(301, 585, 183, 14);
+>>>>>>> ca507df75da441beb279e1dc727d983267d4cafc
 		crewManager.getContentPane().add(progressShipHealth);
-		progressShipHealth.setValue(100);
+		progressShipHealth.setValue(0);
 		
 		JLabel lblPartsFound = new JLabel("Parts Found");
-		lblPartsFound.setBounds(199, 617, 91, 15);
+		lblPartsFound.setBounds(199, 643, 91, 15);
 		crewManager.getContentPane().add(lblPartsFound);
 		
 		JProgressBar progressBar_1 = new JProgressBar();
-		progressBar_1.setBounds(302, 612, 182, 14);
+		progressBar_1.setBounds(291, 644, 182, 14);
 		crewManager.getContentPane().add(progressBar_1);
 		
 		
@@ -385,7 +475,7 @@ public class CrewManager {
 			lblAction3.setBounds(561, 310, 66, 15);
 			crewManager.getContentPane().add(lblAction3);
 			
-			JButton btnEat3 = new JButton("Eat");
+			JButton btnEat3 = new JButton("Use Item");
 			btnEat3.setBounds(478, 334, 151, 25);
 			crewManager.getContentPane().add(btnEat3);
 			
@@ -413,6 +503,26 @@ public class CrewManager {
 			crewManager.getContentPane().add(btnRepair3);
 			
 			JButton btnSearch3 = new JButton("Search Planet");
+			btnRepair3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (myShip.checkCondition() == 0) {
+						printNoRepair();
+					}
+					else if (crew3.getActions() > 0) {
+						crew3.useAction();
+						lblAction3.setText(Integer.toString(crew3.getActions()));
+						if (crew3.getType() == "Engineer") {
+							myShip.shipRepair("Engineer");
+						} else {
+							myShip.shipRepair("");
+						}
+					} else {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew3.getName() + " does not have enough actions to repair the ship.");
+					}
+					progressShipHealth.setValue(myShip.checkCondition());
+				}
+			});
 			btnSearch3.setBounds(480, 445, 149, 25);
 			crewManager.getContentPane().add(btnSearch3);
 			
@@ -493,7 +603,7 @@ public class CrewManager {
 			lblAction4.setBounds(743, 310, 66, 15);
 			crewManager.getContentPane().add(lblAction4);
 			
-			JButton btnEat4 = new JButton("Eat");
+			JButton btnEat4 = new JButton("Use Item");
 			btnEat4.setBounds(684, 334, 151, 25);
 			crewManager.getContentPane().add(btnEat4);
 			
@@ -517,6 +627,26 @@ public class CrewManager {
 			crewManager.getContentPane().add(btnSleep4);
 			
 			JButton btnRepair4 = new JButton("Repair Ship");
+			btnRepair4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (myShip.checkCondition() == 0) {
+						printNoRepair();
+					}
+					else if (crew4.getActions() > 0) {
+						crew4.useAction();
+						lblAction4.setText(Integer.toString(crew4.getActions()));
+						if (crew4.getType() == "Engineer") {
+							myShip.shipRepair("Engineer");
+						} else {
+							myShip.shipRepair("");
+						}
+					} else {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew4.getName() + " does not have enough actions to repair the ship.");
+					}
+					progressShipHealth.setValue(myShip.checkCondition());
+				}
+			});
 			btnRepair4.setBounds(686, 408, 149, 25);
 			crewManager.getContentPane().add(btnRepair4);
 			
@@ -580,6 +710,11 @@ public class CrewManager {
 		JButton btnNextDay = new JButton("Next Day");
 		btnNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				txtConsole.setText("Welcome to day " + (manager.getcurrentDay() + 1) + " Captain" );
+				if (event.spacePirates(myShip) == true) {
+					System.out.println("poop5");
+					printGunnerSave();
+				}
 				pilotList = new ArrayList<CrewMember>();
 				crew1.resetActions();
 				lblAction1.setText(Integer.toString(crew1.getActions()));
@@ -610,17 +745,21 @@ public class CrewManager {
 					progressTiredness4.setValue(crew4.getTiredness());
 				}
 				manager.addDay();
+				progressShipHealth.setValue(myShip.checkCondition());
 				int dayStatus = (int) ((double)manager.getcurrentDay()/(double)manager.getnumberDays()*100);
 				progressDays.setValue(dayStatus);
-				txtConsole.setText("Welcome to day " + (manager.getcurrentDay() + 1) + " Captain" );
+				
 			}
 		});
 		btnNextDay.setBounds(25, 575, 156, 25);
 		crewManager.getContentPane().add(btnNextDay);
 		
 		JLabel label = new JLabel("4/5");
-		label.setBounds(382, 638, 66, 15);
+		label.setBounds(371, 673, 66, 15);
 		crewManager.getContentPane().add(label);
 		
+		
+		
 	}
+	
 }
