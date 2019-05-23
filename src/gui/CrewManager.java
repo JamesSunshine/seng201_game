@@ -119,6 +119,8 @@ public class CrewManager {
 		}
 		else if ((member.getHealth() == 0) || (member.getHunger() == 100) || (member.getTiredness() == 100)) {
 			member.setDead();
+			Ship.crewList.remove(member);
+			System.out.println(Ship.crewList);
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\n" + member.getName() + " died. RIP.");
 			return true;
@@ -159,7 +161,7 @@ public class CrewManager {
 	private void initialize() {
 		myShip = manager.getShip();
 		crewManager = new JFrame();
-		crewManager.setTitle(manager.getShipName() + "Crew Manager");
+		crewManager.setTitle(manager.getShipName() + " Crew Manager");
 		crewManager.setBounds(100, 100, 900, 769);
 		crewManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		crewManager.getContentPane().setLayout(null);
@@ -908,7 +910,7 @@ public class CrewManager {
 					crewManager.getContentPane().remove(btnPilot2);
 				}
 				//Crew3 methods
-				if (manager.getNumCrew() >= 3) {
+				if (crewList.size() >= 3) {
 					crew3.resetActions();
 					lblAction3.setText(Integer.toString(crew3.getActions()));
 					//crew3.getHungry();
@@ -930,7 +932,7 @@ public class CrewManager {
 				}
 				
 				//Crew4 methods
-				if (manager.getNumCrew() >= 4) {
+				if (crewList.size() >= 4) {
 					crew4.resetActions();
 					lblAction4.setText(Integer.toString(crew4.getActions()));
 					//crew4.getHungry();
