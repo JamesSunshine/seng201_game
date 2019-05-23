@@ -90,7 +90,7 @@ public class UseItem {
 		for (int i = 0; i < Ship.Inventory.size(); i++)
 		{
 		    item = Ship.Inventory.get(i);
-			listModel.addElement(item.getName() + item.getEffect());
+			listModel.addElement(item.getName() + " - " + item.getEffect());
 		}
 		JList<Item> list = new JList<Item>(listModel);
 		list.addMouseListener(new MouseAdapter() {

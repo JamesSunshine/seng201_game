@@ -65,7 +65,7 @@ public class Startup {
 		frmWelcome.getContentPane().add(lblNewLabel_1);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"-", "3", "4", "5", "6", "7", "8", "9", "10"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"3", "4", "5", "6", "7", "8", "9", "10"}));
 		comboBox.setBounds(156, 153, 138, 24);
 		frmWelcome.getContentPane().add(comboBox);
 		

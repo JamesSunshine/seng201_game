@@ -103,7 +103,7 @@ public class CrewManager {
 		if (myShip.checkCondition() >= 100) {	
 			gameOver(myShip);
 		}
-		if (crewList.size() == 0) {
+		if (Ship.crewList.size() == 0) {
 			gameOver(myShip);
 		}
 	}

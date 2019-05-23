@@ -91,7 +91,7 @@ public class RNGEvent {
         		return "Pilot Pass";
         	}
         	else {
-        		shipDamage = 20;
+        		shipDamage = 5;
             	yourShip.shipDamage(shipDamage);
             	return "Pilot Fail";
         	}

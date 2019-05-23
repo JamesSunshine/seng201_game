@@ -6,6 +6,6 @@ public class Pilot extends CrewMember {
 
     public Pilot(String name) {
 
-    	super(name, 10, 0, 0, 10, 10, "Pilot");
+    	super(name, 15, 0, 0, 15, 15, "Pilot");
     }
 }

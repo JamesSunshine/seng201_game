@@ -5,6 +5,6 @@ public class Scout extends CrewMember {
 
     public Scout(String name) {
 
-    	super(name, 10, 0, 0, 10, 10, "Scout");
+    	super(name, 20, 0, 0, 20, 20, "Scout");
     }
 }

@@ -2,6 +2,7 @@ package main;
 
 import gui.CrewBuy;
 import gui.CrewManager;
+import gui.MainMenu;
 import gui.Startup;
 import gui.UseItem;
 import gui.currentInventory;
@@ -107,8 +108,12 @@ public class Game {
     
     //GUI methods
     
-    public void launchStartup() {
-    	Startup startWindow = new Startup(this);
+    public void launchmainMenu() {
+    	MainMenu menuWindow = new MainMenu(this);
+    }
+    
+    public void launchStartup(Game incomingManager) {
+    	Startup startWindow = new Startup(incomingManager);
     }
     
     public void closeStartup(Startup startupWindow) {
@@ -154,7 +159,7 @@ public class Game {
                 
         Game manager = new Game();
         
-        manager.launchStartup();
+        manager.launchmainMenu();
                
         }
 

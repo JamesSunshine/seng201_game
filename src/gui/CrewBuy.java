@@ -89,10 +89,10 @@ public class CrewBuy {
 		crewBuy.getContentPane().add(lblGunnerhp);
 		
 		JLabel lblClassHp = new JLabel("Specialisation");
-		lblClassHp.setBounds(388, 65, 208, 15);
+		lblClassHp.setBounds(380, 65, 208, 15);
 		crewBuy.getContentPane().add(lblClassHp);
 		
-		JLabel lblPilothp = new JLabel("5");
+		JLabel lblPilothp = new JLabel("10");
 		lblPilothp.setBounds(266, 104, 28, 15);
 		crewBuy.getContentPane().add(lblPilothp);
 		
@@ -100,11 +100,11 @@ public class CrewBuy {
 		lblMedichp.setBounds(266, 156, 58, 15);
 		crewBuy.getContentPane().add(lblMedichp);
 		
-		JLabel lblEngineerhp = new JLabel("10");
+		JLabel lblEngineerhp = new JLabel("15");
 		lblEngineerhp.setBounds(266, 206, 235, 15);
 		crewBuy.getContentPane().add(lblEngineerhp);
 		
-		JLabel lblScouthp = new JLabel("12");
+		JLabel lblScouthp = new JLabel("20");
 		lblScouthp.setBounds(266, 260, 250, 15);
 		crewBuy.getContentPane().add(lblScouthp);
 		
@@ -112,7 +112,7 @@ public class CrewBuy {
 		label.setBounds(266, 308, 66, 15);
 		crewBuy.getContentPane().add(label);
 		
-		JLabel label_1 = new JLabel("15");
+		JLabel label_1 = new JLabel("20");
 		label_1.setBounds(266, 358, 66, 15);
 		crewBuy.getContentPane().add(label_1);
 		
@@ -224,23 +224,23 @@ public class CrewBuy {
 		btnScout.setBounds(110, 353, 114, 25);
 		crewBuy.getContentPane().add(btnScout);
 		
-		JLabel lblNewLabel_1 = new JLabel("Bonus to space combat.");
+		JLabel lblNewLabel_1 = new JLabel("Ship Defence.");
 		lblNewLabel_1.setBounds(380, 156, 354, 15);
 		crewBuy.getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblBonusToAsteroid = new JLabel("Bonus to asteroid belt navigation.");
+		JLabel lblBonusToAsteroid = new JLabel("Asteroid Belt Navigation.");
 		lblBonusToAsteroid.setBounds(380, 206, 312, 15);
 		crewBuy.getContentPane().add(lblBonusToAsteroid);
 		
-		JLabel lblHelpsMaintainA = new JLabel("Immune to space aids.");
+		JLabel lblHelpsMaintainA = new JLabel("Immunity to Space Aids");
 		lblHelpsMaintainA.setBounds(380, 260, 273, 15);
 		crewBuy.getContentPane().add(lblHelpsMaintainA);
 		
-		JLabel lblBonusToShip = new JLabel("Bonus to ship repairs.");
+		JLabel lblBonusToShip = new JLabel("Ship Repair Expert.");
 		lblBonusToShip.setBounds(380, 308, 273, 15);
 		crewBuy.getContentPane().add(lblBonusToShip);
 		
-		JLabel lblMoreLikelyTo = new JLabel("More likely to find loot.");
+		JLabel lblMoreLikelyTo = new JLabel("Never Comes Back Empty Handed.");
 		lblMoreLikelyTo.setBounds(380, 353, 273, 15);
 		crewBuy.getContentPane().add(lblMoreLikelyTo);
 		
@@ -272,7 +272,7 @@ public class CrewBuy {
 		label_7.setBounds(309, 358, 66, 15);
 		crewBuy.getContentPane().add(label_7);
 		
-		JLabel lblExpendable = new JLabel("Expendable");
+		JLabel lblExpendable = new JLabel("Expendable.");
 		lblExpendable.setBounds(380, 104, 129, 15);
 		crewBuy.getContentPane().add(lblExpendable);
 		
