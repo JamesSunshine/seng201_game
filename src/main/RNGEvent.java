@@ -16,7 +16,7 @@ public class RNGEvent {
     private boolean hasPilot = false;
 
 
-    public boolean spacePirates(Ship incomingShip) {
+    public String spacePirates(Ship incomingShip) {
     	this.hasGunner = false;
         this.threshold = 10;
     	yourShip = incomingShip;
@@ -28,7 +28,7 @@ public class RNGEvent {
         }
         if (occurrence >= threshold) {
             if ((this.hasGunner == true) && (occurrence < (this.threshold += 2))) {
-            	return true;
+            	return "Gunner Pass";
             	}
             else {
             	shipDamage = 10;
@@ -41,11 +41,11 @@ public class RNGEvent {
             	maxIndex = Ship.Inventory.size() - 1;
             	randNum = Math.random() * ((maxIndex - 1) + 1) + 0;
             	Ship.Inventory.remove((int) randNum);
-            	return false;}
+            	return "Gunner Fail ";}
             }
         } 	
 
-		return false;
+		return "Pass";
     }
 
     public void spaceAids(CrewMember member){
@@ -55,7 +55,7 @@ public class RNGEvent {
         }
     }
 
-    public boolean asteroidBelt(Ship yourShip) {
+    public String asteroidBelt(Ship yourShip) {
     	hasPilot = false;
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
         for (CrewMember member : CrewManager.pilotList) {
@@ -65,14 +65,14 @@ public class RNGEvent {
         }
         if (occurrence >= threshold) {
         	if ((hasPilot == true) && ((occurrence) < (threshold += 2))) {
-        		return true;
+        		return "Pilot Pass";
         	}
         	else {
         		shipDamage = 20;
             	yourShip.shipDamage(shipDamage);
-            	return false;
+            	return "Pilot Fail";
         	}
         }
-        return false;
+        return "Pass";
     }
 }
