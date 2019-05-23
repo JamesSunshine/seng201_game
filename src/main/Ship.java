@@ -12,6 +12,7 @@ public class Ship {
     private int shipCondition = 0;
     private int crewPoints = 0;
     private int money = 100;
+    private int shipParts = 0;
 
     public static ArrayList<Item> Inventory = new ArrayList<Item>();
     public static ArrayList<CrewMember> crewList = new ArrayList<CrewMember>();
@@ -97,6 +98,14 @@ public class Ship {
     public int checkCondition() {
         return shipCondition;
 
+    }
+    
+    public int getParts() {
+    	return shipParts;
+    }
+    
+    public void addParts() {
+    	shipParts += 1;
     }
 
 }

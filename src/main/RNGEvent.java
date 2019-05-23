@@ -1,8 +1,14 @@
 package main;
 
 import main.Types.CrewMember;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import gui.CrewManager;
 import main.Ship;
+import main.Items.Item;
 
 public class RNGEvent {
 
@@ -14,6 +20,12 @@ public class RNGEvent {
     private Ship yourShip;
     private boolean hasGunner = false;
     private boolean hasPilot = false;
+    private int foundID;
+    private int index;
+    private SpaceOutpost spaceOutpost = new SpaceOutpost();
+    
+    public List<String> foundItem = Arrays.asList("Pain Killers", "Bandages", "Aids Cure", "Cabin Bread", "Mi Goreng", "Doritos", "Tuna Melt Sandwich", "Caesar Salad", "Space Whopper");
+    
 
 
     public String spacePirates(Ship incomingShip) {
@@ -49,7 +61,7 @@ public class RNGEvent {
 		return "Pass";
     }
 
-    public boolean spaceAids(CrewMember member){
+	public boolean spaceAids(CrewMember member){
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
         if (member.getType() == "Medic") {
         	return false;
@@ -84,5 +96,54 @@ public class RNGEvent {
         	}
         }
         return "Pass";
+    }
+    
+    public String planetSearch(CrewMember member) {
+    	//Scout cannot find nothing
+    	System.out.println("el poopo");
+    	if (member.getType() == "Scout") {
+    		System.out.println("el poopo 2");
+    		foundID = (int) Math.random() * ((4 - 2) + 1) + 2;
+    		switch (foundID) {
+    			case 2:{
+    				yourShip.addMoney(10);
+    				return "Found Money";
+    			}
+    			case 3: {
+    				index = (int) Math.random() * ((9 - 1) + 1) + 1;
+    				yourShip.addInventory(spaceOutpost.purchase(foundItem.get(index)));
+    				return "Found Item";
+    			}
+    			case 4: {
+    				yourShip.addParts();
+    				return "Found Part";
+    			}
+    		}
+    	}
+    	else {
+    		System.out.println("el poopo 3");
+    		foundID = (int) Math.random() * ((4 - 1) + 1) + 1;
+    		System.out.println(foundID);
+    		switch (foundID) {
+    			case 1: {
+    				return "Found Nothing";
+    			}
+    		
+    			case 2:{
+    				yourShip.addMoney(10);
+    				return "Found Money";
+    			}
+    			case 3: {
+    				index = (int) Math.random() * ((9 - 1) + 1) + 1;
+    				yourShip.addInventory(spaceOutpost.purchase(foundItem.get(index)));
+    				return "Found Item";
+    			}
+    			case 4: {
+    				yourShip.addParts();
+    				return "Found Part";
+    			}
+    		}
+    	}
+		return null;
     }
 }
