@@ -48,10 +48,19 @@ public class RNGEvent {
 		return "Pass";
     }
 
-    public void spaceAids(CrewMember member){
+    public boolean spaceAids(CrewMember member){
         occurrence = Math.random() * ((20 - 1) + 1) + 1;
-        if (occurrence >= threshold) {
+        if (member.getType() == "Medic") {
+        	return false;
+        }
+        else if (member.gotAids()) {
+        	return false;
+        }
+        else if (occurrence >= threshold) {
             member.contractAids();
+            return true;
+        } else {
+        	return false;
         }
     }
 

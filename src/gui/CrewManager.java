@@ -35,9 +35,12 @@ public class CrewManager {
 	private JProgressBar progressTiredness3;
 	private JProgressBar progressTiredness4;
 	private JProgressBar progressShipHealth;
+	private JProgressBar progressHealth3;
+	private JProgressBar progressHealth4;
 	private JLabel lblAction3;
 	private JLabel lblAction4;
 	public static ArrayList<CrewMember> pilotList = new ArrayList<CrewMember>();
+	public static ArrayList<CrewMember> crewList = new ArrayList<CrewMember>();
 	public JTextPane txtConsole;
 	public Ship myShip;
 	public RNGEvent event = new RNGEvent();  
@@ -73,7 +76,14 @@ public class CrewManager {
 	}
 	
 	public void eventAids() {
-		
+		for (CrewMember member : crewList) {
+			if (event.spaceAids(member)) {
+				String currentText = txtConsole.getText();
+				txtConsole.setText(currentText + "\n" + member.getName() + " contracted space aids");
+			} else {
+				;
+			}
+		}
 	}
 	
 	public void eventBelt() {
@@ -86,6 +96,10 @@ public class CrewManager {
 		} else {
 			;
 		}
+	}
+	
+	public void searchPlanet() {
+		
 	}
 	
 	
@@ -143,6 +157,7 @@ public class CrewManager {
 		 * CrewMember 1
 		 */
 		crew1 = manager.getCrewMember(0);
+		crewList.add(crew1);
 		JLabel lblName1 = new JLabel(crew1.getName());
 		lblName1.setBounds(79, 180, 66, 15);
 		crewManager.getContentPane().add(lblName1);
@@ -312,6 +327,7 @@ public class CrewManager {
 		 * CrewMember 2
 		 */
 		crew2 = manager.getCrewMember(1);
+		crewList.add(crew2);
 		JLabel lblName2 = new JLabel(crew2.getName());
 		lblName2.setBounds(291, 180, 66, 15);
 		crewManager.getContentPane().add(lblName2);
@@ -457,6 +473,7 @@ public class CrewManager {
 		 */
 		if (manager.getNumCrew() >= 3) {
 			crew3 = manager.getCrewMember(2);
+			crewList.add(crew3);
 			JLabel lblName3 = new JLabel(crew3.getName());
 			lblName3.setBounds(512, 180, 66, 15);
 			crewManager.getContentPane().add(lblName3);
@@ -473,7 +490,7 @@ public class CrewManager {
 			label_10.setBounds(468, 230, 66, 15);
 			crewManager.getContentPane().add(label_10);
 			
-			JProgressBar progressHealth3 = new JProgressBar();
+			progressHealth3 = new JProgressBar();
 			progressHealth3.setForeground(Color.GREEN);
 			progressHealth3.setBounds(557, 230, 92, 14);
 			crewManager.getContentPane().add(progressHealth3);
@@ -604,6 +621,7 @@ public class CrewManager {
 		 */
 		if (manager.getNumCrew() >= 4) {
 			crew4 = manager.getCrewMember(3);
+			crewList.add(crew4);
 			JLabel label_15 = new JLabel("Class");
 			label_15.setBounds(666, 203, 66, 15);
 			crewManager.getContentPane().add(label_15);
@@ -616,7 +634,7 @@ public class CrewManager {
 			label_17.setBounds(666, 230, 66, 15);
 			crewManager.getContentPane().add(label_17);
 			
-			JProgressBar progressHealth4 = new JProgressBar();
+			progressHealth4 = new JProgressBar();
 			progressHealth4.setForeground(Color.GREEN);
 			progressHealth4.setBounds(743, 230, 92, 14);
 			crewManager.getContentPane().add(progressHealth4);
@@ -819,20 +837,37 @@ public class CrewManager {
 				txtConsole.setText("Welcome to day " + (manager.getcurrentDay() + 1) + " Captain" );
 				
 				eventPirate();
+				eventAids();
 				
 				pilotList = new ArrayList<CrewMember>();
+				
+				//Crew1 methods
 				crew1.resetActions();
 				lblAction1.setText(Integer.toString(crew1.getActions()));
 				crew1.getHungry();
 				progressHunger1.setValue(crew1.getHunger());
 				crew1.getTired();
 				progressTiredness1.setValue(crew1.getTiredness());
+				if (crew1.gotAids()) {
+					progressHealth1.setForeground(Color.RED);
+					crew1.takeDamage(2);
+					progressHealth1.setValue(crew1.getHealth());
+				}
+				
+				//Crew2 methods
 				crew2.resetActions();
 				lblAction2.setText(Integer.toString(crew2.getActions()));
 				crew2.getHungry();
 				progressHunger2.setValue(crew2.getHunger());
 				crew2.getTired();
+				if (crew2.gotAids()) {
+					progressHealth2.setForeground(Color.RED);
+					crew2.takeDamage(2);
+					progressHealth2.setValue(crew1.getHealth());
+				}
 				progressTiredness2.setValue(crew2.getTiredness());
+				
+				//Crew3 methods
 				if (manager.getNumCrew() >= 3) {
 					crew3.getHungry();
 					progressHunger3.setValue(crew3.getHunger());
@@ -840,7 +875,14 @@ public class CrewManager {
 					progressTiredness3.setValue(crew3.getTiredness());
 					crew3.resetActions();
 					lblAction3.setText(Integer.toString(crew3.getActions()));
+					if (crew3.gotAids()) {
+						progressHealth3.setForeground(Color.RED);
+						crew3.takeDamage(2);
+						progressHealth3.setValue(crew1.getHealth());
+					}
 				}
+				
+				//Crew4 methods
 				if (manager.getNumCrew() >= 4) {
 					crew4.getHungry();
 					crew4.resetActions();
@@ -848,6 +890,11 @@ public class CrewManager {
 					progressHunger4.setValue(crew4.getHunger());
 					crew4.getTired();
 					progressTiredness4.setValue(crew4.getTiredness());
+					if (crew4.gotAids()) {
+						progressHealth4.setForeground(Color.RED);
+						crew4.takeDamage(2);
+						progressHealth4.setValue(crew1.getHealth());
+					}
 				}
 				manager.addDay();
 				progressShipHealth.setValue(myShip.checkCondition());

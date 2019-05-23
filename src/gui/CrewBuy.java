@@ -232,7 +232,7 @@ public class CrewBuy {
 		lblBonusToAsteroid.setBounds(380, 206, 312, 15);
 		crewBuy.getContentPane().add(lblBonusToAsteroid);
 		
-		JLabel lblHelpsMaintainA = new JLabel("Helps maintain a healthier crew.");
+		JLabel lblHelpsMaintainA = new JLabel("Immune to space aids.");
 		lblHelpsMaintainA.setBounds(380, 260, 273, 15);
 		crewBuy.getContentPane().add(lblHelpsMaintainA);
 		

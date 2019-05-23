@@ -5,6 +5,7 @@ public abstract class CrewMember {
     protected String name;
     protected int health = 10;
     protected int hunger;
+    protected int maxHealth = health;
     protected int tiredness;
     private boolean hasAids = false;
     private int numActions = 2;
@@ -20,10 +21,15 @@ public abstract class CrewMember {
         hungerChange = mhungerChange;
         tirednessChange = mtirednessChange;
         type = mtype;
+        maxHealth = mhealth;
     }
 
     public String getType() {
     	return type;
+    }
+    
+    public int getHealth() {
+    	return (int) (((double)health / (double)maxHealth) * 100);
     }
     
 	public int getHunger() {
@@ -64,6 +70,10 @@ public abstract class CrewMember {
 
     public void contractAids(){
         this.hasAids = true;
+    }
+    
+    public boolean gotAids() {
+    	return this.hasAids;
     }
 
     public void getHungry() {
