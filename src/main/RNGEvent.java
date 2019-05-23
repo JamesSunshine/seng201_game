@@ -2,19 +2,17 @@ package main;
 
 import main.Types.CrewMember;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import gui.CrewManager;
 import main.Ship;
-import main.Items.Item;
 
 public class RNGEvent {
 
     private int shipDamage;
-    private int threshold = 10;
+    private int threshold = 15;
     private double occurrence;
     private int maxIndex;
     private double randNum;
@@ -22,6 +20,7 @@ public class RNGEvent {
     private boolean hasGunner = false;
     private boolean hasPilot = false;
     private int foundID;
+    private Random rand = new Random();
     
     
     public static List<String> foundItem = Arrays.asList("Pain Killers", "Bandages", "Aids Cure", "Cabin Bread", "Mi Goreng", "Doritos", "Tuna Melt Sandwich", "Caesar Salad", "Space Whopper");
@@ -32,7 +31,8 @@ public class RNGEvent {
     	this.hasGunner = false;
         this.threshold = 10;
     	yourShip = incomingShip;
-        occurrence = Math.random() * ((20 - 1) + 1) + 1;
+        occurrence = rand.nextInt(19);
+        occurrence += 1;
         for (CrewMember member : Ship.crewList) {
         	if (member.getType() == "Gunner" ) {
         		this.hasGunner = true;
@@ -62,7 +62,8 @@ public class RNGEvent {
     }
 
 	public boolean spaceAids(CrewMember member){
-        occurrence = Math.random() * ((20 - 1) + 1) + 1;
+        occurrence = rand.nextInt(19);
+        occurrence += 1;
         if (member.getType() == "Medic") {
         	return false;
         }
@@ -79,7 +80,9 @@ public class RNGEvent {
 
     public String asteroidBelt(Ship yourShip) {
     	hasPilot = false;
-        occurrence = Math.random() * ((20 - 1) + 1) + 1;
+    	threshold = 10;
+        occurrence = rand.nextInt(19);
+        occurrence += 1;
         for (CrewMember member : CrewManager.pilotList) {
         	if (member.getType() == "Pilot") {
         		hasPilot = true;
@@ -99,13 +102,11 @@ public class RNGEvent {
     }
     
     public String planetSearch(CrewMember member, int randInt) {
-    	//Scout cannot find nothing
     	foundID = randInt;
 		switch (foundID) {
 			case 1: {
 				return "Found Nothing";
 			}
-		
 			case 2:{
 				return "Found Money";
 			}

@@ -45,6 +45,10 @@ public abstract class CrewMember {
     	return (int) (((double)health / (double)maxHealth) * 100);
     }
     
+    public int getmaxHealth() {
+    	return maxHealth;
+    }
+    
 	public int getHunger() {
 		return hunger;
 	}
@@ -67,7 +71,7 @@ public abstract class CrewMember {
 	}
 	
 	public void sleep() {
-		tiredness -= 10;
+		tiredness -= 30;
 	}
     public void takeDamage(int damage){
     		health -= damage;
@@ -78,7 +82,12 @@ public abstract class CrewMember {
      * @param healingAmount amount of HP healed by item
      */
     public void heal(int healingAmount){
-    	health += healingAmount;
+    	if (health + healingAmount >= maxHealth){
+    		health = maxHealth;
+    	}
+    	else {
+    		health += healingAmount;
+    	}
     }
 
     public void contractAids(){
@@ -94,7 +103,12 @@ public abstract class CrewMember {
     }
 
     public void eat(int food) {
-    	hunger -= food;
+    	if ((hunger - food) <= 0) {
+    		hunger = 0;
+    	}
+    	else {
+    		hunger -= food;
+    	}
     }
     
     public void getHungry() {

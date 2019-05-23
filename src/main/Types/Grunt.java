@@ -6,6 +6,6 @@ public class Grunt extends CrewMember {
 
     public Grunt(String name) {
 
-    	super(name, 10, 0, 0, 20, 20, "Grunt");
+    	super(name, 10, 0, 0, 10, 10, "Grunt");
     }
 }

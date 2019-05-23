@@ -49,7 +49,6 @@ public class UseItem {
 	public void getVariables(Item i) {
 		type = i.getType();
 		stat = i.getStat();
-		System.out.println(type + " " + stat);
 	}
 	
 	public String getType() {
@@ -68,11 +67,10 @@ public class UseItem {
 			member.eat(getStat());
 		}
 		else {
-			member.cureAids();;
+			member.cureAids();
+			manager.cured(member);
 		}
 	}
-	
-	
 
 
 	/**
@@ -106,6 +104,7 @@ public class UseItem {
 					itemUse();
 					Ship.Inventory.remove(index);
 					closeWindow();
+					manager.updateBars();
 					}
 				}
 			}

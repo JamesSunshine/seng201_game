@@ -2,7 +2,6 @@ package main;
 
 import main.Items.Item;
 import main.Types.CrewMember;
-
 import java.util.ArrayList;
 
 public class Ship {

@@ -34,11 +34,15 @@ public class CrewManager {
 	private CrewMember crew2;
 	private CrewMember crew3;
 	private CrewMember crew4;
+	private JProgressBar progressHunger1;
+	private JProgressBar progressHunger2;
 	private JProgressBar progressHunger3;
 	private JProgressBar progressHunger4;
 	private JProgressBar progressTiredness3;
 	private JProgressBar progressTiredness4;
 	private JProgressBar progressShipHealth;
+	private JProgressBar progressHealth1;
+	private JProgressBar progressHealth2;
 	private JProgressBar progressHealth3;
 	private JProgressBar progressHealth4;
 	private JButton btnEat3;
@@ -173,6 +177,40 @@ public class CrewManager {
 		}
 	}
 	
+	public void updateBars() {
+		progressHealth1.setValue(crew1.getHealth());
+		progressHunger1.setValue(crew1.getHunger());
+		progressHealth2.setValue(crew2.getHealth());
+		progressHunger2.setValue(crew2.getHunger());
+		if (crewList.size() >= 3) {
+			progressHealth3.setValue(crew3.getHealth());
+			progressHunger3.setValue(crew3.getHunger());
+		}
+		if (crewList.size() >= 4) {
+		progressHealth4.setValue(crew4.getHealth());
+		progressHunger4.setValue(crew4.getHunger());
+		}
+	}
+	public void cured(CrewMember member) {
+		String currentText = txtConsole.getText();
+		txtConsole.setText(currentText + "\n" + member.getName() + " has been cured.");
+		int index = crewList.indexOf(member);
+		switch (index) {
+			case 0:
+				progressHealth1.setForeground(Color.GREEN);
+				break;
+			case 1:
+				progressHealth2.setForeground(Color.GREEN);
+				break;
+			case 2:
+				progressHealth3.setForeground(Color.GREEN);
+				break;
+			case 3:
+				progressHealth4.setForeground(Color.GREEN);
+				break;
+		}
+	}
+	
 	
 	/**
 	 * Window manager methods
@@ -236,7 +274,7 @@ public class CrewManager {
 		lblName1.setBounds(79, 180, 66, 15);
 		crewManager.getContentPane().add(lblName1);
 		
-		JProgressBar progressHealth1 = new JProgressBar();
+		progressHealth1 = new JProgressBar();
 		progressHealth1.setForeground(Color.GREEN);
 		progressHealth1.setBounds(100, 230, 92, 14);
 		crewManager.getContentPane().add(progressHealth1);
@@ -247,7 +285,7 @@ public class CrewManager {
 		progressTiredness1.setBounds(100, 257, 93, 14);
 		crewManager.getContentPane().add(progressTiredness1);
 		
-		JProgressBar progressHunger1 = new JProgressBar();
+		progressHunger1 = new JProgressBar();
 		progressHunger1.setBounds(100, 283, 92, 14);
 		crewManager.getContentPane().add(progressHunger1);
 		
@@ -263,7 +301,9 @@ public class CrewManager {
 			public void actionPerformed(ActionEvent arg0) {
 				if (crew1.getActions() > 0) {
 					if (Ship.Inventory.size() > 0) {
-					launchUseItem(crew1);
+						crew1.useAction();
+						lblAction1.setText(Integer.toString(crew1.getActions()));
+						launchUseItem(crew1);
 					}
 					else {
 						String currentText = txtConsole.getText();
@@ -336,7 +376,16 @@ public class CrewManager {
 		JButton btnSearch1 = new JButton("Search Planet");
 		btnSearch1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (crew1.getActions() > 0){
 				searchPlanet(crew1);
+				crew1.useAction();
+				lblAction1.setText(Integer.toString(crew1.getActions()));
+				}
+				else {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew1.getName() + " does not have enough actions to search planet.");
+				}
+				
 			}
 		});
 		btnSearch1.setBounds(54, 445, 149, 25);
@@ -425,7 +474,7 @@ public class CrewManager {
 		label_3.setBounds(240, 230, 66, 15);
 		crewManager.getContentPane().add(label_3);
 		
-		JProgressBar progressHealth2 = new JProgressBar();
+		progressHealth2 = new JProgressBar();
 		progressHealth2.setForeground(Color.GREEN);
 		progressHealth2.setBounds(318, 230, 92, 14);
 		crewManager.getContentPane().add(progressHealth2);
@@ -443,7 +492,7 @@ public class CrewManager {
 		label_5.setBounds(240, 283, 66, 15);
 		crewManager.getContentPane().add(label_5);
 		
-		JProgressBar progressHunger2 = new JProgressBar();
+		progressHunger2 = new JProgressBar();
 		progressHunger2.setBounds(318, 283, 92, 14);
 		crewManager.getContentPane().add(progressHunger2);
 		
@@ -459,6 +508,25 @@ public class CrewManager {
 		 * Use item
 		 */
 		JButton btnEat2 = new JButton("Use Item");
+		btnEat2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (crew2.getActions() > 0) {
+					if (Ship.Inventory.size() > 0) {
+						crew2.useAction();
+						lblAction2.setText(Integer.toString(crew2.getActions()));
+						launchUseItem(crew2);
+					}
+					else {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + "You do not currently have any items to use");
+					}
+				}
+				else {
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + crew2.getName() + " does not have enough actions to use item");
+				}
+			}
+		});
 		btnEat2.setBounds(259, 334, 151, 25);
 		crewManager.getContentPane().add(btnEat2);
 		
@@ -517,7 +585,15 @@ public class CrewManager {
 		JButton btnSearch2 = new JButton("Search Planet");
 		btnSearch2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				searchPlanet(crew2);
+				if (crew2.getActions() > 0){
+					searchPlanet(crew2);
+					crew2.useAction();
+					lblAction2.setText(Integer.toString(crew2.getActions()));
+					}
+					else {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew2.getName() + " does not have enough actions to search planet.");
+					}
 			}
 		});
 		btnSearch2.setBounds(259, 445, 149, 25);
@@ -610,6 +686,25 @@ public class CrewManager {
 			 * Use item
 			 */
 			btnEat3 = new JButton("Use Item");
+			btnEat3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (crew3.getActions() > 0) {
+						if (Ship.Inventory.size() > 0) {
+							crew3.useAction();
+							lblAction3.setText(Integer.toString(crew3.getActions()));
+							launchUseItem(crew3);
+						}
+						else {
+							String currentText = txtConsole.getText();
+							txtConsole.setText(currentText + "\n" + "You do not currently have any items to use");
+						}
+					}
+					else {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew3.getName() + " does not have enough actions to use item");
+					}
+				}
+			});
 			btnEat3.setBounds(478, 334, 151, 25);
 			crewManager.getContentPane().add(btnEat3);
 			
@@ -668,7 +763,15 @@ public class CrewManager {
 			btnSearch3 = new JButton("Search Planet");
 			btnSearch3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					searchPlanet(crew3);
+					if (crew3.getActions() > 0){
+						searchPlanet(crew3);
+						crew3.useAction();
+						lblAction3.setText(Integer.toString(crew3.getActions()));
+						}
+						else {
+							String currentText = txtConsole.getText();
+							txtConsole.setText(currentText + "\n" + crew3.getName() + " does not have enough actions to search planet.");
+						}
 				}
 			});
 			btnSearch3.setBounds(480, 445, 149, 25);
@@ -759,6 +862,25 @@ public class CrewManager {
 			 * Use item
 			 */
 			btnEat4 = new JButton("Use Item");
+			btnEat4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (crew4.getActions() > 0) {
+						if (Ship.Inventory.size() > 0) {
+						crew4.useAction();
+						lblAction4.setText(Integer.toString(crew4.getActions()));
+						launchUseItem(crew4);
+						}
+						else {
+							String currentText = txtConsole.getText();
+							txtConsole.setText(currentText + "\n" + "You do not currently have any items to use");
+						}
+					}
+					else {
+						String currentText = txtConsole.getText();
+						txtConsole.setText(currentText + "\n" + crew4.getName() + " does not have enough actions to use item");
+					}
+				}
+			});
 			btnEat4.setBounds(684, 334, 151, 25);
 			crewManager.getContentPane().add(btnEat4);
 			
@@ -817,7 +939,15 @@ public class CrewManager {
 			btnSearch4 = new JButton("Search Planet");
 			btnSearch4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					searchPlanet(crew4);
+					if (crew4.getActions() > 0){
+						searchPlanet(crew4);
+						crew4.useAction();
+						lblAction4.setText(Integer.toString(crew4.getActions()));
+						}
+						else {
+							String currentText = txtConsole.getText();
+							txtConsole.setText(currentText + "\n" + crew4.getName() + " does not have enough actions to search planet.");
+						}
 				}
 			});
 			btnSearch4.setBounds(684, 445, 149, 25);

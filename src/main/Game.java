@@ -18,6 +18,7 @@ public class Game {
     private Startup startupWindow;
     private CrewFactory crewFactory = new CrewFactory();
     private SpaceOutpost itemFactory = new SpaceOutpost();
+    private int maxParts = (int) ((numberDays * 2) / 3);
 
     
     public int getcurrentDay() {
@@ -142,7 +143,6 @@ public class Game {
     public void launchcurrentInventory() {
     	currentInventory invWindow = new currentInventory(this);
     }
-  
     
     public void closecurrentInventory(currentInventory invWindow) {
     	invWindow.closeWindow();
