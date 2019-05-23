@@ -12,7 +12,7 @@ import gui.ShopWindow;
 public class Game {
 
     private int numberDays;
-    private int currentDay = 0;
+    private int currentDay = 1;
     private static int pointBuy;
     private static  String selection = "0";
     private Ship myShip;
@@ -41,6 +41,7 @@ public class Game {
     
     public void makeShip(String name) {
     	myShip = new Ship(name);
+    	myShip.resetShip();
     }
     
     public String getShipName() {

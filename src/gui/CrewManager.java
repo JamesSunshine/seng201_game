@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import main.Game;
@@ -11,7 +9,6 @@ import main.Ship;
 import main.SpaceOutpost;
 import main.Types.CrewMember;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,13 +16,10 @@ import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.JToggleButton;
 import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 
 public class CrewManager {
 
@@ -70,6 +64,7 @@ public class CrewManager {
 	private SpaceOutpost spaceOutpost = new SpaceOutpost();
     private Random rand = new Random();
 	private int maxParts;
+	private double randNum;
 	
 	
 	
@@ -80,6 +75,8 @@ public class CrewManager {
 	 */
 	public CrewManager(Game incomingManager) {
 		manager = incomingManager;
+		crewList = new ArrayList<CrewMember>();
+		pilotList = new ArrayList<CrewMember>();
 		initialize();
 		crewManager.setVisible(true);
 	}
@@ -97,7 +94,7 @@ public class CrewManager {
 	 * Checks if Game Over conditions are met
 	 */
 	public void checkEndGame() {
-		if (manager.getcurrentDay() == manager.getnumberDays() - 1) {
+		if (manager.getcurrentDay() == manager.getnumberDays()) {
 			gameOver(myShip);
 		}
 		if (myShip.checkCondition() >= 100) {	
@@ -135,8 +132,15 @@ public class CrewManager {
 			String currentText = txtConsole.getText();
 			txtConsole.setText(currentText + "\nYour ship was attacked by pirates, I think they"
 					+ " took something!");	
-		} else {
-			;
+		} else if (event.spacePirates(myShip) == "Fail")  {
+			int maxIndex = Ship.Inventory.size() - 1;
+    		randNum = Math.random() * ((maxIndex - 1) + 1) + 0;
+    		Ship.Inventory.remove((int) randNum);
+    		myShip.shipDamage(10);
+        	checkEndGame();
+			String currentText = txtConsole.getText();
+			txtConsole.setText(currentText + "\nYour ship was attacked by pirates, I think they"
+					+ " took something!");	
 		}
 	}
 	
@@ -205,7 +209,7 @@ public class CrewManager {
 				member.useAction();
 				int index = rand.nextInt(8);
 				index += 1;
-				myShip.addInventory(spaceOutpost.purchase(RNGEvent.foundItem.get(index)));
+				Ship.Inventory.add(spaceOutpost.purchase(RNGEvent.foundItem.get(index)));
 				String currentText = txtConsole.getText();
 				txtConsole.setText(currentText + "\n" + member.getName() + " found an item while searching " + currentPlanet.getplanetName() + ".");
 			}
@@ -1100,6 +1104,8 @@ public class CrewManager {
 					lblPlanet.setText("Welcome to the planet " + currentPlanet.getplanetName());
 					pilotList = new ArrayList<CrewMember>();
 					eventBelt();
+					String currentText = txtConsole.getText();
+					txtConsole.setText(currentText + "\n" + "You have successfully arrived on planet " + currentPlanet.getplanetName() + ".");
 				} else {
 					String currentText = txtConsole.getText();
 					txtConsole.setText(currentText + "\n" + "There is not enough crew in the cockpit.");	
@@ -1239,7 +1245,7 @@ public class CrewManager {
 				}
 				manager.addDay();
 				progressShipHealth.setValue(myShip.checkCondition());
-				int dayStatus = (int) ((double)manager.getcurrentDay()/(double)manager.getnumberDays()*100);
+				int dayStatus = (int) (((double)manager.getcurrentDay() - 1)/(double)manager.getnumberDays()*100);
 				progressDays.setValue(dayStatus);
 				crewManager.getContentPane().revalidate();
 				crewManager.repaint();

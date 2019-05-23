@@ -10,16 +10,17 @@ public class Ship {
     private int numberofCrew = 0;
     private int shipCondition = 0;
     private int crewPoints = 0;
-    private int money = 100;
+    private int money = 25;
     private int shipParts = 0;
 
-    public static ArrayList<Item> Inventory = new ArrayList<Item>();
-    public static ArrayList<CrewMember> crewList = new ArrayList<CrewMember>();
+    public static ArrayList<Item> Inventory  = new ArrayList<Item>();
+    public static ArrayList<CrewMember> crewList  = new ArrayList<CrewMember>();
 
-    public static void createShip(String inputName) {
-        Ship myShip = new Ship(inputName);
+    public void resetShip() {
+        Inventory = new ArrayList<Item>();
+        crewList =  new ArrayList<CrewMember>();
     }
-
+    
     public Ship(String mName) {
         name = mName;
     }

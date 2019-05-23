@@ -268,8 +268,8 @@ public class ShopWindow {
 		btnInventory.setBounds(17, 353, 136, 25);
 		shopWindow.getContentPane().add(btnInventory);
 		
-		JLabel moneyLabel = new JLabel("Money: ");
-		moneyLabel.setBounds(420, 12, 66, 15);
+		JLabel moneyLabel = new JLabel("Money: $");
+		moneyLabel.setBounds(420, 12, 78, 15);
 		shopWindow.getContentPane().add(moneyLabel);
 		
 		moneyValue = new JLabel(Integer.toString(shipMoney));
