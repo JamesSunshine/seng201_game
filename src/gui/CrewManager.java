@@ -157,17 +157,20 @@ public class CrewManager {
 		else {
 			if (event.planetSearch(member, foundID) == "Found Nothing") {
 				currentPlanet.setSearched();
+				member.useAction();
 				String currentText = txtConsole.getText();
 				txtConsole.setText(currentText + "\n" + member.getName() + " found nothing while searching " + currentPlanet.getplanetName() + ".");
 			}
 			else if (event.planetSearch(member, foundID) == "Found Money") {
 				currentPlanet.setSearched();
+				member.useAction();
 				myShip.addMoney(10);
 				String currentText = txtConsole.getText();
 				txtConsole.setText(currentText + "\n" + member.getName() + " found some money while searching " + currentPlanet.getplanetName() + ".");
 			}
 			else if (event.planetSearch(member, foundID) == "Found Item") {
 				currentPlanet.setSearched();
+				member.useAction();
 				int index = rand.nextInt(8);
 				index += 1;
 				myShip.addInventory(spaceOutpost.purchase(RNGEvent.foundItem.get(index)));
@@ -176,6 +179,7 @@ public class CrewManager {
 			}
 			else if (event.planetSearch(member, foundID) == "Found Part") {
 				currentPlanet.setSearched();
+				member.useAction();
 				myShip.addParts();
 				int partsStatus = (int) ((double)myShip.getParts()/(double)maxParts *100);
 				progressParts.setValue(partsStatus);
@@ -403,7 +407,6 @@ public class CrewManager {
 			public void actionPerformed(ActionEvent arg0) {
 				if (crew1.getActions() > 0){
 				searchPlanet(crew1);
-				crew1.useAction();
 				lblAction1.setText(Integer.toString(crew1.getActions()));
 				}
 				else {
@@ -612,7 +615,6 @@ public class CrewManager {
 			public void actionPerformed(ActionEvent arg0) {
 				if (crew2.getActions() > 0){
 					searchPlanet(crew2);
-					crew2.useAction();
 					lblAction2.setText(Integer.toString(crew2.getActions()));
 					}
 					else {
@@ -790,7 +792,6 @@ public class CrewManager {
 				public void actionPerformed(ActionEvent arg0) {
 					if (crew3.getActions() > 0){
 						searchPlanet(crew3);
-						crew3.useAction();
 						lblAction3.setText(Integer.toString(crew3.getActions()));
 						}
 						else {
@@ -966,7 +967,6 @@ public class CrewManager {
 				public void actionPerformed(ActionEvent arg0) {
 					if (crew4.getActions() > 0){
 						searchPlanet(crew4);
-						crew4.useAction();
 						lblAction4.setText(Integer.toString(crew4.getActions()));
 						}
 						else {

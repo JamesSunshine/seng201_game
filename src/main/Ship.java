@@ -91,7 +91,7 @@ public class Ship {
     }
 
     public void shipDamage(int damage) {
-        this.shipCondition = shipCondition + damage;
+        shipCondition = shipCondition + damage;
     }
 
     public int checkCondition() {

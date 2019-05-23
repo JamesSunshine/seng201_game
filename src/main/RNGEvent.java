@@ -28,6 +28,7 @@ public class RNGEvent {
 
 
     public String spacePirates(Ship incomingShip) {
+    	shipDamage = 0;
     	this.hasGunner = false;
         this.threshold = 10;
     	yourShip = incomingShip;
