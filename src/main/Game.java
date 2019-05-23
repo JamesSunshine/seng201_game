@@ -88,6 +88,18 @@ public class Game {
     	return Ship.crewList.get(index);
     }
     
+    public void repairShip(String type) {
+    	myShip.shipRepair(type);
+    }
+    
+    public int getShipStatus() {
+    	return myShip.checkCondition();
+    }
+    
+    public void damageShip() {
+    	myShip.shipDamage(20);
+    }
+    
     //game Ship object methods
 
     
