@@ -19,8 +19,6 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JToggleButton;
 import java.awt.Color;
-import java.awt.Event;
-
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 
@@ -56,6 +54,9 @@ public class CrewManager {
 		crewManager.setVisible(true);
 	}
 	
+	/**
+	 * Methods to run random events
+	 */
 	public void eventPirate() {
 		if (event.spacePirates(myShip) == true) {
 			String currentText = txtConsole.getText();
@@ -68,6 +69,18 @@ public class CrewManager {
 		}
 	}
 	
+	public void eventAids() {
+		
+	}
+	
+	public void eventBelt() {
+		
+	}
+	
+	
+	/**
+	 * Window manager methods
+	 */
 	public void closeWindow() {
 		crewManager.dispose();
 	}
@@ -80,10 +93,15 @@ public class CrewManager {
 		return this;
 	}
 	
+	
+	/**
+	 * Console print methods
+	 */
 	public void printNoRepair() {
 		String currentText = txtConsole.getText();
 		txtConsole.setText(currentText + "\nThe ship does not need repairing.");
 	}
+	
 	
 	/**
 	 * Initialize the contents of the frame.
@@ -96,22 +114,11 @@ public class CrewManager {
 		crewManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		crewManager.getContentPane().setLayout(null);
 		
-		JButton btnShop = new JButton("View Shop");
-		btnShop.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.launchShopWindow();
-			}
-		});
-		btnShop.setBounds(25, 686, 156, 25);
-		crewManager.getContentPane().add(btnShop);
-		
-		JButton btnViewInventory = new JButton("View Inventory");
-		btnViewInventory.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.launchcurrentInventory();
-			}
-		});
-		
+
+				
+		/**
+		 * Console initialise
+		 */
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(543, 548, 321, 159);
 		crewManager.getContentPane().add(scrollPane);
@@ -121,7 +128,9 @@ public class CrewManager {
 		txtConsole.setEditable(false);
 		scrollPane.setViewportView(txtConsole);
 		
-		//Crewmember 1
+		/**
+		 * CrewMember 1
+		 */
 		crew1 = manager.getCrewMember(0);
 		JLabel lblName1 = new JLabel(crew1.getName());
 		lblName1.setBounds(79, 180, 66, 15);
@@ -146,6 +155,9 @@ public class CrewManager {
 		lblAction1.setBounds(103, 310, 66, 15);
 		crewManager.getContentPane().add(lblAction1);
 		
+		/**
+		 * Use item
+		 */
 		JButton btnEat1 = new JButton("Use Item");
 		btnEat1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -167,6 +179,9 @@ public class CrewManager {
 		btnEat1.setBounds(52, 334, 151, 25);
 		crewManager.getContentPane().add(btnEat1);
 		
+		/**
+		 * Sleep
+		 */
 		JButton btnSleep1 = new JButton("Sleep");
 		btnSleep1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -187,6 +202,9 @@ public class CrewManager {
 		btnSleep1.setBounds(52, 371, 151, 25);
 		crewManager.getContentPane().add(btnSleep1);
 		
+		/**
+		 * Repair
+		 */
 		JButton btnRepair1 = new JButton("Repair Ship");
 		btnRepair1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -211,10 +229,17 @@ public class CrewManager {
 		btnRepair1.setBounds(54, 408, 149, 25);
 		crewManager.getContentPane().add(btnRepair1);
 		
+		
+		/**
+		 * Search planet
+		 */
 		JButton btnSearch1 = new JButton("Search Planet");
 		btnSearch1.setBounds(54, 445, 149, 25);
 		crewManager.getContentPane().add(btnSearch1);
 		
+		/**
+		 * Pilot ship
+		 */
 		JButton btnPilot1 = new JButton("Pilot Ship");
 		btnPilot1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -243,6 +268,9 @@ public class CrewManager {
 		btnPilot1.setBounds(52, 482, 151, 25);
 		crewManager.getContentPane().add(btnPilot1);
 		
+		/**
+		 * Crew1 labels
+		 */
 		JLabel lblClass1 = new JLabel(crew1.getType());
 		lblClass1.setBounds(100, 203, 66, 15);
 		crewManager.getContentPane().add(lblClass1);
@@ -269,7 +297,9 @@ public class CrewManager {
 		
 		
 		
-		//Crewmember 2
+		/**
+		 * CrewMember 2
+		 */
 		crew2 = manager.getCrewMember(1);
 		JLabel lblName2 = new JLabel(crew2.getName());
 		lblName2.setBounds(291, 180, 66, 15);
@@ -317,10 +347,16 @@ public class CrewManager {
 		lblAction2.setBounds(318, 310, 66, 15);
 		crewManager.getContentPane().add(lblAction2);
 		
+		/**
+		 * Use item
+		 */
 		JButton btnEat2 = new JButton("Use Item");
 		btnEat2.setBounds(259, 334, 151, 25);
 		crewManager.getContentPane().add(btnEat2);
 		
+		/**
+		 * Sleep
+		 */
 		JButton btnSleep2 = new JButton("Sleep");
 		btnSleep2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -340,6 +376,9 @@ public class CrewManager {
 		btnSleep2.setBounds(259, 371, 151, 25);
 		crewManager.getContentPane().add(btnSleep2);
 		
+		/**
+		 * Repair ship
+		 */
 		JButton btnRepair2 = new JButton("Repair Ship");
 		btnRepair2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -364,10 +403,16 @@ public class CrewManager {
 		btnRepair2.setBounds(261, 408, 149, 25);
 		crewManager.getContentPane().add(btnRepair2);
 		
+		/**
+		 * Search planet
+		 */
 		JButton btnSearch2 = new JButton("Search Planet");
 		btnSearch2.setBounds(259, 445, 149, 25);
 		crewManager.getContentPane().add(btnSearch2);
 		
+		/**
+		 * Pilot Ship
+		 */
 		JButton btnPilot2 = new JButton("Pilot Ship");
 		btnPilot2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -396,34 +441,9 @@ public class CrewManager {
 		btnPilot2.setBounds(259, 482, 151, 25);
 		crewManager.getContentPane().add(btnPilot2);
 		
-		JLabel lblShipStatus = new JLabel("Ship Status");
-		lblShipStatus.setBounds(302, 548, 111, 15);
-		crewManager.getContentPane().add(lblShipStatus);
-		
-
-		JLabel lblHealth_1 = new JLabel("Damage");
-		lblHealth_1.setBounds(240, 585, 66, 15);
-		crewManager.getContentPane().add(lblHealth_1);
-		
-		progressShipHealth = new JProgressBar();
-		progressShipHealth.setForeground(Color.RED);
-		progressShipHealth.setBounds(301, 585, 183, 14);
-		crewManager.getContentPane().add(progressShipHealth);
-		progressShipHealth.setValue(0);
-		
-		JLabel lblPartsFound = new JLabel("Parts Found");
-		lblPartsFound.setBounds(199, 643, 91, 15);
-		crewManager.getContentPane().add(lblPartsFound);
-		
-		JProgressBar progressBar_1 = new JProgressBar();
-		progressBar_1.setBounds(291, 644, 182, 14);
-		crewManager.getContentPane().add(progressBar_1);
-		
-		
-		
-		
-		
-		//Crewmember 3
+		/**
+		 * CrewMember 3		
+		 */
 		if (manager.getNumCrew() >= 3) {
 			crew3 = manager.getCrewMember(2);
 			JLabel lblName3 = new JLabel(crew3.getName());
@@ -472,10 +492,16 @@ public class CrewManager {
 			lblAction3.setBounds(561, 310, 66, 15);
 			crewManager.getContentPane().add(lblAction3);
 			
+			/**
+			 * Use item
+			 */
 			JButton btnEat3 = new JButton("Use Item");
 			btnEat3.setBounds(478, 334, 151, 25);
 			crewManager.getContentPane().add(btnEat3);
 			
+			/**
+			 * Sleep
+			 */
 			JButton btnSleep3 = new JButton("Sleep");
 			btnSleep3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -495,11 +521,10 @@ public class CrewManager {
 			btnSleep3.setBounds(478, 371, 151, 25);
 			crewManager.getContentPane().add(btnSleep3);
 			
+			/**
+			 * Repair ship
+			 */
 			JButton btnRepair3 = new JButton("Repair Ship");
-			btnRepair3.setBounds(478, 408, 149, 25);
-			crewManager.getContentPane().add(btnRepair3);
-			
-			JButton btnSearch3 = new JButton("Search Planet");
 			btnRepair3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if (myShip.checkCondition() == 0) {
@@ -520,9 +545,19 @@ public class CrewManager {
 					progressShipHealth.setValue(myShip.checkCondition());
 				}
 			});
+			btnRepair3.setBounds(478, 408, 149, 25);
+			crewManager.getContentPane().add(btnRepair3);
+			
+			/**
+			 * Search planet
+			 */
+			JButton btnSearch3 = new JButton("Search Planet");
 			btnSearch3.setBounds(480, 445, 149, 25);
 			crewManager.getContentPane().add(btnSearch3);
 			
+			/**
+			 * Pilot Ship
+			 */
 			JButton btnPilot3 = new JButton("Pilot Ship");
 			btnPilot3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -553,9 +588,9 @@ public class CrewManager {
 		}
 		
 		
-		
-		
-		//Crewmember 4
+		/**
+		 * CrewMember 4
+		 */
 		if (manager.getNumCrew() >= 4) {
 			crew4 = manager.getCrewMember(3);
 			JLabel label_15 = new JLabel("Class");
@@ -600,10 +635,16 @@ public class CrewManager {
 			lblAction4.setBounds(743, 310, 66, 15);
 			crewManager.getContentPane().add(lblAction4);
 			
+			/**
+			 * Use item
+			 */
 			JButton btnEat4 = new JButton("Use Item");
 			btnEat4.setBounds(684, 334, 151, 25);
 			crewManager.getContentPane().add(btnEat4);
 			
+			/**
+			 * Sleep
+			 */
 			JButton btnSleep4 = new JButton("Sleep");
 			btnSleep4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -623,6 +664,9 @@ public class CrewManager {
 			btnSleep4.setBounds(684, 371, 151, 25);
 			crewManager.getContentPane().add(btnSleep4);
 			
+			/**
+			 * Repair
+			 */
 			JButton btnRepair4 = new JButton("Repair Ship");
 			btnRepair4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -647,10 +691,16 @@ public class CrewManager {
 			btnRepair4.setBounds(686, 408, 149, 25);
 			crewManager.getContentPane().add(btnRepair4);
 			
+			/**
+			 * Search Planet
+			 */
 			JButton btnSearch4 = new JButton("Search Planet");
 			btnSearch4.setBounds(684, 445, 149, 25);
 			crewManager.getContentPane().add(btnSearch4);
 			
+			/**
+			 * Pilot Ship
+			 */
 			JButton btnPilot4 = new JButton("Pilot Ship");
 			btnPilot4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -684,6 +734,25 @@ public class CrewManager {
 			crewManager.getContentPane().add(lblName4);
 		}
 		
+		/**
+		 * Stats for player
+		 */
+		JButton btnShop = new JButton("View Shop");
+		btnShop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchShopWindow();
+			}
+		});
+		btnShop.setBounds(25, 686, 156, 25);
+		crewManager.getContentPane().add(btnShop);
+		
+		
+		JButton btnViewInventory = new JButton("View Inventory");
+		btnViewInventory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchcurrentInventory();
+			}
+		});
 		btnViewInventory.setBounds(25, 649, 156, 25);
 		crewManager.getContentPane().add(btnViewInventory);
 		
@@ -704,11 +773,41 @@ public class CrewManager {
 		lblPlayerActions.setBounds(52, 548, 105, 15);
 		crewManager.getContentPane().add(lblPlayerActions);
 		
+		/**
+		 * Game stats
+		 */
+		JLabel lblShipStatus = new JLabel("Ship Status");
+		lblShipStatus.setBounds(302, 548, 111, 15);
+		crewManager.getContentPane().add(lblShipStatus);
+		
+
+		JLabel lblHealth_1 = new JLabel("Damage");
+		lblHealth_1.setBounds(240, 585, 66, 15);
+		crewManager.getContentPane().add(lblHealth_1);
+		
+		progressShipHealth = new JProgressBar();
+		progressShipHealth.setForeground(Color.RED);
+		progressShipHealth.setBounds(301, 585, 183, 14);
+		crewManager.getContentPane().add(progressShipHealth);
+		progressShipHealth.setValue(0);
+		
+		JLabel lblPartsFound = new JLabel("Parts Found");
+		lblPartsFound.setBounds(199, 643, 91, 15);
+		crewManager.getContentPane().add(lblPartsFound);
+		
+		JProgressBar progressBar_1 = new JProgressBar();
+		progressBar_1.setBounds(291, 644, 182, 14);
+		crewManager.getContentPane().add(progressBar_1);
+		
+		/**
+		 * NEXT DAY BUTTON 
+		 */
 		JButton btnNextDay = new JButton("Next Day");
 		btnNextDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				txtConsole.setText("Welcome to day " + (manager.getcurrentDay() + 1) + " Captain" );
-			
+				
+				eventPirate();
 				
 				pilotList = new ArrayList<CrewMember>();
 				crew1.resetActions();
