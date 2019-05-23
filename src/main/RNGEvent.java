@@ -35,13 +35,14 @@ public class RNGEvent {
             	yourShip.shipDamage(shipDamage);
           
             	if (Ship.Inventory.size() == 0) {
-            	;
+            	return "Gunner Fail";
             	}
             	else {
             	maxIndex = Ship.Inventory.size() - 1;
             	randNum = Math.random() * ((maxIndex - 1) + 1) + 0;
             	Ship.Inventory.remove((int) randNum);
-            	return "Gunner Fail ";}
+            	return "Gunner Fail ";
+            	}
             }
         } 	
 
